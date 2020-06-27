@@ -21,4 +21,5 @@ from django.conf.urls import url
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('', views.index, name='index'),
+    path('returnData', views.index, name='port1'),
 ]
