@@ -298,8 +298,8 @@
         var series = [];
         [
             ['北京', BJData],
-            ['上海', SHData],
-            ['广州', DGData]
+            ['南京', SHData],
+            ['东莞', DGData]
         ].forEach(function (item, i) {
             //console.log(item,i);
             series.push({
@@ -374,10 +374,10 @@
                     if (dataItem[0].name == "北京") {
                         name = BJobj[dataItem[1].name];
                     }
-                    if (dataItem[0].name == "上海") {
+                    if (dataItem[0].name == "南京") {
                         name = NJobj[dataItem[1].name];
                     }
-                    if (dataItem[0].name == "广州") {
+                    if (dataItem[0].name == "东莞") {
                         name = DGobj[dataItem[1].name];
                     }
 
@@ -416,7 +416,7 @@
                 orient: 'vertical',
                 top: 'bottom',
                 left: 'right',
-                data: ['北京', '上海', '广州'],
+                data: ['北京', '南京', '东莞'],
                 textStyle: {
                     color: '#fff'
                 },
