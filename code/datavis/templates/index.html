@@ -1,19 +1,7 @@
 <!DOCTYPE html>
 <html>
 <!-- 我为了图省事，用了绝对位置布局，在我的电脑上显示应该是正常，但是缩放和分辨率改变可能会导致变形，务必修改布局！！！ -->
-<!-- 我为了图省事，用了绝对位置布局，在我的电脑上显示应该是正常，但是缩放和分辨率改变可能会导致变形，务必修改布局！！！ -->
-<!-- 我为了图省事，用了绝对位置布局，在我的电脑上显示应该是正常，但是缩放和分辨率改变可能会导致变形，务必修改布局！！！ -->
-<!-- 我为了图省事，用了绝对位置布局，在我的电脑上显示应该是正常，但是缩放和分辨率改变可能会导致变形，务必修改布局！！！ -->
-<!-- 我为了图省事，用了绝对位置布局，在我的电脑上显示应该是正常，但是缩放和分辨率改变可能会导致变形，务必修改布局！！！ -->
-<!-- 我为了图省事，用了绝对位置布局，在我的电脑上显示应该是正常，但是缩放和分辨率改变可能会导致变形，务必修改布局！！！ -->
-<!-- 我为了图省事，用了绝对位置布局，在我的电脑上显示应该是正常，但是缩放和分辨率改变可能会导致变形，务必修改布局！！！ -->
-<!-- 我为了图省事，用了绝对位置布局，在我的电脑上显示应该是正常，但是缩放和分辨率改变可能会导致变形，务必修改布局！！！ -->
-<!-- 我为了图省事，用了绝对位置布局，在我的电脑上显示应该是正常，但是缩放和分辨率改变可能会导致变形，务必修改布局！！！ -->
-<!-- 我为了图省事，用了绝对位置布局，在我的电脑上显示应该是正常，但是缩放和分辨率改变可能会导致变形，务必修改布局！！！ -->
-<!-- 我为了图省事，用了绝对位置布局，在我的电脑上显示应该是正常，但是缩放和分辨率改变可能会导致变形，务必修改布局！！！ -->
-<!-- 我为了图省事，用了绝对位置布局，在我的电脑上显示应该是正常，但是缩放和分辨率改变可能会导致变形，务必修改布局！！！ -->
-<!-- 我为了图省事，用了绝对位置布局，在我的电脑上显示应该是正常，但是缩放和分辨率改变可能会导致变形，务必修改布局！！！ -->
-<!-- 我为了图省事，用了绝对位置布局，在我的电脑上显示应该是正常，但是缩放和分辨率改变可能会导致变形，务必修改布局！！！ -->
+
 
 <head>
     <meta charset="utf-8">
@@ -44,13 +32,27 @@
     </center>
 
     <!-- 图表 -->
-    <div style="position:absolute;top:5%;width:100%;height:100%;">
+    <div class="container" style="position:absolute;top:5%;width:100%;height:100%;">
         <!-- 地图div -->
-        <div id="mapBox" class="centerItem" style="position:absolute;left:20%; width: 60%;height: 100%;"></div>
-        <!-- 折线图div -->
-        <div id="main" style="position:absolute;left:0%;width: 20%;height: 100%;"></div>
-        <!-- 散点图div -->
-        <div style="position:absolute;left:80%;width: 20%;height: 100%;" id="Scatter"></div>
+        <div class="row">
+            <div class="col-10 offset-1">
+                <div id="mapBox" class="centerItem" style="position:absolute;left:20%; width: 60%;height: 100%;"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-10 offset-1">
+                <!-- 折线图div -->
+                <div id="main" style="position:absolute;left:0%;width: 20%;height: 100%;"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-10 offset-1">
+                <!-- 散点图div -->
+                <div style="position:absolute;left:80%;width: 20%;height: 100%;" id="Scatter"></div>
+            </div>
+        </div>
     </div>
 
     <!-- 文字显示 -->
@@ -459,35 +461,127 @@
         });
     </script>
 
-    <!-- 传参 -->
+    <!-- ajax传参与响应 -->
     <script>
         $(document).ready(function () {
+
+            // 初始化计数器
+            var count_total = 0;
+            var count_region = 0;
             var count_upload = 0;
-            $('total-stream').on('click', function () {
-                // let date = new Date();
-                // let hour = date.getHours();
-                // let min = date.getMinutes();
-                // let sec = date.getSeconds();
-                // let time = hour + min + sec;
+            var count_download = 0;
+            var count_task = 0;
+
+            // 封装请求与返回数据ajax
+            function returnData(request_type, request_url, request_data) {
                 $.ajax({
-                    type: 'POST',
-                    url: 'returnData',
-                    data: {
-                        "key": "shangxing",
-                        "time": count_upload,
-                    },
+                    type: request_type,
+                    url: request_url,
+                    data: request_data,
                     success: function (res) {
-                        count_upload++;
-                        console.log(res);
-                        let key = res.key;
-                        let time = res.time;
+                        // request_count += 5;
+                        return res;
                     },
                     error: function (e) {
-                        console.log(e);
                         alert('Something goes wrong.')
                     }
                 })
-            })
+            }
+
+            // 地图函数
+            function generateMap() {
+
+            }
+
+            // 折线图函数
+            function lineChart() {
+
+            }
+
+            // 冒泡图函数
+            function bubbleChart() {
+
+            }
+
+            function totalStreamInit() {
+                setInterval()
+            }
+
+            function regionStreamInit() {
+                setInterval()
+            }
+
+            function uploadStreamInit() {
+                var count_upload = 0;
+                setInterval(uploadStream(), 3000);
+            }
+
+            function downloadStreamInit() {
+                setInterval()
+            }
+
+            function taskStreamInit() {
+                setInterval()
+            }
+
+            // 总流量点击响应函数
+            function totalStream() {}
+
+            // 域间流量点击响应函数
+            function regionStream() {}
+
+            // 上行流量点击响应函数
+            function uploadStream() {
+                var data = {
+                    'key': 'shangxing',
+                    'time': count_upload,
+                };
+                var data_upload = returnData(POST, returnData, data)
+                console.log(data_upload);
+                let key = data_upload.key;
+                let count_upload = data_upload.time;
+                // 按地图需要数据填补...
+                generateMap();
+                lineChart();
+                bubbleChart();
+            }
+
+            // 下行流量点击响应函数
+            function downloadStream() {}
+
+            // 任务流量点击响应函数
+            function taskStream() {}
+
+            $('total-stream').on('click', totalStreamInit)
+            $('region-stream').on('click', regionStreamInit)
+            $('upload-stream').on('click', uploadStreamInit)
+            $('download-stream').on('click', downloadStreamInit)
+            $('task-stream').on('click', taskStreamInit)
+
+            // let date = new Date();
+            // let hour = date.getHours();
+            // let min = date.getMinutes();
+            // let sec = date.getSeconds();
+            // let time = hour + min + sec;
+
+            // $.ajax({
+            //     type: 'POST',
+            //     url: 'returnData',
+            //     data: {
+            //         'key': 'shangxing',
+            //         'time': count_upload,
+            //     },
+            //     success: function (res) {
+            //         count_upload++;
+            //         console.log(res);
+            //         let key = res.key;
+            //         let time = res.time;
+            //     },
+            //     error: function (e) {
+            //         console.log(e);
+            //         alert('Something goes wrong.')
+            //     }
+            // })
         })
     </script>
 
