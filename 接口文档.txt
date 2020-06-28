@@ -1,0 +1,22 @@
+向后端发送请求：
+{
+    "key": "shangxin",#对应key值（shangxing/xiaxing/lianlu/renwu）
+    "time": "500",#当前时间（当值为0时，代表第一次请求）
+}
+后端返回数据：
+{
+    "key": "shangxin",#对应key值（shangxing/xiaxing/lianlu/renwu）
+    "time": "505",#时间（返回的为请求的时间的下一个时间）
+    "cdc": {#数据中心
+        "beijing": {#出发地数据中心名称（暂时有：beijing/dongguan/nanjing）
+            "haerbin": "8.99",#目的地数据中心名称及使用的百分比
+            "jinan": "7.44",
+            "shenyang": "12.51",
+        },
+        "dongguan": {
+            "haerbin": "10.99",
+            "jinan": "5.44",
+            "shenyang": "2.51",
+        }
+    }
+}
