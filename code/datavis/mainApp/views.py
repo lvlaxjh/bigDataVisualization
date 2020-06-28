@@ -13,6 +13,7 @@ def index(request):
     response = render(request, 'index.html')
     return response
 
+
 # 因为没有商量接口设定暂时设定一个接口
 
 
