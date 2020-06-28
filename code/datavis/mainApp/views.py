@@ -19,6 +19,7 @@ def index(request):
 def returnData(request):
     result = {"test": "s"}
     # 获取前端的请求
-    require = demjson.decode(request.body)
-    print(require)
+    if request.method == "POST":
+        require = demjson.decode(request.body)
+        print(require)
     return JsonResponse(result)
