@@ -18,6 +18,7 @@
 <head>
     <meta charset="utf-8">
     <title>index</title>
+
     <style>
         /* 用于地图展示的style */
         .centerItem {
@@ -30,14 +31,18 @@
 </head>
 
 <body>
+
     <!-- 按钮 -->
     <center>
         <div style="position:absolute;width:100%;height:100%;">
-            <button type=" submit ">内容</button>
-            <button type=" submit ">内容</button>
-            <button type=" submit ">内容</button>
+            <button type=" submit " class="total-stream">总流量</button>
+            <button type=" submit " class="region-stream">域间</button>
+            <button type=" submit " class="upload-stream">上行</button>
+            <button type=" submit " class="download-stream">下行</button>
+            <button type=" submit " class="task-stream">任务</button>
         </div>
     </center>
+
     <!-- 图表 -->
     <div style="position:absolute;top:5%;width:100%;height:100%;">
         <!-- 地图div -->
@@ -47,6 +52,7 @@
         <!-- 散点图div -->
         <div style="position:absolute;left:80%;width: 20%;height: 100%;" id="Scatter"></div>
     </div>
+
     <!-- 文字显示 -->
     <center>
         <div style="position:absolute;top:110%;width:100%;height:100%;">
@@ -56,10 +62,12 @@
             <pre>显示路径详细信息xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</pre>
         </div>
     </center>
+
     <!-- 引入相关文件 -->
     <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
     <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/china.js"></script>
+
     <!-- 用于显示地图 -->
     <script>
         // 基于准备好的dom，初始化echarts实例
@@ -178,82 +186,93 @@
             '长治': [112.8625, 36.4746],
             '阳泉': [113.4778, 38.0951],
             '青岛': [120.4651, 36.3373],
-            '韶关': [113.7964, 24.7028]
+            '韶关': [113.7964, 24.7028],
+            '乌兰察布': [113.11, 41.03]
         };
         //北京
-        var BJsheng = ['河北', '天津', '山东', '广东', '四川', '江苏', '河南', '辽宁', '陕西', '海南', '浙江', '山西', '福建', '湖南', '内蒙古', '安徽', '吉林', '甘肃', '黑龙江', '江西', '重庆市', '广西', '湖北', '宁夏', '上海', '云南', '贵州', '青海', '西藏', '新疆'];
-        var BJshi = ['石家庄', '天津', '济南', '广州', '成都', '南京', '郑州', '沈阳', '西安', '海口', '杭州', '太原', '福州', '长沙', '呼和浩特', '合肥', '长春', '兰州', '哈尔滨', '南昌', '重庆', '南宁', '武汉', '银川', '上海', '昆明', '贵阳', '西宁', '拉萨', '乌鲁木齐'];
+        var BJsheng = ['吉林','黑龙江','山东','辽宁','山西','天津','内蒙古'];//changchun,haerbin,jinan,shenyang,taiyuan,tianjin,wulanchabu
+        // var BJsheng = ['河北', '天津', '山东', '广东', '四川', '江苏', '河南', '辽宁', '陕西', '海南', '浙江', '山西', '福建', '湖南', '内蒙古', '安徽',
+        // ];
+        //     '吉林', '甘肃', '黑龙江', '江西', '重庆市', '广西', '湖北', '宁夏', '上海', '云南', '贵州', '青海', '西藏', '新疆'
+        var BJshi = ['长春','哈尔滨','济南','沈阳','太原','天津','乌兰察布'];
+        // var BJshi = ['石家庄', '天津', '济南', '广州', '成都', '南京', '郑州', '沈阳', '西安', '海口', '杭州', '太原', '福州', '长沙', '呼和浩特', '合肥',
+        //     '长春', '兰州', '哈尔滨', '南昌', '重庆', '南宁', '武汉', '银川', '上海', '昆明', '贵阳', '西宁', '拉萨', '乌鲁木齐'
+        // ];
         var BJobj = {};
         for (var i = 0; i < BJsheng.length; i++) {
             BJobj[BJshi[i]] = BJsheng[i];
         }
-
-        var BJche = [2875, 737, 584, 472, 293, 278, 252, 235, 162, 149, 140, 126, 87, 79, 68, 53, 50, 47, 38, 30, 29, 21, 21, 20, 20, 13, 7, 7, 3, 2];
+        //24.59,2.77,4.52,6.37,42.93,5.27,50.94
+        // var BJche = [2875, 737, 584, 472, 293, 278, 252, 235, 162, 149, 140, 126, 87, 79, 68, 53, 50, 47, 38, 30, 29,
+        //     21, 21, 20, 20, 13, 7, 7, 3, 2
+        // ];
+        var BJUpload = [24.59,2.77,4.52,6.37,42.93,5.27,50.94]
         var BJData = [];
-        for (var i = 0; i < BJche.length; i++) {
+        for (var i = 0; i < BJUpload.length; i++) {
             var arr = [];
             var obj1 = {};
             obj1.name = "北京";
             var obj2 = {};
             obj2.name = BJshi[i];
-            obj2.value = BJche[i];
+            obj2.value = BJUpload[i];
 
             arr.push(obj1);
             arr.push(obj2);
             BJData.push(arr);
         }
 
-        //上海
-        var SHsheng = ['江苏', '浙江', '安徽', '山东', '河南', '河北', '广东', '福建', '江西', '山西', '湖北', '广西', '北京市', '湖南', '辽宁', '四川', '黑龙江', '陕西', '天津', '贵州', '海南', '吉林', '云南', '内蒙古', '青海', '重庆', '甘肃', '新疆'];
-        var SHshi = ['南京', '杭州', '合肥', '济南', '郑州', '石家庄', '广州', '福州', '南昌', '太原', '武汉', '南宁', '北京', '长沙', '沈阳', '成都', '哈尔滨', '西安', '天津', '贵阳', '海口', '长春', '昆明', '呼和浩特', '西宁', '重庆', '兰州', '乌鲁木齐'];
-        var SHobj = {};
-        for (var i = 0; i < SHsheng.length; i++) {
-            SHobj[SHshi[i]] = SHsheng[i];
+        //南京 hefei,ningbo,wuhan,wuxi
+        var NJsheng = ['安徽','浙江','湖北','江苏'];
+        var NJshi = ['合肥','宁波','武汉','无锡'];
+        var NJobj = {};
+        for (var i = 0; i < NJsheng.length; i++) {
+            NJobj[NJshi[i]] = NJsheng[i];
         }
 
-        var SHche = [1712, 833, 210, 126, 62, 54, 50, 46, 34, 27, 22, 15, 13, 13, 11, 11, 8, 8, 6, 5, 5, 5, 4, 3, 2, 2, 1, 1];
-        console.log(SHche.length)
+        var NJUpload = [9.9,29.85,12.15,3.11];
+        console.log(NJUpload.length)
         var SHData = [];
-        for (var i = 0; i < SHche.length; i++) {
+        for (var i = 0; i < NJUpload.length; i++) {
             var arr = [];
             var obj1 = {};
-            obj1.name = "上海";
+            obj1.name = "南京";
             var obj2 = {};
-            obj2.name = SHshi[i];
-            obj2.value = SHche[i];
+            obj2.name = NJshi[i];
+            obj2.value = NJUpload[i];
 
             arr.push(obj1);
             arr.push(obj2);
             SHData.push(arr);
         }
 
-        //广州
-        var GZsheng = ['广西', '湖南', '福建', '山东', '河南', '江西', '湖北', '北京', '浙江', '上海', '江苏', '海南', '安徽', '四川', '河北', '云南', '贵州', '陕西', '重庆', '甘肃', '山西', '内蒙古', '青海', '新疆', '黑龙江', '辽宁', '宁夏', '天津', '吉林'];
-        console.log(GZsheng.length)
-        var GZshi = ['南宁', '长沙', '福州', '济南', '郑州', '南昌', '武汉', '北京', '杭州', '上海', '南京', '海口', '合肥', '成都', '石家庄', '昆明', '贵阳', '西安', '重庆', '兰州', '太原', '呼和浩特', '西宁', '乌鲁木齐', '哈尔滨', '沈阳', '银川', '天津', '长春'];
-        console.log(GZshi.length)
-        var GZobj = {};
-        for (var i = 0; i < GZsheng.length; i++) {
-            GZobj[GZshi[i]] = GZsheng[i];
+        //东莞 changsha,foshan,fuzhou,guangzhou,guiyang,kunming,nanchang,nanning,xiamen
+        var DGsheng = ['湖南','广东','福建','广东','贵州','云南','江苏','福建'];
+        console.log(DGsheng.length)
+        var DGshi = ['长沙','佛山','福州','广州','贵阳','昆明','南昌','南京','厦门'];
+        console.log(DGshi.length)
+        var DGobj = {};
+        for (var i = 0; i < DGsheng.length; i++) {
+            DGobj[DGshi[i]] = DGsheng[i];
         }
 
-        var GZche = [367, 363, 268, 262, 231, 122, 119, 115, 115, 96, 95, 78, 75, 69, 55, 50, 42, 29, 22, 19, 18, 8, 8, 8, 7, 6, 6, 6, 3];
-        console.log(GZche.length)
-        var GZData = [];
-        for (var i = 0; i < GZche.length; i++) {
+        var DGUpoad = [1.14,3.71,0.5,43.68,8.63,59.99,0.1,26.86,8.95];
+        console.log(DGUpoad.length)
+        var DGData = [];
+        for (var i = 0; i < DGUpoad.length; i++) {
             var arr = [];
             var obj1 = {};
-            obj1.name = "广州";
+            obj1.name = "东莞";
             var obj2 = {};
-            obj2.name = GZshi[i];
-            obj2.value = GZche[i];
+            obj2.name = DGshi[i];
+            obj2.value = DGUpoad[i];
 
             arr.push(obj1);
             arr.push(obj2);
-            GZData.push(arr);
+            DGData.push(arr);
         }
 
-        var carPath = 'path://M4560,4996.6c-530.4-68.2-932.1-239.8-1201.2-514.8c-156-159.9-508.9-803.4-598.6-1092c-50.7-161.9-52.7-384.2-11.7-840.5c39-421.2,42.9-386.1-54.6-432.9c-117-56.5-208.7-138.4-241.8-216.4c-23.4-58.5-23.4-72.2,7.8-136.5c44.8-93.6,93.6-99.4,263.2-31.2l134.6,54.6l58.5-58.5l58.5-58.5l-48.8-536.3C2822.5-3.2,2808.9-360.1,2846-1095.2c9.7-218.4,5.8-386.1-19.5-663c-66.3-723.5-2-1550.3,159.9-2039.7c72.1-216.4,157.9-366.6,278.8-487.5c87.8-89.7,142.3-122.9,304.2-189.2c349.1-146.3,805.3-257.4,1232.4-302.3c173.6-17.5,269.1-17.5,438.8,0c659.1,74.1,1347.5,298.3,1544.4,505.1c140.4,146.3,255.4,399.7,329.6,733.2c101.4,440.7,134.6,1197.3,80,1758.9c-42.9,432.9-46.8,838.5-11.7,982.8c40.9,165.8,9.8,733.2-107.2,1959.8l-50.7,524.6l58.5,56.6l56.6,56.6l150.1-62.4c175.5-74.1,228.1-64.3,265.2,48.8c39,122.9-42.9,235.9-251.6,341.3l-85.8,44.8l13.6,157.9c7.8,87.8,21.4,261.3,31.2,384.2c25.4,300.3,23.4,503.1-1.9,627.9c-29.3,128.7-397.8,863.9-514.8,1019.9c-222.3,298.3-563.6,489.5-1066.6,596.7C5470.7,5004.4,4797.9,5025.8,4560,4996.6z M5517.5,3073.9c444.6-76.1,811.2-255.5,1051.1-516.8c195-208.7,189.1-152.1,85.8-906.7c-48.8-358.8-93.6-657.2-97.5-661.1c-5.9-5.8-117,11.7-247.7,39c-544,111.2-762.4,134.6-1269.4,134.6c-522.6,2-717.6-19.5-1271.4-128.7c-169.6-33.1-312-56.5-315.9-52.6c-3.9,3.9-48.8,304.2-99.4,664.9l-89.7,657.2l48.8,85.8c56.5,93.6,232,273,356.9,362.7c255.4,183.3,663,313.9,1127.1,360.8C4936.4,3126.5,5338.1,3105.1,5517.5,3073.9z M6443.7-2179.4v-702l-70.2-76.1c-187.2-210.6-573.3-321.8-1197.3-347.1c-717.6-29.2-1302.6,101.4-1519.1,335.4l-80,87.8v692.3c0,380.2,7.8,692.2,15.6,692.2c9.8,0,81.9-17.5,161.9-37c319.8-81.9,618.1-107.3,1236.3-107.3c631.8,0,920.4,25.4,1255.8,113.1c91.6,25.3,173.6,46.8,183.3,48.8C6437.9-1479.4,6443.7-1793.3,6443.7-2179.4z';
+        var carPath =
+            'path://M4560,4996.6c-530.4-68.2-932.1-239.8-1201.2-514.8c-156-159.9-508.9-803.4-598.6-1092c-50.7-161.9-52.7-384.2-11.7-840.5c39-421.2,42.9-386.1-54.6-432.9c-117-56.5-208.7-138.4-241.8-216.4c-23.4-58.5-23.4-72.2,7.8-136.5c44.8-93.6,93.6-99.4,263.2-31.2l134.6,54.6l58.5-58.5l58.5-58.5l-48.8-536.3C2822.5-3.2,2808.9-360.1,2846-1095.2c9.7-218.4,5.8-386.1-19.5-663c-66.3-723.5-2-1550.3,159.9-2039.7c72.1-216.4,157.9-366.6,278.8-487.5c87.8-89.7,142.3-122.9,304.2-189.2c349.1-146.3,805.3-257.4,1232.4-302.3c173.6-17.5,269.1-17.5,438.8,0c659.1,74.1,1347.5,298.3,1544.4,505.1c140.4,146.3,255.4,399.7,329.6,733.2c101.4,440.7,134.6,1197.3,80,1758.9c-42.9,432.9-46.8,838.5-11.7,982.8c40.9,165.8,9.8,733.2-107.2,1959.8l-50.7,524.6l58.5,56.6l56.6,56.6l150.1-62.4c175.5-74.1,228.1-64.3,265.2,48.8c39,122.9-42.9,235.9-251.6,341.3l-85.8,44.8l13.6,157.9c7.8,87.8,21.4,261.3,31.2,384.2c25.4,300.3,23.4,503.1-1.9,627.9c-29.3,128.7-397.8,863.9-514.8,1019.9c-222.3,298.3-563.6,489.5-1066.6,596.7C5470.7,5004.4,4797.9,5025.8,4560,4996.6z M5517.5,3073.9c444.6-76.1,811.2-255.5,1051.1-516.8c195-208.7,189.1-152.1,85.8-906.7c-48.8-358.8-93.6-657.2-97.5-661.1c-5.9-5.8-117,11.7-247.7,39c-544,111.2-762.4,134.6-1269.4,134.6c-522.6,2-717.6-19.5-1271.4-128.7c-169.6-33.1-312-56.5-315.9-52.6c-3.9,3.9-48.8,304.2-99.4,664.9l-89.7,657.2l48.8,85.8c56.5,93.6,232,273,356.9,362.7c255.4,183.3,663,313.9,1127.1,360.8C4936.4,3126.5,5338.1,3105.1,5517.5,3073.9z M6443.7-2179.4v-702l-70.2-76.1c-187.2-210.6-573.3-321.8-1197.3-347.1c-717.6-29.2-1302.6,101.4-1519.1,335.4l-80,87.8v692.3c0,380.2,7.8,692.2,15.6,692.2c9.8,0,81.9-17.5,161.9-37c319.8-81.9,618.1-107.3,1236.3-107.3c631.8,0,920.4,25.4,1255.8,113.1c91.6,25.3,173.6,46.8,183.3,48.8C6437.9-1479.4,6443.7-1793.3,6443.7-2179.4z';
 
 
         var convertData = function (data) {
@@ -277,7 +296,11 @@
 
         var color = ['#a6c84c', '#ffa022', '#46bee9'];
         var series = [];
-        [['北京', BJData], ['上海', SHData], ['广州', GZData]].forEach(function (item, i) {
+        [
+            ['北京', BJData],
+            ['南京', SHData],
+            ['东莞', DGData]
+        ].forEach(function (item, i) {
             //console.log(item,i);
             series.push({
                 name: item[0],
@@ -298,74 +321,72 @@
                     }
                 },
                 data: convertData(item[1])
-            },
-                {
-                    name: item[0],
-                    type: 'lines',
-                    zlevel: 2,
-                    symbol: ['none', 'arrow'],
-                    symbolSize: 10,
-                    effect: {
-                        show: true,
-                        period: 6,
-                        trailLength: 0,
-                        symbol: 'arrow',
-                        symbolSize: [10, 15]
-                    },
-                    lineStyle: {
-                        normal: {
-                            color: color[i],
-                            width: 1,
-                            opacity: 0.6,
-                            curveness: 0.2
-                        }
-                    },
-                    data: convertData(item[1])
+            }, {
+                name: item[0],
+                type: 'lines',
+                zlevel: 2,
+                symbol: ['none', 'arrow'],
+                symbolSize: 10,
+                effect: {
+                    show: true,
+                    period: 6,
+                    trailLength: 0,
+                    symbol: 'arrow',
+                    symbolSize: [10, 15]
                 },
-                {
-                    name: item[0],
-                    type: 'effectScatter',
-                    coordinateSystem: 'geo',
-                    zlevel: 2,
-                    rippleEffect: {
-                        brushType: 'stroke'
-                    },
-                    label: {
-                        normal: {
-                            show: true,
-                            position: 'right',
-                            formatter: '{b}'
-                        }
-                    },
-                    symbolSize: function (val) {
-                        return val[2] / 300;
-                    },
-                    itemStyle: {
-                        normal: {
-                            color: color[i]
-                        }
-                    },
-                    data: item[1].map(function (dataItem) {
-                        //debugger
-                        console.log(i);
-                        console.log(dataItem)
-                        var name = "";
-                        if (dataItem[0].name == "北京") {
-                            name = BJobj[dataItem[1].name];
-                        }
-                        if (dataItem[0].name == "上海") {
-                            name = SHobj[dataItem[1].name];
-                        }
-                        if (dataItem[0].name == "广州") {
-                            name = GZobj[dataItem[1].name];
-                        }
+                lineStyle: {
+                    normal: {
+                        color: color[i],
+                        width: 1,
+                        opacity: 0.6,
+                        curveness: 0.2
+                    }
+                },
+                data: convertData(item[1])
+            }, {
+                name: item[0],
+                type: 'effectScatter',
+                coordinateSystem: 'geo',
+                zlevel: 2,
+                rippleEffect: {
+                    brushType: 'stroke'
+                },
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'right',
+                        formatter: '{b}'
+                    }
+                },
+                symbolSize: function (val) {
+                    return val[2] / 300;
+                },
+                itemStyle: {
+                    normal: {
+                        color: color[i]
+                    }
+                },
+                data: item[1].map(function (dataItem) {
+                    //debugger
+                    console.log(i);
+                    console.log(dataItem)
+                    var name = "";
+                    if (dataItem[0].name == "北京") {
+                        name = BJobj[dataItem[1].name];
+                    }
+                    if (dataItem[0].name == "南京") {
+                        name = NJobj[dataItem[1].name];
+                    }
+                    if (dataItem[0].name == "东莞") {
+                        name = DGobj[dataItem[1].name];
+                    }
 
-                        return {
-                            name: name ? name : dataItem[1].name,
-                            value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
-                        };
-                    })
-                });
+                    return {
+                        name: name ? name : dataItem[1].name,
+                        value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
+                    };
+                })
+            });
         });
 
         var option = {
@@ -395,7 +416,7 @@
                 orient: 'vertical',
                 top: 'bottom',
                 left: 'right',
-                data: ['北京', '上海', '广州'],
+                data: ['北京', '南京', '东莞'],
                 textStyle: {
                     color: '#fff'
                 },
@@ -429,6 +450,39 @@
             mapEchart.resize();
         });
     </script>
+
+    <!-- 传参 -->
+    <script>
+        $(document).ready(function () {
+            var count_upload = 0;
+            $('total-stream').on('click', function () {
+                // let date = new Date();
+                // let hour = date.getHours();
+                // let min = date.getMinutes();
+                // let sec = date.getSeconds();
+                // let time = hour + min + sec;
+                $.ajax({
+                    type: 'POST',
+                    url: 'returnData',
+                    data: {
+                        "key": "shangxing",
+                        "time": count_upload,
+                    },
+                    success: function (res) {
+                        count_upload++;
+                        console.log(res);
+                        let key = res.key;
+                        let time = res.time;
+                    },
+                    error: function (e) {
+                        console.log(e);
+                        alert('Something goes wrong.')
+                    }
+                })
+            })
+        })
+    </script>
+
     <!-- 用于显示折线图 -->
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
@@ -459,8 +513,8 @@
 
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
-
     </script>
+
     <!-- 用于显示散点图 -->
     <script type="text/javascript">
         $(document).ready(function () {
