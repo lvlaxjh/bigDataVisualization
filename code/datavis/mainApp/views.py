@@ -17,4 +17,7 @@ def index(request):
 
 def returnData(request):
     result = {}
+    # 获取前端的请求
+    if request.method == 'POST':
+        content = request.POST.get('content')
     return JsonResponse(json.dumps(result))
