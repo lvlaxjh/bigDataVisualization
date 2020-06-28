@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.shortcuts import render
 from django.http import JsonResponse
 import os
 import json
-
+import demjson
 # 用于显示主界面
+
+print('---后端---')
 
 
 def index(request):
@@ -16,8 +17,8 @@ def index(request):
 
 
 def returnData(request):
-    result = {}
+    result = {"test": "s"}
     # 获取前端的请求
-    if request.method == 'POST':
-        content = request.POST.get('content')
-    return JsonResponse(json.dumps(result))
+    require = demjson.decode(request.body)
+    print(require)
+    return JsonResponse(result)
