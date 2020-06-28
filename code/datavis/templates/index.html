@@ -188,97 +188,89 @@
             '长治': [112.8625, 36.4746],
             '阳泉': [113.4778, 38.0951],
             '青岛': [120.4651, 36.3373],
-            '韶关': [113.7964, 24.7028]
+            '韶关': [113.7964, 24.7028],
+            '乌兰察布': [113.11, 41.03]
         };
         //北京
-        var BJsheng = ['河北', '天津', '山东', '广东', '四川', '江苏', '河南', '辽宁', '陕西', '海南', '浙江', '山西', '福建', '湖南', '内蒙古', '安徽',
-            '吉林', '甘肃', '黑龙江', '江西', '重庆市', '广西', '湖北', '宁夏', '上海', '云南', '贵州', '青海', '西藏', '新疆'
-        ];
-        var BJshi = ['石家庄', '天津', '济南', '广州', '成都', '南京', '郑州', '沈阳', '西安', '海口', '杭州', '太原', '福州', '长沙', '呼和浩特', '合肥',
-            '长春', '兰州', '哈尔滨', '南昌', '重庆', '南宁', '武汉', '银川', '上海', '昆明', '贵阳', '西宁', '拉萨', '乌鲁木齐'
-        ];
+        var BJsheng = ['吉林','黑龙江','山东','辽宁','山西','天津','内蒙古'];//changchun,haerbin,jinan,shenyang,taiyuan,tianjin,wulanchabu
+        // var BJsheng = ['河北', '天津', '山东', '广东', '四川', '江苏', '河南', '辽宁', '陕西', '海南', '浙江', '山西', '福建', '湖南', '内蒙古', '安徽',
+        // ];
+        //     '吉林', '甘肃', '黑龙江', '江西', '重庆市', '广西', '湖北', '宁夏', '上海', '云南', '贵州', '青海', '西藏', '新疆'
+        var BJshi = ['长春','哈尔滨','济南','沈阳','太原','天津','乌兰察布'];
+        // var BJshi = ['石家庄', '天津', '济南', '广州', '成都', '南京', '郑州', '沈阳', '西安', '海口', '杭州', '太原', '福州', '长沙', '呼和浩特', '合肥',
+        //     '长春', '兰州', '哈尔滨', '南昌', '重庆', '南宁', '武汉', '银川', '上海', '昆明', '贵阳', '西宁', '拉萨', '乌鲁木齐'
+        // ];
         var BJobj = {};
         for (var i = 0; i < BJsheng.length; i++) {
             BJobj[BJshi[i]] = BJsheng[i];
         }
-
-        var BJche = [2875, 737, 584, 472, 293, 278, 252, 235, 162, 149, 140, 126, 87, 79, 68, 53, 50, 47, 38, 30, 29,
-            21, 21, 20, 20, 13, 7, 7, 3, 2
-        ];
+        //24.59,2.77,4.52,6.37,42.93,5.27,50.94
+        // var BJche = [2875, 737, 584, 472, 293, 278, 252, 235, 162, 149, 140, 126, 87, 79, 68, 53, 50, 47, 38, 30, 29,
+        //     21, 21, 20, 20, 13, 7, 7, 3, 2
+        // ];
+        var BJUpload = [24.59,2.77,4.52,6.37,42.93,5.27,50.94]
         var BJData = [];
-        for (var i = 0; i < BJche.length; i++) {
+        for (var i = 0; i < BJUpload.length; i++) {
             var arr = [];
             var obj1 = {};
             obj1.name = "北京";
             var obj2 = {};
             obj2.name = BJshi[i];
-            obj2.value = BJche[i];
+            obj2.value = BJUpload[i];
 
             arr.push(obj1);
             arr.push(obj2);
             BJData.push(arr);
         }
 
-        //上海
-        var SHsheng = ['江苏', '浙江', '安徽', '山东', '河南', '河北', '广东', '福建', '江西', '山西', '湖北', '广西', '北京市', '湖南', '辽宁', '四川',
-            '黑龙江', '陕西', '天津', '贵州', '海南', '吉林', '云南', '内蒙古', '青海', '重庆', '甘肃', '新疆'
-        ];
-        var SHshi = ['南京', '杭州', '合肥', '济南', '郑州', '石家庄', '广州', '福州', '南昌', '太原', '武汉', '南宁', '北京', '长沙', '沈阳', '成都',
-            '哈尔滨', '西安', '天津', '贵阳', '海口', '长春', '昆明', '呼和浩特', '西宁', '重庆', '兰州', '乌鲁木齐'
-        ];
-        var SHobj = {};
-        for (var i = 0; i < SHsheng.length; i++) {
-            SHobj[SHshi[i]] = SHsheng[i];
+        //南京 hefei,ningbo,wuhan,wuxi
+        var NJsheng = ['安徽','浙江','湖北','江苏'];
+        var NJshi = ['合肥','宁波','武汉','无锡'];
+        var NJobj = {};
+        for (var i = 0; i < NJsheng.length; i++) {
+            NJobj[NJshi[i]] = NJsheng[i];
         }
 
-        var SHche = [1712, 833, 210, 126, 62, 54, 50, 46, 34, 27, 22, 15, 13, 13, 11, 11, 8, 8, 6, 5, 5, 5, 4, 3, 2, 2,
-            1, 1
-        ];
-        console.log(SHche.length)
+        var NJUpload = [9.9,29.85,12.15,3.11];
+        console.log(NJUpload.length)
         var SHData = [];
-        for (var i = 0; i < SHche.length; i++) {
+        for (var i = 0; i < NJUpload.length; i++) {
             var arr = [];
             var obj1 = {};
-            obj1.name = "上海";
+            obj1.name = "南京";
             var obj2 = {};
-            obj2.name = SHshi[i];
-            obj2.value = SHche[i];
+            obj2.name = NJshi[i];
+            obj2.value = NJUpload[i];
 
             arr.push(obj1);
             arr.push(obj2);
             SHData.push(arr);
         }
 
-        //广州
-        var GZsheng = ['广西', '湖南', '福建', '山东', '河南', '江西', '湖北', '北京', '浙江', '上海', '江苏', '海南', '安徽', '四川', '河北', '云南',
-            '贵州', '陕西', '重庆', '甘肃', '山西', '内蒙古', '青海', '新疆', '黑龙江', '辽宁', '宁夏', '天津', '吉林'
-        ];
-        console.log(GZsheng.length)
-        var GZshi = ['南宁', '长沙', '福州', '济南', '郑州', '南昌', '武汉', '北京', '杭州', '上海', '南京', '海口', '合肥', '成都', '石家庄', '昆明',
-            '贵阳', '西安', '重庆', '兰州', '太原', '呼和浩特', '西宁', '乌鲁木齐', '哈尔滨', '沈阳', '银川', '天津', '长春'
-        ];
-        console.log(GZshi.length)
-        var GZobj = {};
-        for (var i = 0; i < GZsheng.length; i++) {
-            GZobj[GZshi[i]] = GZsheng[i];
+        //东莞 changsha,foshan,fuzhou,guangzhou,guiyang,kunming,nanchang,nanning,xiamen
+        var DGsheng = ['湖南','广东','福建','广东','贵州','云南','江苏','福建'];
+        console.log(DGsheng.length)
+        var DGshi = ['长沙','佛山','福州','广州','贵阳','昆明','南昌','南京','厦门'];
+        console.log(DGshi.length)
+        var DGobj = {};
+        for (var i = 0; i < DGsheng.length; i++) {
+            DGobj[DGshi[i]] = DGsheng[i];
         }
 
-        var GZche = [367, 363, 268, 262, 231, 122, 119, 115, 115, 96, 95, 78, 75, 69, 55, 50, 42, 29, 22, 19, 18, 8, 8,
-            8, 7, 6, 6, 6, 3
-        ];
-        console.log(GZche.length)
-        var GZData = [];
-        for (var i = 0; i < GZche.length; i++) {
+        var DGUpoad = [1.14,3.71,0.5,43.68,8.63,59.99,0.1,26.86,8.95];
+        console.log(DGUpoad.length)
+        var DGData = [];
+        for (var i = 0; i < DGUpoad.length; i++) {
             var arr = [];
             var obj1 = {};
-            obj1.name = "广州";
+            obj1.name = "东莞";
             var obj2 = {};
-            obj2.name = GZshi[i];
-            obj2.value = GZche[i];
+            obj2.name = DGshi[i];
+            obj2.value = DGUpoad[i];
 
             arr.push(obj1);
             arr.push(obj2);
-            GZData.push(arr);
+            DGData.push(arr);
         }
 
         var carPath =
@@ -308,8 +300,8 @@
         var series = [];
         [
             ['北京', BJData],
-            ['上海', SHData],
-            ['广州', GZData]
+            ['南京', SHData],
+            ['东莞', DGData]
         ].forEach(function (item, i) {
             //console.log(item,i);
             series.push({
@@ -384,11 +376,11 @@
                     if (dataItem[0].name == "北京") {
                         name = BJobj[dataItem[1].name];
                     }
-                    if (dataItem[0].name == "上海") {
-                        name = SHobj[dataItem[1].name];
+                    if (dataItem[0].name == "南京") {
+                        name = NJobj[dataItem[1].name];
                     }
-                    if (dataItem[0].name == "广州") {
-                        name = GZobj[dataItem[1].name];
+                    if (dataItem[0].name == "东莞") {
+                        name = DGobj[dataItem[1].name];
                     }
 
                     return {
@@ -426,7 +418,7 @@
                 orient: 'vertical',
                 top: 'bottom',
                 left: 'right',
-                data: ['北京', '上海', '广州'],
+                data: ['北京', '南京', '东莞'],
                 textStyle: {
                     color: '#fff'
                 },
