@@ -69,11 +69,31 @@ for line in lianluFile:
         oneDict['nanjing']['dongguan'] = oneLine[6]
     lineNum += 1
 lianluFile.close()
-# file = open('/Users/lvlaxjh/code/code/bigDataVisualization/bigDataVisualization/code/datavis/mainApp/test.json', 'w')
-# # print(allData)
-# file.write(json.dumps(allData))
-# file.close()
+
 # 存储任务内容------------------------------------------------------------------------------------------------
+renwuFile = open(pwd+'/mainApp'+'/data'+'/task.txt')
+siteName = []  # 存储地点名称
+allData['renwu'] = {}
+lineNum = 0  # 记录文件行数
+for line in renwuFile:
+    oneLine = line.replace('\n', '').split(',')
+    if lineNum == 0:
+        siteName = oneLine
+    else:
+        if oneLine[0] not in allData['renwu'].keys():
+            oneDict = allData['renwu'][oneLine[0]] = {}  # 时间
+        oneDict[oneLine[1]] = []
+        for i in oneLine[2:]:
+            oneDict[oneLine[1]].append(i)
+        # for i in oneLine[]
+    lineNum += 1
+# print(allData)
+renwuFile.close()
+# print([1, 2, 3][1:2])
+file = open('/Users/lvlaxjh/code/code/bigDataVisualization/bigDataVisualization/code/datavis/mainApp/allData.json', 'w')
+file.write(json.dumps(allData))
+file.close()
+# -------------------------------------------------------------------------------------------------
 
 
 def index(request):
@@ -86,6 +106,16 @@ def index(request):
 def returnData(request):
     result = {"test": "s"}
     # 获取前端的请求
-    if request.method == "POST":
-        require = demjson.decode(request.body)
+    try:
+        if request.method == "POST":
+            require = demjson.decode(request.body)
+        # -------------------------------------------------------------------------------------------
+        reKey = require['key']
+        reTime = require['time']
+        
+
+        # -------------------------------------------------------------------------------------------
+    except Exception as e:
+        print(e)
+        result = {"error": e}
     return JsonResponse(result)

@@ -1,6 +1,6 @@
 向后端发送请求：
 {
-    "key": "shangxin",#对应key值（shangxing/xiaxing/lianlu/renwu）
+    "key": "shangxin",#对应key值（all/shangxing/xiaxing/lianlu/renwu）
     "time": "500",#当前时间（当值为0时，代表第一次请求）
 }
 {
@@ -51,3 +51,5 @@
     },
     "renwu": {},
 }
+若出现错误返回：
+{"error": "错误内容"}

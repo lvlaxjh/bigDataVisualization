@@ -7,7 +7,7 @@ class DataPutTest(TestCase):
 
     def setUp(self):
         # 所有test运行前运行一次
-        print('---发送数据接口测试---')
+        print('=====发送数据接口测试=====')
 
     def test_returnData_test(self):
         content = {
