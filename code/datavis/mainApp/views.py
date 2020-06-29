@@ -7,6 +7,18 @@ import demjson
 # 用于显示主界面
 
 print('---后端---')
+print('---读取数据---')
+xiaxingFile = open(
+    "/Users/lvlaxjh/code/code/bigDataVisualization/bigDataVisualization/code/datavis/mainApp/data/down.txt")
+lineNum = 0
+downData = {}
+for line in xiaxingFile:
+    print(line.replace('\n', '').split(','))
+    if lineNum == 0:
+        # downData =
+        pass
+    lineNum += 1
+
 
 
 def index(request):
