@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>index</title>
+    <title>Upload</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <style>
         /* 用于地图展示的style */
@@ -46,11 +46,11 @@
         </div>
     </div>
     <!-- 散点图div -->
-    <div class="row" style="width: 100%;height: 500px;">
-        <div class="col-10 offset-1">
-            <div id="Scatter" style="width: 80%;height: 500px;" ></div>
-        </div>
-    </div>
+<!--    <div class="row" style="width: 100%;height: 500px;">-->
+<!--        <div class="col-10 offset-1">-->
+<!--            <div id="Scatter" style="width: 80%;height: 500px;" ></div>-->
+<!--        </div>-->
+<!--    </div>-->
 <!--    var myChart = echarts.init(document.getElementById("Scatter"));-->
     <!-- 文字显示 -->
     <!-- <center>
@@ -190,22 +190,12 @@
             '乌兰察布': [113.11, 41.03]
         };
         //北京
-        var BJsheng = ['吉林','黑龙江','山东','辽宁','山西','天津','内蒙古'];//changchun,haerbin,jinan,shenyang,taiyuan,tianjin,wulanchabu
-        // var BJsheng = ['河北', '天津', '山东', '广东', '四川', '江苏', '河南', '辽宁', '陕西', '海南', '浙江', '山西', '福建', '湖南', '内蒙古', '安徽',
-        // ];
-        //     '吉林', '甘肃', '黑龙江', '江西', '重庆市', '广西', '湖北', '宁夏', '上海', '云南', '贵州', '青海', '西藏', '新疆'
+        var BJsheng = ['吉林','黑龙江','山东','辽宁','山西','天津','内蒙古'];
         var BJshi = ['长春','哈尔滨','济南','沈阳','太原','天津','乌兰察布'];
-        // var BJshi = ['石家庄', '天津', '济南', '广州', '成都', '南京', '郑州', '沈阳', '西安', '海口', '杭州', '太原', '福州', '长沙', '呼和浩特', '合肥',
-        //     '长春', '兰州', '哈尔滨', '南昌', '重庆', '南宁', '武汉', '银川', '上海', '昆明', '贵阳', '西宁', '拉萨', '乌鲁木齐'
-        // ];
         var BJobj = {};
         for (var i = 0; i < BJsheng.length; i++) {
             BJobj[BJshi[i]] = BJsheng[i];
         }
-        //24.59,2.77,4.52,6.37,42.93,5.27,50.94
-        // var BJche = [2875, 737, 584, 472, 293, 278, 252, 235, 162, 149, 140, 126, 87, 79, 68, 53, 50, 47, 38, 30, 29,
-        //     21, 21, 20, 20, 13, 7, 7, 3, 2
-        // ];
         var BJUpload = [24.59,2.77,4.52,6.37,42.93,5.27,50.94]
         var BJData = [];
         for (var i = 0; i < BJUpload.length; i++) {
@@ -594,7 +584,7 @@
         }
     },
     legend: {
-        data: ['北京DC', '南京DC', '东莞DC', '总计', '搜索引擎']
+        data: ['北京DC', '南京DC', '东莞DC', '总计']
     },
     toolbox: {
         feature: {
@@ -617,7 +607,7 @@
     ],
     yAxis: [
         {
-            name:'总链路利用率(%)',
+            name:'上行总链路利用率(%)',
             type: 'value'
         }
     ],
@@ -662,75 +652,6 @@
         myChart.setOption(option);
     </script>
 
-    <!-- 用于显示散点图 -->
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var MyScatter = echarts.init(document.getElementById('Scatter'));
-
-            var data = [
-                ['2012-03-01',
-                    1,
-                    "翻身"
-                ],
-                [
-                    '2013-06-01',
-                    2,
-                    "没翻身"
-                ],
-                [
-                    '2014-03-02',
-                    3,
-                    "翻身"
-                ],
-                [
-                    '2015-03-03',
-                    5,
-                    "翻身"
-                ], [
-                    '2016-03-04',
-                    7,
-                    "翻身"
-                ]
-            ];
-            var textStyle = {
-                color: '#333',
-                fontStyle: 'normal',
-                fontWeight: 'normal',
-                fontFamily: '微软雅黑',
-                fontSize: 14,
-            };
-            option = {
-                tooltip: {
-                    /*返回需要的信息*/
-                    formatter: function (param) {
-                        var value = param.value;
-                        return '<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 16px;padding-bottom: 7px;margin-bottom: 7px;"> ' + value[2] + '(' + value[1] + ')' +
-                            '</div>';
-                    }
-                },
-                xAxis: {
-                    type: 'time',
-                    name: '时间轴',
-
-                },
-                yAxis: {
-                    type: 'value',
-                    name: '次数值',
-
-                    max: 13,
-                    min: 0,
-                },
-                series: [{
-                    name: '',
-                    data: data,
-                    type: 'scatter',
-                    symbolSize: 30
-                }]
-            };
-
-            MyScatter.setOption(option);
-        });
-    </script>
 </body>
 
 </html>

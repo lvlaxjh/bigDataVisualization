@@ -403,7 +403,7 @@ var GlobalModel = Model.extend({
         function getQueryCond(q) {
             var indexAttr = mainType + 'Index';
             var idAttr = mainType + 'Id';
-            var nameAttr = mainType + 'Name';
+            var nameAttr = mainType + 'fromName';
             return q && (
                     q[indexAttr] != null
                     || q[idAttr] != null

@@ -90,7 +90,7 @@ function completeDimensions(sysDims, source, opt) {
         );
         var userDimName = dimDefItem.name;
         var resultItem = result[i] = new DataDimensionInfo();
-        // Name will be applied later for avoiding duplication.
+        // fromName will be applied later for avoiding duplication.
         if (userDimName != null && dataDimNameMap.get(userDimName) == null) {
             // Only if `series.dimensions` is defined in option
             // displayName, will be set, and dimension will be diplayed vertically in

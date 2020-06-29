@@ -1,11 +1,8 @@
 <!DOCTYPE html>
-<html>
-<!-- 我为了图省事，用了绝对位置布局，在我的电脑上显示应该是正常，但是缩放和分辨率改变可能会导致变形，务必修改布局！！！ -->
-
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>index</title>
+    <meta charset="UTF-8">
+    <title>Download</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <style>
         /* 用于地图展示的style */
@@ -16,12 +13,8 @@
             /* margin: 110px auto 0 auto; */
         }
     </style>
-
 </head>
-<!-- style="display: flex;flex-direction: column;align-items: center;justify-content: space-between;" -->
 <body class="container" style="text-align: center;">
-
-    <!-- 按钮 -->
     <div class="row">
         <div class="col-12" style="width:100%;height:100%;">
             <button type=" submit " class="total-stream btn btn-info" onclick="javascript:location.href='index.html'">总流量</button>
@@ -31,7 +24,6 @@
             <button type=" submit " class="task-stream btn btn-info" onclick="javascript:location.href='task.html'">任务</button>
         </div>
     </div>
-
     <!-- 地图div -->
     <div class="row" style="width: 100%;height: 500px;">
         <div class="col-10 offset-1">
@@ -46,11 +38,11 @@
         </div>
     </div>
     <!-- 散点图div -->
-    <div class="row" style="width: 100%;height: 500px;">
-        <div class="col-10 offset-1">
-            <div id="Scatter" style="width: 80%;height: 500px;" ></div>
-        </div>
-    </div>
+<!--    <div class="row" style="width: 100%;height: 500px;">-->
+<!--        <div class="col-10 offset-1">-->
+<!--            <div id="Scatter" style="width: 80%;height: 500px;" ></div>-->
+<!--        </div>-->
+<!--    </div>-->
 <!--    var myChart = echarts.init(document.getElementById("Scatter"));-->
     <!-- 文字显示 -->
     <!-- <center>
@@ -190,31 +182,21 @@
             '乌兰察布': [113.11, 41.03]
         };
         //北京
-        var BJsheng = ['吉林','黑龙江','山东','辽宁','山西','天津','内蒙古'];//changchun,haerbin,jinan,shenyang,taiyuan,tianjin,wulanchabu
-        // var BJsheng = ['河北', '天津', '山东', '广东', '四川', '江苏', '河南', '辽宁', '陕西', '海南', '浙江', '山西', '福建', '湖南', '内蒙古', '安徽',
-        // ];
-        //     '吉林', '甘肃', '黑龙江', '江西', '重庆市', '广西', '湖北', '宁夏', '上海', '云南', '贵州', '青海', '西藏', '新疆'
+        var BJsheng = ['吉林','黑龙江','山东','辽宁','山西','天津','内蒙古'];//haerbin,jinan,shenyang,shijiazhuang,taiyuan,tianjin,wulanchabu
         var BJshi = ['长春','哈尔滨','济南','沈阳','太原','天津','乌兰察布'];
-        // var BJshi = ['石家庄', '天津', '济南', '广州', '成都', '南京', '郑州', '沈阳', '西安', '海口', '杭州', '太原', '福州', '长沙', '呼和浩特', '合肥',
-        //     '长春', '兰州', '哈尔滨', '南昌', '重庆', '南宁', '武汉', '银川', '上海', '昆明', '贵阳', '西宁', '拉萨', '乌鲁木齐'
-        // ];
         var BJobj = {};
         for (var i = 0; i < BJsheng.length; i++) {
             BJobj[BJshi[i]] = BJsheng[i];
         }
-        //24.59,2.77,4.52,6.37,42.93,5.27,50.94
-        // var BJche = [2875, 737, 584, 472, 293, 278, 252, 235, 162, 149, 140, 126, 87, 79, 68, 53, 50, 47, 38, 30, 29,
-        //     21, 21, 20, 20, 13, 7, 7, 3, 2
-        // ];
-        var BJUpload = [24.59,2.77,4.52,6.37,42.93,5.27,50.94]
+        var BJDownload = [24.59,2.77,4.52,6.37,42.93,5.27,50.94]
         var BJData = [];
-        for (var i = 0; i < BJUpload.length; i++) {
+        for (var i = 0; i < BJDownload.length; i++) {
             var arr = [];
             var obj1 = {};
             obj1.name = "北京";
             var obj2 = {};
             obj2.name = BJshi[i];
-            obj2.value = BJUpload[i];
+            obj2.value = BJDownload[i];
 
             arr.push(obj1);
             arr.push(obj2);
@@ -229,16 +211,16 @@
             NJobj[NJshi[i]] = NJsheng[i];
         }
 
-        var NJUpload = [9.9,29.85,12.15,3.11];
-        console.log(NJUpload.length)
+        var NJDownload = [9.9,29.85,12.15,3.11];
+        //console.log(NJDownload.length)
         var SHData = [];
-        for (var i = 0; i < NJUpload.length; i++) {
+        for (var i = 0; i < NJDownload.length; i++) {
             var arr = [];
             var obj1 = {};
             obj1.name = "南京";
             var obj2 = {};
             obj2.name = NJshi[i];
-            obj2.value = NJUpload[i];
+            obj2.value = NJDownload[i];
 
             arr.push(obj1);
             arr.push(obj2);
@@ -247,32 +229,32 @@
 
         //东莞 changsha,foshan,fuzhou,guangzhou,guiyang,kunming,nanchang,nanning,xiamen
         var DGsheng = ['湖南','广东','福建','广东','贵州','云南','江苏','福建'];
-        console.log(DGsheng.length)
+        //console.log(DGsheng.length)
         var DGshi = ['长沙','佛山','福州','广州','贵阳','昆明','南昌','南京','厦门'];
-        console.log(DGshi.length)
+        //console.log(DGshi.length)
         var DGobj = {};
         for (var i = 0; i < DGsheng.length; i++) {
             DGobj[DGshi[i]] = DGsheng[i];
         }
 
-        var DGUpoad = [1.14,3.71,0.5,43.68,8.63,59.99,0.1,26.86,8.95];
-        console.log(DGUpoad.length)
+        var DGDownload = [1.14,3.71,0.5,43.68,8.63,59.99,0.1,26.86,8.95];
+        //console.log(DGDownload.length)
         var DGData = [];
-        for (var i = 0; i < DGUpoad.length; i++) {
+        for (var i = 0; i < DGDownload.length; i++) {
             var arr = [];
             var obj1 = {};
             obj1.name = "东莞";
             var obj2 = {};
             obj2.name = DGshi[i];
-            obj2.value = DGUpoad[i];
+            obj2.value = DGDownload[i];
 
             arr.push(obj1);
             arr.push(obj2);
             DGData.push(arr);
         }
 
-        var carPath =
-            'path://M4560,4996.6c-530.4-68.2-932.1-239.8-1201.2-514.8c-156-159.9-508.9-803.4-598.6-1092c-50.7-161.9-52.7-384.2-11.7-840.5c39-421.2,42.9-386.1-54.6-432.9c-117-56.5-208.7-138.4-241.8-216.4c-23.4-58.5-23.4-72.2,7.8-136.5c44.8-93.6,93.6-99.4,263.2-31.2l134.6,54.6l58.5-58.5l58.5-58.5l-48.8-536.3C2822.5-3.2,2808.9-360.1,2846-1095.2c9.7-218.4,5.8-386.1-19.5-663c-66.3-723.5-2-1550.3,159.9-2039.7c72.1-216.4,157.9-366.6,278.8-487.5c87.8-89.7,142.3-122.9,304.2-189.2c349.1-146.3,805.3-257.4,1232.4-302.3c173.6-17.5,269.1-17.5,438.8,0c659.1,74.1,1347.5,298.3,1544.4,505.1c140.4,146.3,255.4,399.7,329.6,733.2c101.4,440.7,134.6,1197.3,80,1758.9c-42.9,432.9-46.8,838.5-11.7,982.8c40.9,165.8,9.8,733.2-107.2,1959.8l-50.7,524.6l58.5,56.6l56.6,56.6l150.1-62.4c175.5-74.1,228.1-64.3,265.2,48.8c39,122.9-42.9,235.9-251.6,341.3l-85.8,44.8l13.6,157.9c7.8,87.8,21.4,261.3,31.2,384.2c25.4,300.3,23.4,503.1-1.9,627.9c-29.3,128.7-397.8,863.9-514.8,1019.9c-222.3,298.3-563.6,489.5-1066.6,596.7C5470.7,5004.4,4797.9,5025.8,4560,4996.6z M5517.5,3073.9c444.6-76.1,811.2-255.5,1051.1-516.8c195-208.7,189.1-152.1,85.8-906.7c-48.8-358.8-93.6-657.2-97.5-661.1c-5.9-5.8-117,11.7-247.7,39c-544,111.2-762.4,134.6-1269.4,134.6c-522.6,2-717.6-19.5-1271.4-128.7c-169.6-33.1-312-56.5-315.9-52.6c-3.9,3.9-48.8,304.2-99.4,664.9l-89.7,657.2l48.8,85.8c56.5,93.6,232,273,356.9,362.7c255.4,183.3,663,313.9,1127.1,360.8C4936.4,3126.5,5338.1,3105.1,5517.5,3073.9z M6443.7-2179.4v-702l-70.2-76.1c-187.2-210.6-573.3-321.8-1197.3-347.1c-717.6-29.2-1302.6,101.4-1519.1,335.4l-80,87.8v692.3c0,380.2,7.8,692.2,15.6,692.2c9.8,0,81.9-17.5,161.9-37c319.8-81.9,618.1-107.3,1236.3-107.3c631.8,0,920.4,25.4,1255.8,113.1c91.6,25.3,173.6,46.8,183.3,48.8C6437.9-1479.4,6443.7-1793.3,6443.7-2179.4z';
+        // var carPath =
+        //     'path://M4560,4996.6c-530.4-68.2-932.1-239.8-1201.2-514.8c-156-159.9-508.9-803.4-598.6-1092c-50.7-161.9-52.7-384.2-11.7-840.5c39-421.2,42.9-386.1-54.6-432.9c-117-56.5-208.7-138.4-241.8-216.4c-23.4-58.5-23.4-72.2,7.8-136.5c44.8-93.6,93.6-99.4,263.2-31.2l134.6,54.6l58.5-58.5l58.5-58.5l-48.8-536.3C2822.5-3.2,2808.9-360.1,2846-1095.2c9.7-218.4,5.8-386.1-19.5-663c-66.3-723.5-2-1550.3,159.9-2039.7c72.1-216.4,157.9-366.6,278.8-487.5c87.8-89.7,142.3-122.9,304.2-189.2c349.1-146.3,805.3-257.4,1232.4-302.3c173.6-17.5,269.1-17.5,438.8,0c659.1,74.1,1347.5,298.3,1544.4,505.1c140.4,146.3,255.4,399.7,329.6,733.2c101.4,440.7,134.6,1197.3,80,1758.9c-42.9,432.9-46.8,838.5-11.7,982.8c40.9,165.8,9.8,733.2-107.2,1959.8l-50.7,524.6l58.5,56.6l56.6,56.6l150.1-62.4c175.5-74.1,228.1-64.3,265.2,48.8c39,122.9-42.9,235.9-251.6,341.3l-85.8,44.8l13.6,157.9c7.8,87.8,21.4,261.3,31.2,384.2c25.4,300.3,23.4,503.1-1.9,627.9c-29.3,128.7-397.8,863.9-514.8,1019.9c-222.3,298.3-563.6,489.5-1066.6,596.7C5470.7,5004.4,4797.9,5025.8,4560,4996.6z M5517.5,3073.9c444.6-76.1,811.2-255.5,1051.1-516.8c195-208.7,189.1-152.1,85.8-906.7c-48.8-358.8-93.6-657.2-97.5-661.1c-5.9-5.8-117,11.7-247.7,39c-544,111.2-762.4,134.6-1269.4,134.6c-522.6,2-717.6-19.5-1271.4-128.7c-169.6-33.1-312-56.5-315.9-52.6c-3.9,3.9-48.8,304.2-99.4,664.9l-89.7,657.2l48.8,85.8c56.5,93.6,232,273,356.9,362.7c255.4,183.3,663,313.9,1127.1,360.8C4936.4,3126.5,5338.1,3105.1,5517.5,3073.9z M6443.7-2179.4v-702l-70.2-76.1c-187.2-210.6-573.3-321.8-1197.3-347.1c-717.6-29.2-1302.6,101.4-1519.1,335.4l-80,87.8v692.3c0,380.2,7.8,692.2,15.6,692.2c9.8,0,81.9-17.5,161.9-37c319.8-81.9,618.1-107.3,1236.3-107.3c631.8,0,920.4,25.4,1255.8,113.1c91.6,25.3,173.6,46.8,183.3,48.8C6437.9-1479.4,6443.7-1793.3,6443.7-2179.4z';
 
 
         var convertData = function (data) {
@@ -280,12 +262,12 @@
             var res = [];
             for (var i = 0; i < data.length; i++) {
                 var dataItem = data[i];
-                var fromCoord = geoCoordMap[dataItem[0].name];
-                var toCoord = geoCoordMap[dataItem[1].name];
+                var toCoord = geoCoordMap[dataItem[0].name];
+                var fromCoord = geoCoordMap[dataItem[1].name];
                 if (fromCoord && toCoord) {
                     res.push({
-                        fromName: dataItem[0].name,
-                        toName: dataItem[1].name,
+                        toName: dataItem[0].name,
+                        fromName: dataItem[1].name,
                         coords: [fromCoord, toCoord],
                         value: dataItem[1].value
                     });
@@ -301,13 +283,14 @@
             ['南京', SHData],
             ['东莞', DGData]
         ].forEach(function (item, i) {
-            //console.log(item,i);
+            console.log(item,i);
             series.push({
-                name: item[0],
+                //name: item[0],
+                name:item[1],
                 type: 'lines',
                 zlevel: 1,
                 effect: {
-                    show: true,
+                    show: false,
                     period: 6,
                     trailLength: 0.7,
                     color: '#fff',
@@ -322,7 +305,8 @@
                 },
                 data: convertData(item[1])
             }, {
-                name: item[0],
+                //name: item[0],
+                name:item[1],
                 type: 'lines',
                 zlevel: 2,
                 symbol: ['none', 'arrow'],
@@ -344,7 +328,8 @@
                 },
                 data: convertData(item[1])
             }, {
-                name: item[0],
+                //name: item[0],
+                name:item[1],
                 type: 'effectScatter',
                 coordinateSystem: 'geo',
                 zlevel: 2,
@@ -368,7 +353,7 @@
                 },
                 data: item[1].map(function (dataItem) {
                     //debugger
-                    console.log(i);
+                    //console.log(i);
                     console.log(dataItem)
                     var name = "";
                     if (dataItem[0].name == "北京") {
@@ -594,7 +579,7 @@
         }
     },
     legend: {
-        data: ['北京DC', '南京DC', '东莞DC', '总计', '搜索引擎']
+        data: ['北京DC', '南京DC', '东莞DC', '总计']
     },
     toolbox: {
         feature: {
@@ -617,7 +602,7 @@
     ],
     yAxis: [
         {
-            name:'总链路利用率(%)',
+            name:'下行总链路利用率(%)',
             type: 'value'
         }
     ],
@@ -661,76 +646,5 @@
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
     </script>
-
-    <!-- 用于显示散点图 -->
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var MyScatter = echarts.init(document.getElementById('Scatter'));
-
-            var data = [
-                ['2012-03-01',
-                    1,
-                    "翻身"
-                ],
-                [
-                    '2013-06-01',
-                    2,
-                    "没翻身"
-                ],
-                [
-                    '2014-03-02',
-                    3,
-                    "翻身"
-                ],
-                [
-                    '2015-03-03',
-                    5,
-                    "翻身"
-                ], [
-                    '2016-03-04',
-                    7,
-                    "翻身"
-                ]
-            ];
-            var textStyle = {
-                color: '#333',
-                fontStyle: 'normal',
-                fontWeight: 'normal',
-                fontFamily: '微软雅黑',
-                fontSize: 14,
-            };
-            option = {
-                tooltip: {
-                    /*返回需要的信息*/
-                    formatter: function (param) {
-                        var value = param.value;
-                        return '<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 16px;padding-bottom: 7px;margin-bottom: 7px;"> ' + value[2] + '(' + value[1] + ')' +
-                            '</div>';
-                    }
-                },
-                xAxis: {
-                    type: 'time',
-                    name: '时间轴',
-
-                },
-                yAxis: {
-                    type: 'value',
-                    name: '次数值',
-
-                    max: 13,
-                    min: 0,
-                },
-                series: [{
-                    name: '',
-                    data: data,
-                    type: 'scatter',
-                    symbolSize: 30
-                }]
-            };
-
-            MyScatter.setOption(option);
-        });
-    </script>
 </body>
-
 </html>

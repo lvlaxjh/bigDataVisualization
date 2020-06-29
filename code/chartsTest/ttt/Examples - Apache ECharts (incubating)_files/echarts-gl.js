@@ -12962,7 +12962,7 @@ var Node = __WEBPACK_IMPORTED_MODULE_0__core_Base__["a" /* default */].extend(/*
         if (!path) {
             return;
         }
-        // TODO Name have slash ?
+        // TODO fromName have slash ?
         var pathArr = path.split('/');
         var current = this;
         for (var i = 0; i < pathArr.length; i++) {

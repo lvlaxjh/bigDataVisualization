@@ -467,7 +467,7 @@ export function parseFinder(ecModel, finder, opt) {
     if (defaultMainType
         && !has(finder, defaultMainType + 'Index')
         && !has(finder, defaultMainType + 'Id')
-        && !has(finder, defaultMainType + 'Name')
+        && !has(finder, defaultMainType + 'fromName')
     ) {
         finder[defaultMainType + 'Index'] = 0;
     }

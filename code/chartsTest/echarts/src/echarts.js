@@ -1075,7 +1075,7 @@ function updateDirectly(ecIns, method, payload, mainType, subType) {
     var query = {};
     query[mainType + 'Id'] = payload[mainType + 'Id'];
     query[mainType + 'Index'] = payload[mainType + 'Index'];
-    query[mainType + 'Name'] = payload[mainType + 'Name'];
+    query[mainType + 'fromName'] = payload[mainType + 'fromName'];
 
     var condition = {mainType: mainType, query: query};
     subType && (condition.subType = subType); // subType may be '' by parseClassType;
@@ -1875,7 +1875,7 @@ EventProcessor.prototype = {
         else {
             // `xxxIndex`, `xxxName`, `xxxId`, `name`, `dataIndex`, `dataType` is reserved,
             // can not be used in `compomentModel.filterForExposedEvent`.
-            var suffixes = ['Index', 'Name', 'Id'];
+            var suffixes = ['Index', 'fromName', 'Id'];
             var dataKeys = {name: 1, dataIndex: 1, dataType: 1};
             zrUtil.each(query, function (val, key) {
                 var reserved = false;

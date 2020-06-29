@@ -39,7 +39,7 @@ var INCLUDE_FINDER_MAIN_TYPES = [
 /**
  * [option in constructor]:
  * {
- *     Index/Id/Name of geo, xAxis, yAxis, grid: See util/model#parseFinder.
+ *     Index/Id/fromName of geo, xAxis, yAxis, grid: See util/model#parseFinder.
  * }
  *
  *
@@ -80,7 +80,7 @@ var INCLUDE_FINDER_MAIN_TYPES = [
  * {
  *     panelId: Used to locate coordInfo directly. If user inpput, no panelId.
  *     brushType: determine how to convert to/from coord('rect' or 'polygon' or 'lineX/Y').
- *     Index/Id/Name of geo, xAxis, yAxis, grid: See util/model#parseFinder.
+ *     Index/Id/fromName of geo, xAxis, yAxis, grid: See util/model#parseFinder.
  *     range: pixel range.
  *     coordRange: representitive coord range (the first one of coordRanges).
  *     coordRanges: <Array> coord ranges, used in multiple cartesian in one grid.
@@ -88,7 +88,7 @@ var INCLUDE_FINDER_MAIN_TYPES = [
  */
 
 /**
- * @param {Object} option contains Index/Id/Name of xAxis/yAxis/geo/grid
+ * @param {Object} option contains Index/Id/fromName of xAxis/yAxis/geo/grid
  *        Each can be {number|Array.<number>}. like: {xAxisIndex: [3, 4]}
  * @param {module:echarts/model/Global} ecModel
  * @param {Object} [opt]
