@@ -87,12 +87,7 @@ for line in renwuFile:
             oneDict[oneLine[1]].append(i)
         # for i in oneLine[]
     lineNum += 1
-# print(allData)
 renwuFile.close()
-# print([1, 2, 3][1:2])
-file = open('/Users/lvlaxjh/code/code/bigDataVisualization/bigDataVisualization/code/datavis/mainApp/allData.json', 'w')
-file.write(json.dumps(allData))
-file.close()
 # -------------------------------------------------------------------------------------------------
 
 
@@ -104,18 +99,82 @@ def index(request):
 
 
 def returnData(request):
-    result = {"test": "s"}
-    # 获取前端的请求
-    try:
-        if request.method == "POST":
-            require = demjson.decode(request.body)
-        # -------------------------------------------------------------------------------------------
-        reKey = require['key']
-        reTime = require['time']
-        
+    result = {
+        "shangxing": {
+            "time": "",
+            "cdc": {
+                "beijing": {},
+                "dongguan": {},
+                "nanjing": {},
+            }
+        },
+        "xiaxing": {
+            "time": "",
+            "cdc": {
+                "beijing": {},
+                "dongguan": {},
+                "nanjing": {},
+            }
+        },
+        "lianlu": {
+            "time": "",
+            "cdc": {
+                "beijing": {},
+                "dongguan": {},
+                "nanjing": {},
+            }
+        },
+        "renwu": {
+            "time": "",
+            "id": {}},
+    }
 
+    # 获取前端的请求
+    # try:
+    if request.method == "POST":
+        require = demjson.decode(request.body)
+    # -------------------------------------------------------------------------------------------
+    print(require)
+    reKey = require['key']
+    reTime = require['time']
+    if reTime == "0":
+        reTime = "50"
+    else:
+        reTime = str(int(reTime)+5)
+    siteList = ['beijing', 'dongguan', 'nanjing']
+    # -------------------------------------------------------------------------------------------
+    if reKey == "all":
+        result['shangxing']['time'] = reTime
+        for i in siteList:
+            result['shangxing']['cdc'][i] = allData['shangxing'][i][result['shangxing']['time']]
+        result['xiaxing']['time'] = reTime
+        for i in siteList:
+            result['xiaxing']['cdc'][i] = allData['xiaxing'][i][result['xiaxing']['time']]
+        result['lianlu']['time'] = reTime
+        for i in siteList:
+            result['lianlu']['cdc'][i] = allData['lianlu'][result['lianlu']['time']][i]
+        result['renwu']['time'] = reTime
+        result['renwu']['id'] = allData['renwu'][result['renwu']['time']]
+    # -------------------------------------------------------------------------------------------
+
+    if reKey == "shangxing":
+        result['shangxing']['time'] = reTime
+        for i in siteList:
+            result['shangxing']['cdc'][i] = allData['shangxing'][i][result['shangxing']['time']]
         # -------------------------------------------------------------------------------------------
-    except Exception as e:
-        print(e)
-        result = {"error": e}
+    if reKey == "xiaxing":
+        result['xiaxing']['time'] = reTime
+        for i in siteList:
+            result['xiaxing']['cdc'][i] = allData['xiaxing'][i][result['xiaxing']['time']]
+        # -------------------------------------------------------------------------------------------
+
+    if reKey == "lianlu":
+        result['lianlu']['time'] = reTime
+        for i in siteList:
+            result['lianlu']['cdc'][i] = allData['lianlu'][result['lianlu']['time']][i]
+        # -------------------------------------------------------------------------------------------
+    if reKey == "renwu":
+        result['renwu']['time'] = reTime
+        result['renwu']['id'] = allData['renwu'][result['renwu']['time']]
+        # -------------------------------------------------------------------------------------------
     return JsonResponse(result)

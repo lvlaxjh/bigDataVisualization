@@ -1,0 +1,132 @@
+{
+    "shangxing": {
+        "time": "50",
+        "cdc": {
+            "beijing": {
+                "changchun": "100.0",
+                "haerbin": "100.0",
+                "jinan": "98.24",
+                "shenyang": "0.79",
+                "taiyuan": "100.0",
+                "tianjin": "0.41",
+                "wulanchabu": "100.0"
+            },
+            "dongguan": {
+                "changsha": "0.67",
+                "foshan": "100.0",
+                "fuzhou": "0.24",
+                "guangzhou": "35.84",
+                "guiyang": "1.12",
+                "kunming": "100.0",
+                "nanchang": "27.88",
+                "nanning": "100.0",
+                "xiamen": "100.0"
+            },
+            "nanjing": {
+                "hefei": "4.31",
+                "ningbo": "100.0",
+                "wuhan": "90.99",
+                "wuxi": "100.0"
+            }
+        }
+    },
+    "xiaxing": {
+        "time": "50",
+        "cdc": {
+            "beijing": {
+                "haerbin": "100.0",
+                "jinan": "100.0",
+                "shenyang": "100.0",
+                "shijiazhuang": "100.0",
+                "taiyuan": "100.0",
+                "tianjin": "40.74",
+                "wulanchabu": "100.0"
+            },
+            "dongguan": {
+                "changsha": "100.0",
+                "foshan": "100.0",
+                "fuzhou": "100.0",
+                "guangzhou": "4.46",
+                "guiyang": "100.0",
+                "kunming": "10.0",
+                "nanchang": "100.0",
+                "nanning": "100.0",
+                "xiamen": "4.66"
+            },
+            "nanjing": {
+                "hefei": "16.31",
+                "ningbo": "21.41",
+                "wenzhou": "11.77",
+                "wuhan": "8.57",
+                "wuxi": "100.0"
+            }
+        }
+    },
+    "lianlu": {
+        "time": "50",
+        "cdc": {
+            "beijing": {
+                "dongguan": "1.77",
+                "nanjing": "3.53"
+            },
+            "dongguan": {
+                "beijing": "0.99",
+                "nanjing": "2.76"
+            },
+            "nanjing": {
+                "beijing": "2.53",
+                "dongguan": "69.29"
+            }
+        }
+    },
+    "renwu": {
+        "time": "50",
+        "id": {
+            "183": ["changchun", "beijing", "dongguan", "changsha"],
+            "44": ["kunming", "dongguan", "beijing", "wulanchabu"],
+            "267": ["wuxi", "nanjing", "beijing", "shijiazhuang"],
+            "81": ["nanning", "dongguan", "beijing", "wulanchabu"],
+            "130": ["wuhan", "nanjing", "dongguan", "nanning"],
+            "135": ["wulanchabu", "beijing", "dongguan", "foshan"],
+            "29": ["wuhan", "nanjing", "dongguan", "guiyang"],
+            "178": ["changsha", "dongguan", "nanjing", "ningbo"],
+            "278": ["ningbo", "nanjing", "beijing", "haerbin"],
+            "100": ["wuhan", "nanjing", "beijing", "wulanchabu"],
+            "120": [
+                "wulanchabu", "beijing", "dongguan", "nanchang"
+            ],
+            "64": ["foshan", "dongguan", "nanjing", "wuxi"],
+            "187": ["guangzhou", "dongguan", "beijing", "shenyang"],
+            "110": ["haerbin", "beijing", "nanjing", "wuhan"],
+            "51": ["foshan", "dongguan", "nanjing", "ningbo"],
+            "289": ["kunming", "dongguan", "beijing", "haerbin"],
+            "210": ["jinan", "beijing", "dongguan", "changsha"],
+            "294": ["changchun", "beijing", "dongguan", "kunming"],
+            "105": ["taiyuan", "beijing", "nanjing", "wuxi"],
+            "293": ["shenyang", "beijing", "dongguan", "nanning"],
+            "230": ["nanning", "dongguan", "nanjing", "wuxi"],
+            "151": ["wuxi", "nanjing", "beijing", "haerbin"],
+            "227": ["xiamen", "dongguan", "nanjing", "wuxi"],
+            "87": ["wuxi", "nanjing", "beijing", "wulanchabu"],
+            "255": ["wuhan", "nanjing", "beijing", "jinan"],
+            "125": ["taiyuan", "beijing", "nanjing", "wuhan"],
+            "104": ["wulanchabu", "beijing", "nanjing", "wuxi"],
+            "238": ["xiamen", "dongguan", "beijing", "shenyang"],
+            "16": ["xiamen", "dongguan", "beijing", "tianjin"],
+            "54": ["nanning", "dongguan", "beijing", "tianjin"],
+            "197": ["wuxi", "nanjing", "beijing", "tianjin"],
+            "76": ["changsha", "dongguan", "beijing", "wulanchabu"],
+            "103": ["changchun", "beijing", "nanjing", "ningbo"],
+            "253": ["wulanchabu", "beijing", "nanjing", "wuhan"],
+            "226": ["ningbo", "nanjing", "beijing", "jinan"],
+            "137": ["jinan", "beijing", "dongguan", "fuzhou"],
+            "60": ["guangzhou", "dongguan", "beijing", "shijiazhuang"],
+            "157": ["wuxi", "nanjing", "beijing", "tianjin"],
+            "258": ["guiyang", "dongguan", "beijing", "jinan"],
+            "193": ["ningbo", "nanjing", "beijing", "tianjin"],
+            "290": ["wulanchabu", "beijing", "nanjing", "wenzhou"],
+            "155": ["nanchang", "dongguan", "beijing", "taiyuan"],
+            "172": ["foshan", "dongguan", "beijing", "jinan"]
+        }
+    }
+}
