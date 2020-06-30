@@ -25,7 +25,7 @@
 
         .btn {
             margin: 10px;
-            width:100px;
+            width: 100px;
         }
 
         .div-map {
@@ -45,7 +45,7 @@
             margin-bottom: 30px;
         }
 
-        .task-list{
+        .task-list {
             width: 100%;
             height: fit-content;
             padding: 10px 15px;
@@ -57,7 +57,6 @@
         .task-list:hover {
             color: #17a2b8;
         }
-
     </style>
 
 </head>
@@ -68,16 +67,15 @@
     <!-- 按钮 -->
     <div class="row">
         <div class="col-10 offset-1">
-            <button type=" submit " class="total-stream btn btn-info"
-                onclick="javascript:location.href='index.html'">总流量</button>
+            <button type=" submit " class="total-stream btn btn-info" onclick="javascript:location.href=''">总流量</button>
             <button type=" submit " class="region-stream btn btn-info"
-                onclick="javascript:location.href='region.html'">域间</button>
+                onclick="javascript:location.href='region'">域间</button>
             <button type=" submit " class="upload-stream btn btn-info"
-                onclick="javascript:location.href='shangxing.html'">上行</button>
+                onclick="javascript:location.href='shangxing'">上行</button>
             <button type=" submit " class="download-stream btn btn-info"
-                onclick="javascript:location.href='xiaxing.html'">下行</button>
+                onclick="javascript:location.href='xiaxing'">下行</button>
             <button type=" submit " class="task-stream btn btn-info"
-                onclick="javascript:location.href='task.html'">任务</button>
+                onclick="javascript:location.href='task'">任务</button>
         </div>
     </div>
 
@@ -126,7 +124,7 @@
     <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/china.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
-    </script>
+        </script>
 
     <!-- 用于显示地图 -->
     <script>
@@ -580,10 +578,10 @@
             }
 
             // 总流量点击响应函数
-            function totalStream() {}
+            function totalStream() { }
 
             // 域间流量点击响应函数
-            function regionStream() {}
+            function regionStream() { }
 
             // 上行流量点击响应函数
             function uploadStream() {
@@ -602,10 +600,10 @@
             }
 
             // 下行流量点击响应函数
-            function downloadStream() {}
+            function downloadStream() { }
 
             // 任务流量点击响应函数
-            function taskStream() {}
+            function taskStream() { }
 
             $('total-stream').on('click', totalStreamInit)
             $('region-stream').on('click', regionStreamInit)
@@ -683,41 +681,41 @@
                 type: 'value'
             }],
             series: [{
-                    name: '北京DC',
-                    type: 'line',
-                    stack: '总量',
-                    areaStyle: {},
-                    data: [104.53, 105.06, 104.83, 99.29, 95.3, 88.57,
-                        79.92
-                    ] //10.28,7.55,15.06,44.53,18.34,8.0,1.07
+                name: '北京DC',
+                type: 'line',
+                stack: '总量',
+                areaStyle: {},
+                data: [104.53, 105.06, 104.83, 99.29, 95.3, 88.57,
+                    79.92
+                ] //10.28,7.55,15.06,44.53,18.34,8.0,1.07
+            },
+            {
+                name: '南京DC',
+                type: 'line',
+                stack: '总量',
+                areaStyle: {},
+                data: [55.01, 53.16, 62.12, 62.88, 62.52, 59.91, 56.62]
+            },
+            {
+                name: '东莞DC',
+                type: 'line',
+                stack: '总量',
+                areaStyle: {},
+                data: [153.56, 147.66, 138.23, 127.16, 118.2, 109.22, 104.86]
+            },
+            {
+                name: '总计',
+                type: 'line',
+                stack: '总量',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'top'
+                    }
                 },
-                {
-                    name: '南京DC',
-                    type: 'line',
-                    stack: '总量',
-                    areaStyle: {},
-                    data: [55.01, 53.16, 62.12, 62.88, 62.52, 59.91, 56.62]
-                },
-                {
-                    name: '东莞DC',
-                    type: 'line',
-                    stack: '总量',
-                    areaStyle: {},
-                    data: [153.56, 147.66, 138.23, 127.16, 118.2, 109.22, 104.86]
-                },
-                {
-                    name: '总计',
-                    type: 'line',
-                    stack: '总量',
-                    label: {
-                        normal: {
-                            show: true,
-                            position: 'top'
-                        }
-                    },
-                    areaStyle: {},
-                    data: [313.1, 305.88, 305.18, 289.33, 276.2, 257.7, 241.4]
-                }
+                areaStyle: {},
+                data: [313.1, 305.88, 305.18, 289.33, 276.2, 257.7, 241.4]
+            }
             ]
         };
         // 使用刚指定的配置项和数据显示图表。

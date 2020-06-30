@@ -48,16 +48,16 @@ for file in fileList:
 for i in fileList:
     i.close()
 # 存储链路内容------------------------------------------------------------------------------------------------
-lianluFile = open(pwd+'/mainApp'+'/data'+'/lianlu.txt')
+yujianFile = open(pwd+'/mainApp'+'/data'+'/yujian.txt')
 siteName = []  # 存储地点名称
-allData['lianlu'] = {}
+allData['yujian'] = {}
 lineNum = 0  # 记录文件行数
-for line in lianluFile:
+for line in yujianFile:
     oneLine = line.replace('\n', '').split(',')
     if lineNum == 0:
         siteName = oneLine
     else:
-        oneDict = allData['lianlu'][oneLine[0]] = {}
+        oneDict = allData['yujian'][oneLine[0]] = {}
         oneDict['beijing'] = {}
         oneDict['dongguan'] = {}
         oneDict['nanjing'] = {}
@@ -68,7 +68,7 @@ for line in lianluFile:
         oneDict['nanjing']['beijing'] = oneLine[5]
         oneDict['nanjing']['dongguan'] = oneLine[6]
     lineNum += 1
-lianluFile.close()
+yujianFile.close()
 
 # 存储任务内容------------------------------------------------------------------------------------------------
 renwuFile = open(pwd+'/mainApp'+'/data'+'/task.txt')
@@ -95,7 +95,25 @@ def index(request):
     response = render(request, 'index.html')
     return response
 
-# 因为没有商量接口设定暂时设定一个接口
+
+def region(request):
+    response = render(request, 'region.html')
+    return response
+
+
+def shangxing(request):
+    response = render(request, 'shangxing.html')
+    return response
+
+
+def task(request):
+    response = render(request, 'task.html')
+    return response
+
+
+def xiaxing(request):
+    response = render(request, 'xiaxing.html')
+    return response
 
 
 def returnData(request):
@@ -116,7 +134,7 @@ def returnData(request):
                 "nanjing": {},
             }
         },
-        "lianlu": {
+        "yujian": {
             "time": "",
             "cdc": {
                 "beijing": {},
@@ -150,9 +168,9 @@ def returnData(request):
         result['xiaxing']['time'] = reTime
         for i in siteList:
             result['xiaxing']['cdc'][i] = allData['xiaxing'][i][result['xiaxing']['time']]
-        result['lianlu']['time'] = reTime
+        result['yujian']['time'] = reTime
         for i in siteList:
-            result['lianlu']['cdc'][i] = allData['lianlu'][result['lianlu']['time']][i]
+            result['yujian']['cdc'][i] = allData['yujian'][result['yujian']['time']][i]
         result['renwu']['time'] = reTime
         result['renwu']['id'] = allData['renwu'][result['renwu']['time']]
     # -------------------------------------------------------------------------------------------
@@ -168,10 +186,10 @@ def returnData(request):
             result['xiaxing']['cdc'][i] = allData['xiaxing'][i][result['xiaxing']['time']]
         # -------------------------------------------------------------------------------------------
 
-    if reKey == "lianlu":
-        result['lianlu']['time'] = reTime
+    if reKey == "yujian":
+        result['yujian']['time'] = reTime
         for i in siteList:
-            result['lianlu']['cdc'][i] = allData['lianlu'][result['lianlu']['time']][i]
+            result['yujian']['cdc'][i] = allData['yujian'][result['yujian']['time']][i]
         # -------------------------------------------------------------------------------------------
     if reKey == "renwu":
         result['renwu']['time'] = reTime
