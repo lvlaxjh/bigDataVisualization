@@ -67,15 +67,15 @@
     <!-- 按钮 -->
     <div class="row">
         <div class="col-10 offset-1">
-            <button type=" submit " class="total-stream btn btn-info" onclick="javascript:location.href='index.html'">总流量</button>
+            <button type=" submit " class="total-stream btn btn-info" onclick="javascript:location.href='index'">总流量</button>
             <button type=" submit " class="region-stream btn btn-info"
-                onclick="javascript:location.href='region.html'">域间</button>
+                onclick="javascript:location.href='region'">域间</button>
             <button type=" submit " class="upload-stream btn btn-info"
-                onclick="javascript:location.href='shangxing.html'">上行</button>
+                onclick="javascript:location.href='shangxing'">上行</button>
             <button type=" submit " class="download-stream btn btn-info"
-                onclick="javascript:location.href='xiaxing.html'">下行</button>
+                onclick="javascript:location.href='xiaxing'">下行</button>
             <button type=" submit " class="task-stream btn btn-info"
-                onclick="javascript:location.href='task.html'">任务</button>
+                onclick="javascript:location.href='task'">任务</button>
         </div>
     </div>
 
@@ -129,7 +129,7 @@
             function uploadStreamInit() {
                 console.log('initial start!');
                 count_upload = "0";
-                var timer = setInterval(uploadStream, 5000);
+                var timer = setInterval(uploadStream, 2000);
                 // 计时器清理
                 if (count === 3) {
                     clearInterval(timer);
@@ -151,7 +151,7 @@
                         csrfmiddlewaretoken: '{{ csrf_token }}',
                     },
                     success: function (result) {
-                        // console.log(result);
+                        console.log(result);
                         count_upload = result.shangxing.time;
                         let beijing = [];
                         let dongguan = [];
@@ -168,7 +168,7 @@
                         for (cities in result.shangxing.cdc.nanjing) {
                             nanjing.push(parseInt(result.shangxing.cdc.beijing[cities]));
                         }
-                        // console.log(beijing);
+                        console.log(beijing);
                         data_beijing[count] = getSum(beijing);
                         data_dongguan[count] = getSum(dongguan);
                         data_nanjing[count] = getSum(nanjing);
