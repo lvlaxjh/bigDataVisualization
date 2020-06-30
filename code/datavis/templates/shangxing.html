@@ -114,25 +114,8 @@
     <script>
         $(document).ready(function () {
 
-            console.log('1');
-            $.ajax({
-                type: 'POST',
-                dataType: 'json',
-                url: '/returnData',
-                data: {
-                    'key': 'shangxing',
-                    'time': '0'
-                },
-                success: function (res) {
-                    console.log(res);
-                },
-                error: function (e) {
-                    console.log(e);
-                }
-            })
-
             // 初始化计数器
-            var count_upload = 0;
+            var count_upload = "0";
             var count = 1;
             // 初始化数组
             var data_beijing = [];
@@ -140,21 +123,77 @@
             var data_dongguan = [];
             var data_total = [];
 
-            // 封装请求与返回数据ajax
-            function returnData(request_type, request_url, request_data) {
-                console.log('returnData start!');
+            window.onload = uploadStreamInit();
+
+            // 响应函数的初始化&刷新函数
+            function uploadStreamInit() {
+                console.log('initial start!');
+                count_upload = "0";
+                var timer = setInterval(uploadStream, 5000);
+                // 计时器清理
+                if (count === 3) {
+                    clearInterval(timer);
+                }
+            }
+
+            // 上行流量点击响应函数
+            function uploadStream() {
+                console.log('uploadStream start!');
+                console.log('flush: ' + count);
+                count++;
                 $.ajax({
-                    type: request_type,
-                    url: request_url,
-                    data: request_data,
-                    dataType: 'json',
-                    success: function (res) {
-                        return res;
+                    url: "/returnData",
+                    type: "post",
+                    dataType: "json",
+                    data: {
+                        key: "shangxing",
+                        time: count_upload,
+                        csrfmiddlewaretoken: '{{ csrf_token }}',
                     },
-                    error: function (e) {
-                        alert('Something goes wrong. ERROR:' + e);
+                    success: function (result) {
+                        // console.log(result);
+                        count_upload = result.shangxing.time;
+                        let beijing = [];
+                        let dongguan = [];
+                        let nanjing = [];
+                        // result.shangxing.cdc.beijing.forEach(value => {
+                        //     beijing.push(parseInt(value));
+                        // })
+                        for (cities in result.shangxing.cdc.beijing) {
+                            beijing.push(parseInt(result.shangxing.cdc.beijing[cities]));
+                        }
+                        for (cities in result.shangxing.cdc.dongguan) {
+                            dongguan.push(parseInt(result.shangxing.cdc.beijing[cities]));
+                        }
+                        for (cities in result.shangxing.cdc.nanjing) {
+                            nanjing.push(parseInt(result.shangxing.cdc.beijing[cities]));
+                        }
+                        // console.log(beijing);
+                        data_beijing[count] = getSum(beijing);
+                        data_dongguan[count] = getSum(dongguan);
+                        data_nanjing[count] = getSum(nanjing);
                     }
                 })
+            }
+
+            // string->int 类型转换
+            function getArrInt(arr) {
+                var arr_int = [];
+                arr.forEach(item => {
+                    arr_int.push(parseInt(item));
+                });
+                console.log('arr_int = ', arr_int);
+                return arr_int;
+            }
+
+            // 求和函数
+            function getSum(arr) {
+                let sum = 0;
+                arr.forEach(element => {
+                    sum = sum + element;
+                });
+                // console.log('sum = ' + sum);
+                return sum;
             }
 
             // 地图函数
@@ -533,25 +572,6 @@
                 });
             }
 
-            // string->int 类型转换
-            function getArrInt(arr) {
-                var arr_int = [];
-                arr.forEach(item => {
-                    arr_int.push(parseInt(item));
-                })
-                console.log('arr_int = ', arr_int);
-                return arr_int;
-            }
-
-            // 求和函数
-            function getSum(arr) {
-                let sum = 0;
-                arr.forEach(element => {
-                    sum = sum + item;
-                });
-                return sum;
-            }
-
             // 折线图函数
             function lineChart(elementId, dataSet) {
                 console.log('lineChart prepared');
@@ -636,36 +656,7 @@
                 myChart.setOption(option);
             }
 
-            // 上行流量点击响应函数
-            function uploadStream() {
-                console.log('uploadStream start!');
-                console.log('flush: ' + count_upload);
-                var str_count_upload = count_upload.toString;
-                var data = {
-                    'key': 'shangxing',
-                    'time': str_count_upload,
-                };
-                var data_upload = returnData('POST', '/returnData', data)
-                // console.log(data_upload);
-                // let key = data_upload.key;
-                // let count_upload = data_upload.time;
-                // 按地图需要数据填补...
-                // generateMap();
-                // lineChart();
-            }
-
-            // 响应函数的初始化&刷新函数
-            function uploadStreamInit() {
-                // console.log('initial start! count_upload_init = ' + count_upload);
-                console.log('initial start!');
-                count_upload = 0;
-                setInterval(uploadStream(), 2000);
-            }
-
             // $('.upload-stream').on('click', uploadStreamInit())
-            // $('.upload-stream').on('click', function () {
-
-            // })
         })
     </script>
 
