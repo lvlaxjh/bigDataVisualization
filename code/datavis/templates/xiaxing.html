@@ -1,58 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Download</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <style>
-        /* 用于地图展示的style */
-        .centerItem {
-            width: 856px;
-            height: 640px;
-            background-color: #003077;
-            /* margin: 110px auto 0 auto; */
-        }
-    </style>
-</head>
-<body class="container" style="text-align: center;">
-    <div class="row">
-        <div class="col-12" style="width:100%;height:100%;">
-            <button type=" submit " class="total-stream btn btn-info" onclick="javascript:location.href='index.html'">总流量</button>
-            <button type=" submit " class="region-stream btn btn-info" onclick="javascript:location.href='region.html'">域间</button>
-            <button type=" submit " class="upload-stream btn btn-info" onclick="javascript:location.href='shangxing.html'">上行</button>
-            <button type=" submit " class="download-stream btn btn-info" onclick="javascript:location.href='xiaxing.html'">下行</button>
-            <button type=" submit " class="task-stream btn btn-info" onclick="javascript:location.href='task.html'">任务</button>
-        </div>
-    </div>
-    <!-- 地图div -->
-    <div class="row" style="width: 100%;height: 500px;">
-        <div class="col-10 offset-1">
-            <div id="mapBox" class="centerItem" style="width: 80%;height: 500px;"></div>
-        </div>
-    </div>
-    <!-- 折线图div -->
-    <div class="row" style="width: 100%;height: 500px;">
-        <div class="col-10 offset-1">
+<html>
 
-            <div id="main" style="width: 80%;height: 500px;"></div>
+<head>
+    <meta charset="utf-8">
+    <title>index</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #dddddd;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .row {
+            margin: 15px;
+        }
+
+        .col-10 {
+            background-color: white;
+            box-shadow: 0 0 15px gray;
+            padding: 0;
+        }
+
+        .btn {
+            margin: 10px;
+            width:100px;
+        }
+
+        .div-map {
+            width: 100%;
+            height: 500px;
+        }
+
+        .div-line-chart,
+        .div-bubble-chart {
+            width: 80%;
+            height: 500px;
+            margin: 10px 10%;
+        }
+
+        .div-line-chart {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .task-list{
+            width: 100%;
+            height: fit-content;
+            padding: 10px 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 200ms ease-out;
+        }
+
+        .task-list:hover {
+            color: #17a2b8;
+        }
+
+    </style>
+
+</head>
+<!-- style="display: flex;flex-direction: column;align-items: center;justify-content: space-between;" -->
+
+<body class="container" style="text-align: center;">
+
+    <!-- 按钮 -->
+    <div class="row">
+        <div class="col-10 offset-1">
+            <button type=" submit " class="total-stream btn btn-info"
+                onclick="javascript:location.href='index.html'">总流量</button>
+            <button type=" submit " class="region-stream btn btn-info"
+                onclick="javascript:location.href='region.html'">域间</button>
+            <button type=" submit " class="upload-stream btn btn-info"
+                onclick="javascript:location.href='shangxing.html'">上行</button>
+            <button type=" submit " class="download-stream btn btn-info"
+                onclick="javascript:location.href='xiaxing.html'">下行</button>
+            <button type=" submit " class="task-stream btn btn-info"
+                onclick="javascript:location.href='task.html'">任务</button>
         </div>
     </div>
-    <!-- 散点图div -->
-<!--    <div class="row" style="width: 100%;height: 500px;">-->
-<!--        <div class="col-10 offset-1">-->
-<!--            <div id="Scatter" style="width: 80%;height: 500px;" ></div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    var myChart = echarts.init(document.getElementById("Scatter"));-->
-    <!-- 文字显示 -->
-    <!-- <center>
-        <div style="position:absolute;top:110%;width:100%;height:100%;">
-            <pre>显示路径详细信息xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</pre>
-            <pre>显示路径详细信息xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</pre>
-            <pre>显示路径详细信息xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</pre>
-            <pre>显示路径详细信息xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</pre>
+
+    <!-- 地图div -->
+    <div class="row">
+        <div class="col-10 offset-1">
+            <div id="mapBox" class="div-map"></div>
         </div>
-    </center> -->
+    </div>
+
+    <!-- 任务栏div -->
+    <div class="row">
+        <div class="col-10 offset-1">
+            <h5 class="task-list">task-list-1</h3>
+        </div>
+    </div>
+
+    <!-- 折线图div -->
+    <div class="row">
+        <div class="col-10 offset-1">
+            <div id="main" class="div-line-chart" style="width: 80%;height: 500px;"></div>
+        </div>
+    </div>
 
     <!-- 引入相关文件 -->
     <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>

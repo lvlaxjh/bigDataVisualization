@@ -1,72 +1,113 @@
 <!DOCTYPE html>
 <html>
-<!-- 我为了图省事，用了绝对位置布局，在我的电脑上显示应该是正常，但是缩放和分辨率改变可能会导致变形，务必修改布局！！！ -->
-
 
 <head>
     <meta charset="utf-8">
-    <title>Upload</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>index</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <style>
-        /* 用于地图展示的style */
-        .centerItem {
-            width: 856px;
-            height: 640px;
-            background-color: #003077;
-            /* margin: 110px auto 0 auto; */
+        body {
+            background-color: #dddddd;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .row {
+            margin: 15px;
+        }
+
+        .col-10 {
+            background-color: white;
+            box-shadow: 0 0 15px gray;
+            padding: 0;
+        }
+
+        .btn {
+            margin: 10px;
+            width: 100px;
+        }
+
+        .div-map {
+            width: 100%;
+            height: 500px;
+        }
+
+        .div-line-chart,
+        .div-bubble-chart {
+            width: 80%;
+            height: 500px;
+            margin: 10px 10%;
+        }
+
+        .div-line-chart {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .task-list {
+            width: 100%;
+            height: fit-content;
+            padding: 10px 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 200ms ease-out;
+        }
+
+        .task-list:hover {
+            color: #17a2b8;
         }
     </style>
 
 </head>
 <!-- style="display: flex;flex-direction: column;align-items: center;justify-content: space-between;" -->
+
 <body class="container" style="text-align: center;">
 
     <!-- 按钮 -->
     <div class="row">
-        <div class="col-12" style="width:100%;height:100%;">
-            <button type=" submit " class="total-stream btn btn-info" onclick="javascript:location.href='index.html'">总流量</button>
-            <button type=" submit " class="region-stream btn btn-info" onclick="javascript:location.href='region.html'">域间</button>
-            <button type=" submit " class="upload-stream btn btn-info" onclick="javascript:location.href='shangxing.html'">上行</button>
-            <button type=" submit " class="download-stream btn btn-info" onclick="javascript:location.href='xiaxing.html'">下行</button>
-            <button type=" submit " class="task-stream btn btn-info" onclick="javascript:location.href='task.html'">任务</button>
+        <div class="col-10 offset-1">
+            <button type=" submit " class="total-stream btn btn-info"
+                onclick="javascript:location.href='index.html'">总流量</button>
+            <button type=" submit " class="region-stream btn btn-info"
+                onclick="javascript:location.href='region.html'">域间</button>
+            <button type=" submit " class="upload-stream btn btn-info"
+                onclick="javascript:location.href='shangxing.html'">上行</button>
+            <button type=" submit " class="download-stream btn btn-info"
+                onclick="javascript:location.href='xiaxing.html'">下行</button>
+            <button type=" submit " class="task-stream btn btn-info"
+                onclick="javascript:location.href='task.html'">任务</button>
         </div>
     </div>
 
     <!-- 地图div -->
-    <div class="row" style="width: 100%;height: 500px;">
+    <div class="row">
         <div class="col-10 offset-1">
-            <div id="mapBox" class="centerItem" style="width: 80%;height: 500px;"></div>
+            <div id="mapBox" class="div-map"></div>
         </div>
     </div>
-    <!-- 折线图div -->
-    <div class="row" style="width: 100%;height: 500px;">
-        <div class="col-10 offset-1">
 
-            <div id="main" style="width: 80%;height: 500px;"></div>
+    <!-- 任务栏div -->
+    <div class="row">
+        <div class="col-10 offset-1">
+            <h5 class="task-list">task-list-1</h3>
         </div>
     </div>
-    <!-- 散点图div -->
-<!--    <div class="row" style="width: 100%;height: 500px;">-->
-<!--        <div class="col-10 offset-1">-->
-<!--            <div id="Scatter" style="width: 80%;height: 500px;" ></div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    var myChart = echarts.init(document.getElementById("Scatter"));-->
-    <!-- 文字显示 -->
-    <!-- <center>
-        <div style="position:absolute;top:110%;width:100%;height:100%;">
-            <pre>显示路径详细信息xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</pre>
-            <pre>显示路径详细信息xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</pre>
-            <pre>显示路径详细信息xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</pre>
-            <pre>显示路径详细信息xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</pre>
+
+    <!-- 折线图div -->
+    <div class="row">
+        <div class="col-10 offset-1">
+            <div id="main" class="div-line-chart" style="width: 80%;height: 500px;"></div>
         </div>
-    </center> -->
+    </div>
 
     <!-- 引入相关文件 -->
     <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
     <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/china.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
 
     <!-- 用于显示地图 -->
     <script>
@@ -190,13 +231,13 @@
             '乌兰察布': [113.11, 41.03]
         };
         //北京
-        var BJsheng = ['吉林','黑龙江','山东','辽宁','山西','天津','内蒙古'];
-        var BJshi = ['长春','哈尔滨','济南','沈阳','太原','天津','乌兰察布'];
+        var BJsheng = ['吉林', '黑龙江', '山东', '辽宁', '山西', '天津', '内蒙古'];
+        var BJshi = ['长春', '哈尔滨', '济南', '沈阳', '太原', '天津', '乌兰察布'];
         var BJobj = {};
         for (var i = 0; i < BJsheng.length; i++) {
             BJobj[BJshi[i]] = BJsheng[i];
         }
-        var BJUpload = [24.59,2.77,4.52,6.37,42.93,5.27,50.94]
+        var BJUpload = [24.59, 2.77, 4.52, 6.37, 42.93, 5.27, 50.94]
         var BJData = [];
         for (var i = 0; i < BJUpload.length; i++) {
             var arr = [];
@@ -212,14 +253,14 @@
         }
 
         //南京 hefei,ningbo,wuhan,wuxi
-        var NJsheng = ['安徽','浙江','湖北','江苏'];
-        var NJshi = ['合肥','宁波','武汉','无锡'];
+        var NJsheng = ['安徽', '浙江', '湖北', '江苏'];
+        var NJshi = ['合肥', '宁波', '武汉', '无锡'];
         var NJobj = {};
         for (var i = 0; i < NJsheng.length; i++) {
             NJobj[NJshi[i]] = NJsheng[i];
         }
 
-        var NJUpload = [9.9,29.85,12.15,3.11];
+        var NJUpload = [9.9, 29.85, 12.15, 3.11];
         console.log(NJUpload.length)
         var SHData = [];
         for (var i = 0; i < NJUpload.length; i++) {
@@ -236,16 +277,16 @@
         }
 
         //东莞 changsha,foshan,fuzhou,guangzhou,guiyang,kunming,nanchang,nanning,xiamen
-        var DGsheng = ['湖南','广东','福建','广东','贵州','云南','江苏','福建'];
+        var DGsheng = ['湖南', '广东', '福建', '广东', '贵州', '云南', '江苏', '福建'];
         console.log(DGsheng.length)
-        var DGshi = ['长沙','佛山','福州','广州','贵阳','昆明','南昌','南京','厦门'];
+        var DGshi = ['长沙', '佛山', '福州', '广州', '贵阳', '昆明', '南昌', '南京', '厦门'];
         console.log(DGshi.length)
         var DGobj = {};
         for (var i = 0; i < DGsheng.length; i++) {
             DGobj[DGshi[i]] = DGsheng[i];
         }
 
-        var DGUpoad = [1.14,3.71,0.5,43.68,8.63,59.99,0.1,26.86,8.95];
+        var DGUpoad = [1.14, 3.71, 0.5, 43.68, 8.63, 59.99, 0.1, 26.86, 8.95];
         console.log(DGUpoad.length)
         var DGData = [];
         for (var i = 0; i < DGUpoad.length; i++) {
@@ -474,41 +515,64 @@
             }
 
             // 折线图函数
-            function lineChart() {
-
+            function lineChart(elementId, dataSet) {
+                // 基于准备好的dom，初始化echarts实例
+                var myChart = echarts.init(document.getElementById(elementId));
+                let cdcs = [];
+                let series = {};
+                let i = 1;
+                for (let cdc in dataSet) {
+                    cdcs[i] = cdc;
+                    i++;
+                    series[i].name = cdc;
+                    for (let dc in cdc) {
+                        // series.dc = dc.val();
+                    }
+                    series[i].data =
+                }
+                // 指定图表的配置项和数据
+                option = {
+                    title: {
+                        text: '流量堆叠图'
+                    },
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {
+                            type: 'cross',
+                            label: {
+                                backgroundColor: '#6a7985'
+                            }
+                        }
+                    },
+                    legend: {
+                        data: ['北京DC', '南京DC', '东莞DC', '总计']
+                    },
+                    toolbox: {
+                        feature: {
+                            saveAsImage: {}
+                        }
+                    },
+                    grid: {
+                        left: '3%',
+                        right: '4%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis: [{
+                        name: '时间戳（ts）',
+                        type: 'category',
+                        boundaryGap: false,
+                        data: ['50', '600', '1200', '1800', '2400', '3000', '3600']
+                    }],
+                    yAxis: [{
+                        name: '上行总链路利用率(%)',
+                        type: 'value'
+                    }],
+                    series: series
+                };
+                // 使用刚指定的配置项和数据显示图表。
+                myChart.setOption(option);
             }
-
-            // 冒泡图函数
-            function bubbleChart() {
-
-            }
-
-            function totalStreamInit() {
-                setInterval()
-            }
-
-            function regionStreamInit() {
-                setInterval()
-            }
-
-            function uploadStreamInit() {
-                var count_upload = 0;
-                setInterval(uploadStream(), 3000);
-            }
-
-            function downloadStreamInit() {
-                setInterval()
-            }
-
-            function taskStreamInit() {
-                setInterval()
-            }
-
-            // 总流量点击响应函数
-            function totalStream() {}
-
-            // 域间流量点击响应函数
-            function regionStream() {}
 
             // 上行流量点击响应函数
             function uploadStream() {
@@ -523,45 +587,16 @@
                 // 按地图需要数据填补...
                 generateMap();
                 lineChart();
-                bubbleChart();
             }
 
-            // 下行流量点击响应函数
-            function downloadStream() {}
+            // 响应函数的初始化&刷新函数
+            function uploadStreamInit() {
+                var count_upload = 0;
+                setInterval(uploadStream(), 3000);
+            }
 
-            // 任务流量点击响应函数
-            function taskStream() {}
-
-            $('total-stream').on('click', totalStreamInit)
-            $('region-stream').on('click', regionStreamInit)
             $('upload-stream').on('click', uploadStreamInit)
-            $('download-stream').on('click', downloadStreamInit)
-            $('task-stream').on('click', taskStreamInit)
 
-            // let date = new Date();
-            // let hour = date.getHours();
-            // let min = date.getMinutes();
-            // let sec = date.getSeconds();
-            // let time = hour + min + sec;
-
-            // $.ajax({
-            //     type: 'POST',
-            //     url: 'returnData',
-            //     data: {
-            //         'key': 'shangxing',
-            //         'time': count_upload,
-            //     },
-            //     success: function (res) {
-            //         count_upload++;
-            //         console.log(res);
-            //         let key = res.key;
-            //         let time = res.time;
-            //     },
-            //     error: function (e) {
-            //         console.log(e);
-            //         alert('Something goes wrong.')
-            //     }
-            // })
         })
     </script>
 
@@ -571,83 +606,80 @@
         var myChart = echarts.init(document.getElementById("main"));
         // 指定图表的配置项和数据
         option = {
-    title: {
-        text: '流量堆叠图'
-    },
-    tooltip: {
-        trigger: 'axis',
-        axisPointer: {
-            type: 'cross',
-            label: {
-                backgroundColor: '#6a7985'
-            }
-        }
-    },
-    legend: {
-        data: ['北京DC', '南京DC', '东莞DC', '总计']
-    },
-    toolbox: {
-        feature: {
-            saveAsImage: {}
-        }
-    },
-    grid: {
-        left: '3%',
-        right: '4%',
-        bottom: '3%',
-        containLabel: true
-    },
-    xAxis: [
-        {
-            name:'时间戳（ts）',
-            type: 'category',
-            boundaryGap: false,
-            data: ['50', '600', '1200', '1800', '2400', '3000', '3600']
-        }
-    ],
-    yAxis: [
-        {
-            name:'上行总链路利用率(%)',
-            type: 'value'
-        }
-    ],
-    series: [
-        {
-            name: '北京DC',
-            type: 'line',
-            stack: '总量',
-            areaStyle: {},
-            data: [104.53, 105.06, 104.83, 99.29, 95.3, 88.57, 79.92]//10.28,7.55,15.06,44.53,18.34,8.0,1.07
-        },
-        {
-            name: '南京DC',
-            type: 'line',
-            stack: '总量',
-            areaStyle: {},
-            data: [55.01, 53.16, 62.12, 62.88, 62.52, 59.91, 56.62]
-        },
-        {
-            name: '东莞DC',
-            type: 'line',
-            stack: '总量',
-            areaStyle: {},
-            data: [153.56, 147.66, 138.23, 127.16, 118.2, 109.22, 104.86]
-        },
-        {
-            name: '总计',
-            type: 'line',
-            stack: '总量',
-            label: {
-                normal: {
-                    show: true,
-                    position: 'top'
+            title: {
+                text: '流量堆叠图'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    label: {
+                        backgroundColor: '#6a7985'
+                    }
                 }
             },
-            areaStyle: {},
-            data: [313.1, 305.88, 305.18, 289.33, 276.2, 257.7, 241.4]
-        }
-    ]
-};
+            legend: {
+                data: ['北京DC', '南京DC', '东莞DC', '总计']
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: [{
+                name: '时间戳（ts）',
+                type: 'category',
+                boundaryGap: false,
+                data: ['50', '600', '1200', '1800', '2400', '3000', '3600']
+            }],
+            yAxis: [{
+                name: '上行总链路利用率(%)',
+                type: 'value'
+            }],
+            series: [{
+                    name: '北京DC',
+                    type: 'line',
+                    stack: '总量',
+                    areaStyle: {},
+                    data: [104.53, 105.06, 104.83, 99.29, 95.3, 88.57,
+                        79.92
+                    ] //10.28,7.55,15.06,44.53,18.34,8.0,1.07
+                },
+                {
+                    name: '南京DC',
+                    type: 'line',
+                    stack: '总量',
+                    areaStyle: {},
+                    data: [55.01, 53.16, 62.12, 62.88, 62.52, 59.91, 56.62]
+                },
+                {
+                    name: '东莞DC',
+                    type: 'line',
+                    stack: '总量',
+                    areaStyle: {},
+                    data: [153.56, 147.66, 138.23, 127.16, 118.2, 109.22, 104.86]
+                },
+                {
+                    name: '总计',
+                    type: 'line',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'top'
+                        }
+                    },
+                    areaStyle: {},
+                    data: [313.1, 305.88, 305.18, 289.33, 276.2, 257.7, 241.4]
+                }
+            ]
+        };
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
     </script>
