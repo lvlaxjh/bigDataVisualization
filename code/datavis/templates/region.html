@@ -235,14 +235,29 @@
             '韶关': [113.7964, 24.7028],
             '乌兰察布': [113.11, 41.03]
         };
+        var X ={ "yujian": {
+        "time": "50",
+        "cdc": {
+            "beijing": {
+                "dongguan": "1.77",
+                "nanjing": "3.53"
+            },
+            "dongguan": {
+                "beijing": "0.99",
+                "nanjing": "2.76"
+            },
+            "nanjing": {
+                "beijing": "2.53",
+                "dongguan": "69.29"
+            }
+        }
+    }}
         //北京
-        var BJsheng = ['吉林', '黑龙江', '山东', '辽宁', '山西', '天津',
-            '内蒙古'
-        ]; //changchun,haerbin,jinan,shenyang,taiyuan,tianjin,wulanchabu
+        var BJsheng = ['江苏','广东']; //changchun,haerbin,jinan,shenyang,taiyuan,tianjin,wulanchabu
         // var BJsheng = ['河北', '天津', '山东', '广东', '四川', '江苏', '河南', '辽宁', '陕西', '海南', '浙江', '山西', '福建', '湖南', '内蒙古', '安徽',
         // ];
         //     '吉林', '甘肃', '黑龙江', '江西', '重庆市', '广西', '湖北', '宁夏', '上海', '云南', '贵州', '青海', '西藏', '新疆'
-        var BJshi = ['长春', '哈尔滨', '济南', '沈阳', '太原', '天津', '乌兰察布'];
+        var BJshi = ['南京','东莞'];
         // var BJshi = ['石家庄', '天津', '济南', '广州', '成都', '南京', '郑州', '沈阳', '西安', '海口', '杭州', '太原', '福州', '长沙', '呼和浩特', '合肥',
         //     '长春', '兰州', '哈尔滨', '南昌', '重庆', '南宁', '武汉', '银川', '上海', '昆明', '贵阳', '西宁', '拉萨', '乌鲁木齐'
         // ];
@@ -254,7 +269,7 @@
         // var BJche = [2875, 737, 584, 472, 293, 278, 252, 235, 162, 149, 140, 126, 87, 79, 68, 53, 50, 47, 38, 30, 29,
         //     21, 21, 20, 20, 13, 7, 7, 3, 2
         // ];
-        var BJUpload = [24.59, 2.77, 4.52, 6.37, 42.93, 5.27, 50.94]
+        var BJUpload = [X.yujian.cdc.beijing.nanjing,X.yujian.cdc.beijing.dongguan]
         var BJData = [];
         for (var i = 0; i < BJUpload.length; i++) {
             var arr = [];
@@ -270,14 +285,14 @@
         }
 
         //南京 hefei,ningbo,wuhan,wuxi
-        var NJsheng = ['安徽', '浙江', '湖北', '江苏'];
-        var NJshi = ['合肥', '宁波', '武汉', '无锡'];
+        var NJsheng = ['北京', '广东'];
+        var NJshi = ['北京','东莞'];
         var NJobj = {};
         for (var i = 0; i < NJsheng.length; i++) {
             NJobj[NJshi[i]] = NJsheng[i];
         }
 
-        var NJUpload = [9.9, 29.85, 12.15, 3.11];
+        var NJUpload = [X.yujian.cdc.nanjing.beijing,X.yujian.cdc.nanjing.dongguan];
         console.log(NJUpload.length)
         var SHData = [];
         for (var i = 0; i < NJUpload.length; i++) {
@@ -294,16 +309,16 @@
         }
 
         //东莞 changsha,foshan,fuzhou,guangzhou,guiyang,kunming,nanchang,nanning,xiamen
-        var DGsheng = ['湖南', '广东', '福建', '广东', '贵州', '云南', '江苏', '福建'];
+        var DGsheng = ['北京','广东'];
         console.log(DGsheng.length)
-        var DGshi = ['长沙', '佛山', '福州', '广州', '贵阳', '昆明', '南昌', '南京', '厦门'];
+        var DGshi = ['北京','南京'];
         console.log(DGshi.length)
         var DGobj = {};
         for (var i = 0; i < DGsheng.length; i++) {
             DGobj[DGshi[i]] = DGsheng[i];
         }
 
-        var DGUpoad = [1.14, 3.71, 0.5, 43.68, 8.63, 59.99, 0.1, 26.86, 8.95];
+        var DGUpoad = [X.yujian.cdc.dongguan.beijing,X.yujian.cdc.dongguan.nanjing];
         console.log(DGUpoad.length)
         var DGData = [];
         for (var i = 0; i < DGUpoad.length; i++) {
