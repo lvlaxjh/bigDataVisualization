@@ -25,6 +25,6 @@ urlpatterns = [
     path('shangxing', views.shangxing, name='sx'),
     path('task', views.task, name='task'),
     path('xiaxing', views.xiaxing, name='xx'),
-
+    path('test', views.testt, name='test'),
     path('returnData', csrf_exempt(views.returnData), name='port1'),
 ]
