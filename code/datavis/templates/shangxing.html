@@ -67,15 +67,15 @@
     <!-- 按钮 -->
     <div class="row">
         <div class="col-10 offset-1">
-            <button type=" submit " class="total-stream btn btn-info" onclick="javascript:location.href='index.html'">总流量</button>
+            <button type=" submit " class="total-stream btn btn-info" onclick="javascript:location.href=''">总流量</button>
             <button type=" submit " class="region-stream btn btn-info"
-                onclick="javascript:location.href='region.html'">域间</button>
+                onclick="javascript:location.href='region'">域间</button>
             <button type=" submit " class="upload-stream btn btn-info"
-                onclick="javascript:location.href='shangxing.html'">上行</button>
+                onclick="javascript:location.href='shangxing'">上行</button>
             <button type=" submit " class="download-stream btn btn-info"
-                onclick="javascript:location.href='xiaxing.html'">下行</button>
+                onclick="javascript:location.href='xiaxing'">下行</button>
             <button type=" submit " class="task-stream btn btn-info"
-                onclick="javascript:location.href='task.html'">任务</button>
+                onclick="javascript:location.href='task'">任务</button>
         </div>
     </div>
 
@@ -122,6 +122,12 @@
             var data_nanjing = [];
             var data_dongguan = [];
             var data_total = [];
+            // 横时间轴
+            var x_axis_time = [];
+            for (var i = 0 in 10000) {
+                x_axis_time[i].push(i);
+                i = i + 1000;
+            }
 
             window.onload = uploadStreamInit();
 
@@ -129,7 +135,7 @@
             function uploadStreamInit() {
                 console.log('initial start!');
                 count_upload = "0";
-                var timer = setInterval(uploadStream, 5000);
+                var timer = setInterval(uploadStream, 1000);
                 // 计时器清理
                 if (count === 3) {
                     clearInterval(timer);
@@ -138,7 +144,6 @@
 
             // 上行流量点击响应函数
             function uploadStream() {
-                console.log('uploadStream start!');
                 console.log('flush: ' + count);
                 count++;
                 $.ajax({
@@ -163,15 +168,24 @@
                             beijing.push(parseInt(result.shangxing.cdc.beijing[cities]));
                         }
                         for (cities in result.shangxing.cdc.dongguan) {
-                            dongguan.push(parseInt(result.shangxing.cdc.beijing[cities]));
+                            dongguan.push(parseInt(result.shangxing.cdc.dongguan[cities]));
                         }
                         for (cities in result.shangxing.cdc.nanjing) {
-                            nanjing.push(parseInt(result.shangxing.cdc.beijing[cities]));
+                            nanjing.push(parseInt(result.shangxing.cdc.nanjing[cities]));
                         }
                         // console.log(beijing);
                         data_beijing[count] = getSum(beijing);
                         data_dongguan[count] = getSum(dongguan);
                         data_nanjing[count] = getSum(nanjing);
+                        data_total[count] = data_beijing[count] + data_nanjing[count] +
+                            data_dongguan[count];
+                        console.log('beijing' + count + ' = ' + data_total[count]);
+                        console.log('dongguan' + count + ' = ' + data_total[count]);
+                        console.log('nanjing' + count + ' = ' + data_total[count]);
+                        console.log('total' + count + ' = ' + data_total[count]);
+                        // 折线图函数调用
+
+                        lineChart("main");
                     }
                 })
             }
@@ -192,7 +206,6 @@
                 arr.forEach(element => {
                     sum = sum + element;
                 });
-                // console.log('sum = ' + sum);
                 return sum;
             }
 
@@ -573,7 +586,7 @@
             }
 
             // 折线图函数
-            function lineChart(elementId, dataSet) {
+            function lineChart(elementId) {
                 console.log('lineChart prepared');
                 // 基于准备好的dom，初始化echarts实例
                 var myChart = echarts.init(document.getElementById(elementId));
@@ -601,8 +614,8 @@
                         }
                     },
                     grid: {
-                        left: '3%',
-                        right: '4%',
+                        left: '6%',
+                        right: '6%',
                         bottom: '3%',
                         containLabel: true
                     },
@@ -610,7 +623,7 @@
                         name: '时间戳（ts）',
                         type: 'category',
                         boundaryGap: false,
-                        data: ['50', '600', '1200', '1800', '2400', '3000', '3600']
+                        // data: ['1000', '2000', '3000', '4000', '5000', '6000', '7000', '8000', '9000', '10000']
                     }],
                     yAxis: [{
                         name: '上行总链路利用率(%)',
@@ -1033,7 +1046,7 @@
         });
     </script>
 
-    <!-- 用于显示折线图 -->
+    <!-- 用于显示折线图
     <script type="text/javascript">
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById("main"));
@@ -1115,7 +1128,7 @@
         };
         // 使用刚指定的配置项和数据显示图表。
         myChart.setOption(option);
-    </script>
+    </script> -->
 
 </body>
 
