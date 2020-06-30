@@ -9,7 +9,6 @@ import demjson
 # 用于在启动前将数据全部读入内存------------------------------------------------------------------------------------------------
 pwd = os.getcwd()
 print('---后端---')
-print('---读取数据---')
 allData = {}  # 存储全部数据
 # 存储上下行内容------------------------------------------------------------------------------------------------
 xiaxingFile1 = open(pwd+'/mainApp'+'/data'+'/beijing_xiaxing.txt')
@@ -116,6 +115,7 @@ def xiaxing(request):
     return response
 
 
+@csrf_exempt
 def returnData(request):
     result = {
         "shangxing": {
