@@ -95,7 +95,25 @@ def index(request):
     response = render(request, 'index.html')
     return response
 
-# 因为没有商量接口设定暂时设定一个接口
+
+def region(request):
+    response = render(request, 'region.html')
+    return response
+
+
+def shangxing(request):
+    response = render(request, 'shangxing.html')
+    return response
+
+
+def task(request):
+    response = render(request, 'task.html')
+    return response
+
+
+def xiaxing(request):
+    response = render(request, 'xiaxing.html')
+    return response
 
 
 def returnData(request):

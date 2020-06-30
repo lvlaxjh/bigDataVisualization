@@ -21,5 +21,10 @@ from django.conf.urls import url
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('', views.index, name='index'),
+    path('region', views.region, name='region'),
+    path('shangxing', views.shangxing, name='sx'),
+    path('task', views.task, name='task'),
+    path('xiaxing', views.xiaxing, name='xx'),
+
     path('returnData', views.returnData, name='port1'),
 ]
