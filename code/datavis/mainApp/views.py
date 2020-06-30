@@ -148,50 +148,52 @@ def returnData(request):
     }
 
     # 获取前端的请求
-    # try:
-    if request.method == "POST":
-        require = demjson.decode(request.body)
-    # -------------------------------------------------------------------------------------------
-        reKey = require['key']
-        reTime = require['time']
-        if reTime == "0":
-            reTime = "50"
-        else:
-            reTime = str(int(reTime)+5)
-        siteList = ['beijing', 'dongguan', 'nanjing']
+    try:
+        if request.method == "POST":
+            require = demjson.decode(request.body)
         # -------------------------------------------------------------------------------------------
-        if reKey == "all":
-            result['shangxing']['time'] = reTime
-            for i in siteList:
-                result['shangxing']['cdc'][i] = allData['shangxing'][i][result['shangxing']['time']]
-            result['xiaxing']['time'] = reTime
-            for i in siteList:
-                result['xiaxing']['cdc'][i] = allData['xiaxing'][i][result['xiaxing']['time']]
-            result['yujian']['time'] = reTime
-            for i in siteList:
-                result['yujian']['cdc'][i] = allData['yujian'][result['yujian']['time']][i]
-            result['renwu']['time'] = reTime
-            result['renwu']['id'] = allData['renwu'][result['renwu']['time']]
-        # -------------------------------------------------------------------------------------------
-
-        if reKey == "shangxing":
-            result['shangxing']['time'] = reTime
-            for i in siteList:
-                result['shangxing']['cdc'][i] = allData['shangxing'][i][result['shangxing']['time']]
+            reKey = require['key']
+            reTime = require['time']
+            if reTime == "0":
+                reTime = "50"
+            else:
+                reTime = str(int(reTime)+5)
+            siteList = ['beijing', 'dongguan', 'nanjing']
             # -------------------------------------------------------------------------------------------
-        if reKey == "xiaxing":
-            result['xiaxing']['time'] = reTime
-            for i in siteList:
-                result['xiaxing']['cdc'][i] = allData['xiaxing'][i][result['xiaxing']['time']]
+            if reKey == "all":
+                result['shangxing']['time'] = reTime
+                for i in siteList:
+                    result['shangxing']['cdc'][i] = allData['shangxing'][i][result['shangxing']['time']]
+                result['xiaxing']['time'] = reTime
+                for i in siteList:
+                    result['xiaxing']['cdc'][i] = allData['xiaxing'][i][result['xiaxing']['time']]
+                result['yujian']['time'] = reTime
+                for i in siteList:
+                    result['yujian']['cdc'][i] = allData['yujian'][result['yujian']['time']][i]
+                result['renwu']['time'] = reTime
+                result['renwu']['id'] = allData['renwu'][result['renwu']['time']]
             # -------------------------------------------------------------------------------------------
 
-        if reKey == "yujian":
-            result['yujian']['time'] = reTime
-            for i in siteList:
-                result['yujian']['cdc'][i] = allData['yujian'][result['yujian']['time']][i]
-            # -------------------------------------------------------------------------------------------
-        if reKey == "renwu":
-            result['renwu']['time'] = reTime
-            result['renwu']['id'] = allData['renwu'][result['renwu']['time']]
-            # -------------------------------------------------------------------------------------------
+            if reKey == "shangxing":
+                result['shangxing']['time'] = reTime
+                for i in siteList:
+                    result['shangxing']['cdc'][i] = allData['shangxing'][i][result['shangxing']['time']]
+                # -------------------------------------------------------------------------------------------
+            if reKey == "xiaxing":
+                result['xiaxing']['time'] = reTime
+                for i in siteList:
+                    result['xiaxing']['cdc'][i] = allData['xiaxing'][i][result['xiaxing']['time']]
+                # -------------------------------------------------------------------------------------------
+
+            if reKey == "yujian":
+                result['yujian']['time'] = reTime
+                for i in siteList:
+                    result['yujian']['cdc'][i] = allData['yujian'][result['yujian']['time']][i]
+                # -------------------------------------------------------------------------------------------
+            if reKey == "renwu":
+                result['renwu']['time'] = reTime
+                result['renwu']['id'] = allData['renwu'][result['renwu']['time']]
+                # -------------------------------------------------------------------------------------------
+    except Exception as e:
+        result = {'error': e}
     return JsonResponse(result)
