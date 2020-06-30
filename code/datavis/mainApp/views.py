@@ -156,10 +156,13 @@ def returnData(request):
     # 获取前端的请求
     # try:
     if request.method == "POST":
-        require = demjson.decode(request.body)
-    # -------------------------------------------------------------------------------------------
-        reKey = require['key']
-        reTime = require['time']
+        # print(request.body)
+        # require = demjson.decode(request.body)
+        # -------------------------------------------------------------------------------------------
+        # reKey = require['key']
+        # reTime = require['time']
+        reKey = request.POST.get('key')
+        reTime = request.POST.get('time')
         if reTime == "0":
             reTime = "50"
         else:

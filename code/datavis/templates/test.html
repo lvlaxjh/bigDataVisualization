@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="mystyle2" id="inputBox">
+        {% csrf_token %}
+        <input id="searchInput" type="search">
+        <button id="searchBtn">Search</button>
+    </div>
+</body>
+
+<script>
+    $(document).ready(function () {
+        $(document).keydown(function (event) {
+            if (event.keyCode == 13) {
+                $("#searchBtn").click();
+            }
+        });
+        $('#searchBtn').click(function () {
+            $.ajax({
+                url: "/returnData",
+                type: "post",
+                dataType: "json",
+                data: {
+                    key: "shangxing",
+                    time: "0",
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                },
+                success: function (result) {
+                    console.log(result);
+                }
+            })
+        })
+    })
+</script>
+
+</html>
