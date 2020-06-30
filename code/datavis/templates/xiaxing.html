@@ -489,210 +489,163 @@
         $(document).ready(function () {
 
             // 初始化计数器
-            var count_total = 0;
-            var count_region = 0;
-            var count_upload = 0;
-            var count_download = 0;
-            var count_task = 0;
+            var count_download = "0";
+            var count = 1;
+            // 初始化数组
+            var data_beijing = [];
+            var data_nanjing = [];
+            var data_dongguan = [];
+            var data_total = [];
 
-            // 封装请求与返回数据ajax
-            function returnData(request_type, request_url, request_data) {
+            window.onload = downloadStreamInit();
+
+            // 响应函数的初始化&刷新函数
+            function downloadStreamInit() {
+                console.log('initial start!');
+                count_download = "0";
+                var timer = setInterval(downloadStream, 500);
+                // 计时器清理
+                if (count === 3) {
+                    clearInterval(timer);
+                }
+            }
+
+            // 下行流量点击响应函数
+            function downloadStream() {
+                console.log('uploadStream start!');
+                console.log('flush: ' + count);
+                count++;
                 $.ajax({
-                    type: request_type,
-                    url: request_url,
-                    data: request_data,
-                    success: function (res) {
-                        // request_count += 5;
-                        return res;
+                    url: "/returnData",
+                    type: "post",
+                    dataType: "json",
+                    data: {
+                        key: "xiaxing",
+                        time: count_download,
+                        csrfmiddlewaretoken: '{{ csrf_token }}',
                     },
-                    error: function (e) {
-                        alert('Something goes wrong.')
+                    success: function (result) {
+                        //console.log(result);
+                        count_download = result.xiaxing.time;
+                        let beijing = [];
+                        let dongguan = [];
+                        let nanjing = [];
+                        // result.shangxing.cdc.beijing.forEach(value => {
+                        //     beijing.push(parseInt(value));
+                        // })
+                        for (cities in result.xiaxing.cdc.beijing) {
+                            beijing.push(parseInt(result.xiaxing.cdc.beijing[cities]));
+                        }
+                        for (cities in result.xiaxing.cdc.dongguan) {
+                            dongguan.push(parseInt(result.xiaxing.cdc.dongguan[cities]));
+                        }
+                        for (cities in result.xiaxing.cdc.nanjing) {
+                            nanjing.push(parseInt(result.xiaxing.cdc.nanjing[cities]));
+                        }
+                        //console.log(beijing);
+                        data_beijing[count] = getSum(beijing);
+                        data_dongguan[count] = getSum(dongguan);
+                        data_nanjing[count] = getSum(nanjing);
+                        console.log(data_dongguan);
+                        data_total[count] = data_beijing[count] + data_dongguan[count] + data_nanjing[count];
+                        showline("main");
                     }
                 })
             }
 
-            // 地图函数
-            function generateMap() {
-
+            // 求和函数
+            function getSum(arr) {
+                let sum = 0;
+                arr.forEach(element => {
+                    sum = sum + element;
+                });
+                // console.log('sum = ' + sum);
+                return sum;
             }
 
-            // 折线图函数
-            function lineChart() {
-
-            }
-
-            // 冒泡图函数
-            function bubbleChart() {
-
-            }
-
-            function totalStreamInit() {
-                setInterval()
-            }
-
-            function regionStreamInit() {
-                setInterval()
-            }
-
-            function uploadStreamInit() {
-                var count_upload = 0;
-                setInterval(uploadStream(), 3000);
-            }
-
-            function downloadStreamInit() {
-                setInterval()
-            }
-
-            function taskStreamInit() {
-                setInterval()
-            }
-
-            // 总流量点击响应函数
-            function totalStream() {}
-
-            // 域间流量点击响应函数
-            function regionStream() {}
-
-            // 上行流量点击响应函数
-            function uploadStream() {
-                var data = {
-                    'key': 'shangxing',
-                    'time': count_upload,
-                };
-                var data_upload = returnData(POST, returnData, data)
-                console.log(data_upload);
-                let key = data_upload.key;
-                let count_upload = data_upload.time;
-                // 按地图需要数据填补...
-                generateMap();
-                lineChart();
-                bubbleChart();
-            }
-
-            // 下行流量点击响应函数
-            function downloadStream() {}
-
-            // 任务流量点击响应函数
-            function taskStream() {}
-
-            $('total-stream').on('click', totalStreamInit)
-            $('region-stream').on('click', regionStreamInit)
-            $('upload-stream').on('click', uploadStreamInit)
-            $('download-stream').on('click', downloadStreamInit)
-            $('task-stream').on('click', taskStreamInit)
-
-            // let date = new Date();
-            // let hour = date.getHours();
-            // let min = date.getMinutes();
-            // let sec = date.getSeconds();
-            // let time = hour + min + sec;
-
-            // $.ajax({
-            //     type: 'POST',
-            //     url: 'returnData',
-            //     data: {
-            //         'key': 'shangxing',
-            //         'time': count_upload,
-            //     },
-            //     success: function (res) {
-            //         count_upload++;
-            //         console.log(res);
-            //         let key = res.key;
-            //         let time = res.time;
-            //     },
-            //     error: function (e) {
-            //         console.log(e);
-            //         alert('Something goes wrong.')
-            //     }
-            // })
-        })
-    </script>
-
-    <!-- 用于显示折线图 -->
-    <script type="text/javascript">
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById("main"));
-        // 指定图表的配置项和数据
-        option = {
-    title: {
-        text: '流量堆叠图'
-    },
-    tooltip: {
-        trigger: 'axis',
-        axisPointer: {
-            type: 'cross',
-            label: {
-                backgroundColor: '#6a7985'
-            }
-        }
-    },
-    legend: {
-        data: ['北京DC', '南京DC', '东莞DC', '总计']
-    },
-    toolbox: {
-        feature: {
-            saveAsImage: {}
-        }
-    },
-    grid: {
-        left: '3%',
-        right: '4%',
-        bottom: '3%',
-        containLabel: true
-    },
-    xAxis: [
-        {
-            name:'时间戳（ts）',
-            type: 'category',
-            boundaryGap: false,
-            data: ['50', '600', '1200', '1800', '2400', '3000', '3600']
-        }
-    ],
-    yAxis: [
-        {
-            name:'下行总链路利用率(%)',
-            type: 'value'
-        }
-    ],
-    series: [
-        {
-            name: '北京DC',
-            type: 'line',
-            stack: '总量',
-            areaStyle: {},
-            data: [104.53, 105.06, 104.83, 99.29, 95.3, 88.57, 79.92]//10.28,7.55,15.06,44.53,18.34,8.0,1.07
-        },
-        {
-            name: '南京DC',
-            type: 'line',
-            stack: '总量',
-            areaStyle: {},
-            data: [55.01, 53.16, 62.12, 62.88, 62.52, 59.91, 56.62]
-        },
-        {
-            name: '东莞DC',
-            type: 'line',
-            stack: '总量',
-            areaStyle: {},
-            data: [153.56, 147.66, 138.23, 127.16, 118.2, 109.22, 104.86]
-        },
-        {
-            name: '总计',
-            type: 'line',
-            stack: '总量',
-            label: {
-                normal: {
-                    show: true,
-                    position: 'top'
+            function showline(elementId){
+                var myChart = echarts.init(document.getElementById(elementId));
+                option = {
+            title: {
+                text: '流量堆叠图'
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    label: {
+                        backgroundColor: '#6a7985'
+                    }
                 }
             },
-            areaStyle: {},
-            data: [313.1, 305.88, 305.18, 289.33, 276.2, 257.7, 241.4]
-        }
-    ]
-};
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
+            legend: {
+                data: ['北京DC', '南京DC', '东莞DC', '总计']
+            },
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
+                }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+            },
+            xAxis: [
+                {
+                    name:'时间戳（ts）',
+                    type: 'category',
+                    boundaryGap: false,
+                    //data: ['50','600','1200', '1800', '2400', '3000', '3600']
+                }
+            ],
+            yAxis: [
+                {
+                    name:'下行总链路利用率(%)',
+                    type: 'value'
+                }
+            ],
+            series: [
+                {
+                    name: '北京DC',
+                    type: 'line',
+                    stack: '总量',
+                    areaStyle: {},
+                    data: data_beijing
+                },
+                {
+                    name: '南京DC',
+                    type: 'line',
+                    stack: '总量',
+                    areaStyle: {},
+                    data: data_nanjing
+                },
+                {
+                    name: '东莞DC',
+                    type: 'line',
+                    stack: '总量',
+                    areaStyle: {},
+                    data: data_dongguan
+                },
+                {
+                    name: '总计',
+                    type: 'line',
+                    stack: '总量',
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'top'
+                        }
+                    },
+                    areaStyle: {},
+                    data: data_total
+                }]
+                    };
+                    myChart.setOption(option);
+                    }
+                })
     </script>
+
 </body>
 </html>

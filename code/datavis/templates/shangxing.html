@@ -156,7 +156,7 @@
                         csrfmiddlewaretoken: '{{ csrf_token }}',
                     },
                     success: function (result) {
-                        // console.log(result);
+                        console.log(result);
                         count_upload = result.shangxing.time;
                         let beijing = [];
                         let dongguan = [];
@@ -173,7 +173,7 @@
                         for (cities in result.shangxing.cdc.nanjing) {
                             nanjing.push(parseInt(result.shangxing.cdc.nanjing[cities]));
                         }
-                        // console.log(beijing);
+                        console.log(beijing);
                         data_beijing[count] = getSum(beijing);
                         data_dongguan[count] = getSum(dongguan);
                         data_nanjing[count] = getSum(nanjing);
