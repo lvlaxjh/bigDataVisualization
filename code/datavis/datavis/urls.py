@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from mainApp import views
 from django.conf.urls import url
-
+from django.views.decorators.csrf import csrf_exempt
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('', views.index, name='index'),
@@ -26,5 +26,5 @@ urlpatterns = [
     path('task', views.task, name='task'),
     path('xiaxing', views.xiaxing, name='xx'),
 
-    path('returnData', views.returnData, name='port1'),
+    path('returnData', csrf_exempt(views.returnData), name='port1'),
 ]
