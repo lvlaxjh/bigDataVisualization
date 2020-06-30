@@ -67,15 +67,15 @@
     <!-- 按钮 -->
     <div class="row">
         <div class="col-10 offset-1">
-            <button type=" submit " class="total-stream btn btn-info" onclick="javascript:location.href=''">总流量</button>
+            <button type=" submit " class="total-stream btn btn-info" onclick="javascript:location.href='index.html'">总流量</button>
             <button type=" submit " class="region-stream btn btn-info"
-                onclick="javascript:location.href='region'">域间</button>
+                onclick="javascript:location.href='region.html'">域间</button>
             <button type=" submit " class="upload-stream btn btn-info"
-                onclick="javascript:location.href='shangxing'">上行</button>
+                onclick="javascript:location.href='shangxing.html'">上行</button>
             <button type=" submit " class="download-stream btn btn-info"
-                onclick="javascript:location.href='xiaxing'">下行</button>
+                onclick="javascript:location.href='xiaxing.html'">下行</button>
             <button type=" submit " class="task-stream btn btn-info"
-                onclick="javascript:location.href='task'">任务</button>
+                onclick="javascript:location.href='task.html'">任务</button>
         </div>
     </div>
 
@@ -254,13 +254,9 @@
     }}
         //北京
         var BJsheng = ['江苏','广东']; //changchun,haerbin,jinan,shenyang,taiyuan,tianjin,wulanchabu
-        // var BJsheng = ['河北', '天津', '山东', '广东', '四川', '江苏', '河南', '辽宁', '陕西', '海南', '浙江', '山西', '福建', '湖南', '内蒙古', '安徽',
-        // ];
-        //     '吉林', '甘肃', '黑龙江', '江西', '重庆市', '广西', '湖北', '宁夏', '上海', '云南', '贵州', '青海', '西藏', '新疆'
+        
         var BJshi = ['南京','东莞'];
-        // var BJshi = ['石家庄', '天津', '济南', '广州', '成都', '南京', '郑州', '沈阳', '西安', '海口', '杭州', '太原', '福州', '长沙', '呼和浩特', '合肥',
-        //     '长春', '兰州', '哈尔滨', '南昌', '重庆', '南宁', '武汉', '银川', '上海', '昆明', '贵阳', '西宁', '拉萨', '乌鲁木齐'
-        // ];
+
         var BJobj = {};
         for (var i = 0; i < BJsheng.length; i++) {
             BJobj[BJshi[i]] = BJsheng[i];
