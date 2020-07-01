@@ -19,6 +19,8 @@
                 title: {
                     text: 'NPM Dependencies'
                 },
+                // draggable: true,
+                // geoIndex: 100,
                 animationDurationUpdate: 1500,
                 animationEasingUpdate: 'quinticInOut',
                 series: [
@@ -32,8 +34,8 @@
                         },
                         // progressiveThreshold: 700,
                         data: [{
-                            x: 300,
-                            y: 300,
+                            x: 116.4551,
+                            y: 40.2539,
                             id: 'a',
                             name: 'beijing',
                             symbolSize: 10,
@@ -63,10 +65,12 @@
                         links: [{
                             source: 'a',
                             target: 'b',
+                            text: '123',
                             symbolSize: [5, 20],
-                            label: {
-                                show: true
-                            },
+                            // label: {
+                            //     // value: '213',
+                            //     show: true
+                            // },
                             lineStyle: {
                                 width: 5,
                                 curveness: 1,
