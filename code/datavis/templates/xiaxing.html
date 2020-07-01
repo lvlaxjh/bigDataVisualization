@@ -145,7 +145,7 @@
                     'guangzhou': [113.5107, 23.2196],
                     'xuzhou': [117.5208, 34.3268],
                     'wuxi': [120.3442, 31.5527],
-                    'kunning': [102.9199, 25.4663],
+                    'kunming': [102.9199, 25.4663],
                     'wuhan': [114.3896, 30.6628],
                     'jinan': [117.1582, 36.8701],
                     'shenzhen': [114.5435, 22.5439],
@@ -154,7 +154,43 @@
                     'wulanchabu': [113.11, 41.03],
                     'shenyang': [123.1238, 42.1216],
                     'shijiazhuang': [114.4995, 38.1006],
+                    'changsha': [113.0823, 28.2568],
+                    'foshan': [112.8955, 23.1097],
+                    'fuzhou': [119.4543, 25.9222],
+                    'nanchang': [116.0046, 28.6633],
+                    'nanning': [108.479, 23.1152],
+                    'xiamen': [118.1689, 24.6478],
+                    'hefei': [117.29, 32.0581],
                 };
+            var pyToCN = {
+                'shanghai': '上海',
+                    'dongguan': '东莞',
+                    'beijing': '北京',
+                    'nanjing': '南京',
+                    'haerbin': '哈尔滨',
+                    'tianjin': '天津',
+                    'taiyuan': '太原',
+                    'ningbo': '宁波',
+                    'guangzhou': '广州',
+                    'xuzhou': '徐州',
+                    'wuxi': '无锡',
+                    'kunming': '昆明',
+                    'wuhan': '武汉',
+                    'jinan': '济南',
+                    'shenzhen': '深圳',
+                    'wenzhou': '温州',
+                    'guiyang': '贵阳',
+                    'wulanchabu': '乌兰察布',
+                    'shenyang': '沈阳',
+                    'shijiazhuang': '石家庄',
+                    'changsha': '长沙',
+                    'foshan': '佛山',
+                    'fuzhou': '福州',
+                    'nanchang': '南昌',
+                    'nanning': '南宁',
+                    'xiamen': '厦门',
+                    'hefei': '哈尔滨',
+            }
             var npmData = [];
             var routData = [];
 
@@ -165,7 +201,7 @@
             function downloadStreamInit() {
                 console.log('initial start!');
                 count_download = "0";
-                var timer = setInterval(downloadStream, 1000);
+                var timer = setInterval(downloadStream, 5000);
                 // 计时器清理
                 if (count === 3) {
                     clearInterval(timer);
@@ -175,7 +211,7 @@
             // 下行流量点击响应函数
             function downloadStream() {
                 console.log('uploadStream start!');
-                //console.log('flush: ' + count);
+                console.log('flush: ' + count);
                 count++;
                 $.ajax({
                     url: "/returnData",
@@ -190,6 +226,7 @@
                         map_beijing = [];
                         map_dongguan = [];
                         map_nanjing = [];
+                        npmData = [];
                         console.log(result);
                         count_download = result.xiaxing.time;
                         // let beijing = [];
@@ -200,17 +237,17 @@
                         // })
                         for (cities in result.xiaxing.cdc.beijing) {
                             map_beijing.push(parseInt(result.xiaxing.cdc.beijing[cities]));
-                            var coord = geoCoordMap[cities];
-                            console.log("test",coord);
+                            console.log("test1",cities);
+                            console.log("test2",geoCoordMap[cities][0]);
                             npmData.push(
                                 {
-                                    x:coord[0],
-                                    y:coord[1],
+                                    x:geoCoordMap[cities][0],
+                                    y:geoCoordMap[cities][1],
                                     id:cities,
-                                    name:cities,
+                                    name:pyToCN[cities],
                                     symbolSize:parseInt(result.xiaxing.cdc.beijing[cities])/10,
                                     itemStyle:{
-                                        color:"#4f19c7"
+                                        color:"#ff00ff"
                                     }
                                 }
                             );
@@ -226,22 +263,22 @@
                                 x:116.4551,
                                 y:40.2539,
                                 id:'beijing',
-                                name:'beijing',
+                                name:'北京',
                                 symbolSize:15,
                                 itemStyle:{
-                                    color:"#4f19c7"
+                                    color:"#ff00ff"
                                 }
                             }
                         )
                         for (cities in result.xiaxing.cdc.dongguan) {
                             map_dongguan.push(parseInt(result.xiaxing.cdc.dongguan[cities]));
-                            var coord = geoCoordMap[cities];
+                            //console.log("test npmData",npmData);
                             npmData.push(
                                 {
-                                    x:coord[0],
-                                    y:coord[1],
+                                    x:geoCoordMap[cities][0],
+                                    y:geoCoordMap[cities][1],
                                     id:cities,
-                                    name:cities,
+                                    name:pyToCN[cities],
                                     symbolSize:parseInt(result.xiaxing.cdc.dongguan[cities])/10,
                                     itemStyle:{
                                         color:"#4f19c7"
@@ -260,7 +297,7 @@
                                 x:113.8953,
                                 y:22.901,
                                 id:'dongguan',
-                                name:'dongguan',
+                                name:'东莞',
                                 symbolSize:15,
                                 itemStyle:{
                                     color:"#4f19c7"
@@ -271,13 +308,13 @@
                             map_nanjing.push(parseInt(result.xiaxing.cdc.nanjing[cities]));
                             npmData.push(
                                 {
-                                    x:coord[0],
-                                    y:coord[1],
+                                    x:geoCoordMap[cities][0],
+                                    y:geoCoordMap[cities][1],
                                     id:cities,
-                                    name:cities,
+                                    name:pyToCN[cities],
                                     symbolSize:parseInt(result.xiaxing.cdc.nanjing[cities])/10,
                                     itemStyle:{
-                                        color:"#4f19c7"
+                                        color:"#00ff33"
                                     }
                                 }
                             )
@@ -293,10 +330,10 @@
                                 x:118.8062,
                                 y:31.9208,
                                 id:'nanjing',
-                                name:'nanjing',
+                                name:'南京',
                                 symbolSize:15,
                                 itemStyle:{
-                                    color:"#4f19c7"
+                                    color:"#00ff33"
                                 }
                             }
                         );
