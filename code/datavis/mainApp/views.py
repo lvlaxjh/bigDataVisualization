@@ -210,7 +210,5 @@ def returnData(request):
         if reKey == "renwu":
             result['renwu']['time'] = reTime
             result['renwu']['id'] = allData['renwu'][result['renwu']['time']]
-    #         # -------------------------------------------------------------------------------------------
-    # except Exception as e:
-    #     result = {'error': e}
+            # -------------------------------------------------------------------------------------------
     return JsonResponse(result)

@@ -19,7 +19,6 @@ from mainApp import views
 from django.conf.urls import url
 from django.views.decorators.csrf import csrf_exempt
 urlpatterns = [
-    # path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('region', views.region, name='region'),
     path('shangxing', views.shangxing, name='sx'),
