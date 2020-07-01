@@ -133,7 +133,7 @@
             function downloadStreamInit() {
                 console.log('initial start!');
                 count_download = "0";
-                var timer = setInterval(downloadStream, 500);
+                var timer = setInterval(downloadStream, 1000);
                 // 计时器清理
                 if (count === 3) {
                     clearInterval(timer);
@@ -339,8 +339,8 @@
                 }
 
                 //南京 hefei,ningbo,wuhan,wuxi
-                var NJsheng = ['安徽','浙江','湖北','江苏'];
-                var NJshi = ['合肥','宁波','武汉','无锡'];
+                var NJsheng = ['安徽','浙江','湖北','浙江','江苏'];
+                var NJshi = ['合肥','宁波','武汉','温州','无锡'];
                 var NJobj = {};
                 for (var i = 0; i < NJsheng.length; i++) {
                     NJobj[NJshi[i]] = NJsheng[i];
@@ -361,6 +361,7 @@
                     arr.push(obj2);
                     SHData.push(arr);
                 }
+                //console.log("南京",SHData);
 
                 //东莞 changsha,foshan,fuzhou,guangzhou,guiyang,kunming,nanchang,nanning,xiamen
                 var DGsheng = ['湖南','广东','福建','广东','贵州','云南','江西','江苏','福建'];
