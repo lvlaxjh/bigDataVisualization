@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <!-- 引入 echarts.js -->
+    <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div style="height: 500px;width: 1000px;" id="Scatter"></div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var MyScatter = echarts.init(document.getElementById('Scatter'));
+            option = {
+                title: {
+                    text: 'NPM Dependencies'
+                },
+                // draggable: true,
+                // geoIndex: 100,
+                animationDurationUpdate: 1500,
+                animationEasingUpdate: 'quinticInOut',
+                series: [
+                    {
+                        type: 'graph',
+                        layout: 'none',
+                        edgeSymbol: ['circle', 'arrow'],
+                        edgeSymbolSize: [4, 10],
+                        edgeLabel: {
+                            fontSize: 20
+                        },
+                        // progressiveThreshold: 700,
+                        data: [{
+                            x: 116.4551,
+                            y: 40.2539,
+                            id: 'a',
+                            name: 'beijing',
+                            symbolSize: 10,
+                            itemStyle: {
+                                color: "#4f19c7"
+                            }
+                        }, {
+                            x: 600,
+                            y: 600,
+                            id: 'b',
+                            name: 'dongguan',
+                            symbolSize: 20,
+                            itemStyle: {
+                                color: "#4f19c7"
+                            }
+                        },
+                        {
+                            x: 100,
+                            y: 400,
+                            id: 'c',
+                            name: 'nanjing',
+                            symbolSize: 30,
+                            itemStyle: {
+                                color: "#4f19c7"
+                            }
+                        }],
+                        links: [{
+                            source: 'a',
+                            target: 'b',
+                            text: '123',
+                            symbolSize: [5, 20],
+                            // label: {
+                            //     // value: '213',
+                            //     show: true
+                            // },
+                            lineStyle: {
+                                width: 5,
+                                curveness: 1,
+                            }
+                        },
+                        {
+                            source: 'a',
+                            target: 'c',
+                        },
+                        {
+                            source: 'b',
+                            target: 'c',
+                        }, {
+                            source: 'b',
+                            target: 'a',
+                        }, {
+                            source: 'c',
+                            target: 'a',
+                        }, {
+                            source: 'c',
+                            target: 'b',
+                        },],
+                        emphasis: {
+                            label: {
+                                position: 'right',
+                                show: true
+                            }
+                        },
+                        roam: true,
+                        focusNodeAdjacency: true,
+                        lineStyle: {
+                            width: 0.5,
+                            curveness: 0.3,
+                            opacity: 0.7
+                        }
+                    }
+                ]
+            };
+
+            MyScatter.setOption(option);
+        });
+    </script>
+</body>
+
+</html>

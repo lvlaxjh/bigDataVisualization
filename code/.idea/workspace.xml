@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc91473c-664f-4efb-876e-52e5b570f907" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/datavis/templates/region.html" beforeDir="false" afterPath="$PROJECT_DIR$/datavis/templates/region.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datavis/templates/xiaxing.html" beforeDir="false" afterPath="$PROJECT_DIR$/datavis/templates/xiaxing.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,8 +16,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/datavis/templates/shangxing.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1188">
-              <caret line="423" column="35" lean-forward="true" selection-start-line="423" selection-start-column="35" selection-end-line="423" selection-end-column="35" />
+            <state relative-caret-position="10816">
+              <caret line="423" column="35" selection-start-line="423" selection-start-column="35" selection-end-line="423" selection-end-column="35" />
               <folding>
                 <element signature="e#6603#6844#0" />
               </folding>
@@ -28,8 +28,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/datavis/templates/task.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-78">
-              <caret line="12" column="32" lean-forward="true" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
+            <state relative-caret-position="312">
+              <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -37,12 +37,26 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/datavis/templates/xiaxing.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="446" column="38" lean-forward="true" selection-start-line="446" selection-start-column="38" selection-end-line="446" selection-end-column="38" />
+            <state relative-caret-position="483">
+              <caret line="218" column="53" lean-forward="true" selection-start-line="218" selection-start-column="53" selection-end-line="218" selection-end-column="53" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#6994#12407#0" />
-                <element signature="e#24486#26846#0" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#6591#6813#0" />
+                <element signature="e#6876#24396#0" />
+                <element signature="e#24485#26845#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chartsTest/echartNPM图/test.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2210">
+              <caret line="93" column="13" selection-start-line="93" selection-start-column="13" selection-end-line="93" selection-end-column="13" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -51,15 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/datavis/templates/region.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="436" column="45" lean-forward="true" selection-start-line="436" selection-start-column="45" selection-end-line="436" selection-end-column="45" />
-              <folding>
-                <element signature="e#24641#24863#0" />
-                <element signature="e#25044#30457#0" />
-                <element signature="e#42536#44896#0" />
-                <element signature="n#script#8;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="11336">
+              <caret line="436" column="45" selection-start-line="436" selection-start-column="45" selection-end-line="436" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -67,11 +74,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/datavis/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="642">
+            <state relative-caret-position="6994">
               <caret line="281" column="9" selection-start-line="281" selection-start-column="9" selection-end-line="281" selection-end-column="9" />
               <folding>
                 <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -92,8 +98,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/datavis/mainApp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-502">
-              <caret line="167" column="13" lean-forward="true" selection-start-line="167" selection-start-column="13" selection-end-line="167" selection-end-column="13" />
+            <state relative-caret-position="4238">
+              <caret line="169" column="13" selection-start-line="169" selection-start-column="13" selection-end-line="169" selection-end-column="13" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -104,8 +110,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/datavis/mainApp/tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-268">
-              <caret line="116" column="40" lean-forward="true" selection-start-line="116" selection-start-column="40" selection-end-line="116" selection-end-column="40" />
+            <state relative-caret-position="3146">
+              <caret line="125" column="40" selection-start-line="125" selection-start-column="40" selection-end-line="125" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -167,13 +173,7 @@
               <item name="code" type="b2602c69:ProjectViewProjectNode" />
               <item name="code" type="462c0819:PsiDirectoryNode" />
               <item name="chartsTest" type="462c0819:PsiDirectoryNode" />
-              <item name="echart散点图实例" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="code" type="b2602c69:ProjectViewProjectNode" />
-              <item name="code" type="462c0819:PsiDirectoryNode" />
-              <item name="chartsTest" type="462c0819:PsiDirectoryNode" />
-              <item name="ttt" type="462c0819:PsiDirectoryNode" />
+              <item name="echartNPM图" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="code" type="b2602c69:ProjectViewProjectNode" />
@@ -321,16 +321,27 @@
       <workItem from="1593567023645" duration="136000" />
       <workItem from="1593567272667" duration="3453000" />
       <workItem from="1593571028116" duration="2245000" />
+      <workItem from="1593573407913" duration="87000" />
+      <workItem from="1593589079213" duration="9196000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62223000" />
+    <option name="totallyTimeSpent" value="71506000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23827292" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24360341" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -339,8 +350,8 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
+      <window_info anchor="bottom" id="TODO" order="7" weight="0.32952183" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
@@ -491,17 +502,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/datavis/templates/shangxing_test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17368">
-          <caret line="1041" selection-start-line="1041" selection-end-line="1041" />
-          <folding>
-            <element signature="e#18862#36275#0" />
-            <element signature="e#19021#24434#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/datavis/mainApp/data/nanjing_xiaxing.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
@@ -516,9 +516,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/datavis/templates/shangxing copy.html">
+    <entry file="file://$PROJECT_DIR$/datavis/templates/shangxing.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6604" />
+        <state relative-caret-position="10816">
+          <caret line="423" column="35" selection-start-line="423" selection-start-column="35" selection-end-line="423" selection-end-column="35" />
+          <folding>
+            <element signature="e#6603#6844#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datavis/templates/region.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11336">
+          <caret line="436" column="45" selection-start-line="436" selection-start-column="45" selection-end-line="436" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datavis/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6994">
+          <caret line="281" column="9" selection-start-line="281" selection-start-column="9" selection-end-line="281" selection-end-column="9" />
+          <folding>
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/datavis/datavis/urls.py">
@@ -531,73 +553,64 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/datavis/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="642">
-          <caret line="281" column="9" selection-start-line="281" selection-start-column="9" selection-end-line="281" selection-end-column="9" />
-          <folding>
-            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datavis/templates/task.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-78">
-          <caret line="12" column="32" lean-forward="true" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datavis/templates/shangxing.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1188">
-          <caret line="423" column="35" lean-forward="true" selection-start-line="423" selection-start-column="35" selection-end-line="423" selection-end-column="35" />
-          <folding>
-            <element signature="e#6603#6844#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/datavis/mainApp/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-268">
-          <caret line="116" column="40" lean-forward="true" selection-start-line="116" selection-start-column="40" selection-end-line="116" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/datavis/mainApp/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-502">
-          <caret line="167" column="13" lean-forward="true" selection-start-line="167" selection-start-column="13" selection-end-line="167" selection-end-column="13" />
+        <state relative-caret-position="4238">
+          <caret line="169" column="13" selection-start-line="169" selection-start-column="13" selection-end-line="169" selection-end-column="13" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/datavis/templates/region.html">
+    <entry file="file://$PROJECT_DIR$/datavis/mainApp/tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="436" column="45" lean-forward="true" selection-start-line="436" selection-start-column="45" selection-end-line="436" selection-end-column="45" />
+        <state relative-caret-position="3146">
+          <caret line="125" column="40" selection-start-line="125" selection-start-column="40" selection-end-line="125" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datavis/templates/shangxing_test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="666">
+          <caret line="1041" selection-start-line="1041" selection-end-line="1041" />
           <folding>
-            <element signature="e#24641#24863#0" />
-            <element signature="e#25044#30457#0" />
-            <element signature="e#42536#44896#0" />
-            <element signature="n#script#8;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#18862#36275#0" />
+            <element signature="e#19021#24434#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datavis/templates/shangxing copy.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/datavis/templates/task.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="12" column="32" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chartsTest/echartNPM图/test.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2210">
+          <caret line="93" column="13" selection-start-line="93" selection-start-column="13" selection-end-line="93" selection-end-column="13" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/datavis/templates/xiaxing.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="446" column="38" lean-forward="true" selection-start-line="446" selection-start-column="38" selection-end-line="446" selection-end-column="38" />
+        <state relative-caret-position="483">
+          <caret line="218" column="53" lean-forward="true" selection-start-line="218" selection-start-column="53" selection-end-line="218" selection-end-column="53" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#6994#12407#0" />
-            <element signature="e#24486#26846#0" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#6591#6813#0" />
+            <element signature="e#6876#24396#0" />
+            <element signature="e#24485#26845#0" />
           </folding>
         </state>
       </provider>
