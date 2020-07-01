@@ -67,7 +67,7 @@
     <!-- 按钮 -->
     <div class="row">
         <div class="col-10 offset-1">
-            <button type=" submit " class="total-stream btn btn-info" onclick="javascript:location.href='index'">总流量</button>
+            <button type=" submit " class="total-stream btn btn-info" onclick="javascript:location.href=''">总流量</button>
             <button type=" submit " class="region-stream btn btn-info"
                 onclick="javascript:location.href='region'">域间</button>
             <button type=" submit " class="upload-stream btn btn-info"
@@ -108,8 +108,6 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
     </script>
 
-
-
     <!-- ajax传参与响应 -->
     <script>
         $(document).ready(function () {
@@ -117,11 +115,15 @@
             // 初始化计数器
             var count_upload = "0";
             var count = 1;
-            // 初始化数组
+            // 初始化折线图数组
             var data_beijing = [];
             var data_nanjing = [];
             var data_dongguan = [];
             var data_total = [];
+            // 初始化地图数组
+            var map_beijing = [];
+            var map_nanjing = [];
+            var map_dongguan = [];
 
             window.onload = uploadStreamInit();
 
@@ -129,16 +131,15 @@
             function uploadStreamInit() {
                 console.log('initial start!');
                 count_upload = "0";
-                var timer = setInterval(uploadStream, 2000);
-                // 计时器清理
-                if (count === 3) {
-                    clearInterval(timer);
-                }
+                var timer = setInterval(uploadStream, 1000);
+                // // 计时器清理
+                // if (count === 3) {
+                //     clearInterval(timer);
+                // }
             }
 
             // 上行流量点击响应函数
             function uploadStream() {
-                console.log('uploadStream start!');
                 console.log('flush: ' + count);
                 count++;
                 $.ajax({
@@ -151,27 +152,33 @@
                         csrfmiddlewaretoken: '{{ csrf_token }}',
                     },
                     success: function (result) {
+                        map_beijing = [];
+                        map_nanjing = [];
+                        map_dongguan = [];
                         console.log(result);
                         count_upload = result.shangxing.time;
-                        let beijing = [];
-                        let dongguan = [];
-                        let nanjing = [];
-                        // result.shangxing.cdc.beijing.forEach(value => {
-                        //     beijing.push(parseInt(value));
-                        // })
                         for (cities in result.shangxing.cdc.beijing) {
-                            beijing.push(parseInt(result.shangxing.cdc.beijing[cities]));
+                            map_beijing.push(parseInt(result.shangxing.cdc.beijing[cities]));
                         }
                         for (cities in result.shangxing.cdc.dongguan) {
-                            dongguan.push(parseInt(result.shangxing.cdc.beijing[cities]));
+                            map_dongguan.push(parseInt(result.shangxing.cdc.dongguan[cities]));
                         }
                         for (cities in result.shangxing.cdc.nanjing) {
-                            nanjing.push(parseInt(result.shangxing.cdc.beijing[cities]));
+                            map_nanjing.push(parseInt(result.shangxing.cdc.nanjing[cities]));
                         }
-                        console.log(beijing);
-                        data_beijing[count] = getSum(beijing);
-                        data_dongguan[count] = getSum(dongguan);
-                        data_nanjing[count] = getSum(nanjing);
+                        // console.log(beijing);
+                        data_beijing[count] = getSum(map_beijing);
+                        data_nanjing[count] = getSum(map_nanjing);
+                        data_dongguan[count] = getSum(map_dongguan);
+                        data_total[count] = data_beijing[count] + data_nanjing[count] +
+                            data_dongguan[count];
+                        // console.log('beijing' + count + ' = ' + data_total[count]);
+                        // console.log('dongguan' + count + ' = ' + data_total[count]);
+                        // console.log('nanjing' + count + ' = ' + data_total[count]);
+                        // console.log('total' + count + ' = ' + data_total[count]);
+                        // 折线图函数调用
+                        generateMap("mapBox", map_beijing, map_nanjing, map_dongguan);
+                        lineChart("main", data_beijing, data_nanjing, data_dongguan, data_total);
                     }
                 })
             }
@@ -192,14 +199,13 @@
                 arr.forEach(element => {
                     sum = sum + element;
                 });
-                // console.log('sum = ' + sum);
                 return sum;
             }
 
             // 地图函数
-            function generateMap() {
+            function generateMap(elementId, mapBJ, mapNJ, mapDG) {
                 // 基于准备好的dom，初始化echarts实例
-                var mapEchart = echarts.init(document.getElementById('mapBox'));
+                var mapEchart = echarts.init(document.getElementById(elementId));
                 var geoCoordMap = {
                     '上海': [121.4648, 31.2891],
                     '东莞': [113.8953, 22.901],
@@ -324,7 +330,7 @@
                 for (var i = 0; i < BJsheng.length; i++) {
                     BJobj[BJshi[i]] = BJsheng[i];
                 }
-                var BJUpload = [24.59, 2.77, 4.52, 6.37, 42.93, 5.27, 50.94]
+                var BJUpload = mapBJ;
                 var BJData = [];
                 for (var i = 0; i < BJUpload.length; i++) {
                     var arr = [];
@@ -347,8 +353,8 @@
                     NJobj[NJshi[i]] = NJsheng[i];
                 }
 
-                var NJUpload = [9.9, 29.85, 12.15, 3.11];
-                console.log(NJUpload.length)
+                var NJUpload = mapNJ;
+                // console.log(NJUpload.length)
                 var SHData = [];
                 for (var i = 0; i < NJUpload.length; i++) {
                     var arr = [];
@@ -365,16 +371,16 @@
 
                 //东莞 changsha,foshan,fuzhou,guangzhou,guiyang,kunming,nanchang,nanning,xiamen
                 var DGsheng = ['湖南', '广东', '福建', '广东', '贵州', '云南', '江苏', '福建'];
-                console.log(DGsheng.length)
+                // console.log(DGsheng.length)
                 var DGshi = ['长沙', '佛山', '福州', '广州', '贵阳', '昆明', '南昌', '南京', '厦门'];
-                console.log(DGshi.length)
+                // console.log(DGshi.length)
                 var DGobj = {};
                 for (var i = 0; i < DGsheng.length; i++) {
                     DGobj[DGshi[i]] = DGsheng[i];
                 }
 
-                var DGUpoad = [1.14, 3.71, 0.5, 43.68, 8.63, 59.99, 0.1, 26.86, 8.95];
-                console.log(DGUpoad.length)
+                var DGUpoad = mapDG;
+                // console.log(DGUpoad.length)
                 var DGData = [];
                 for (var i = 0; i < DGUpoad.length; i++) {
                     var arr = [];
@@ -419,7 +425,7 @@
                     ['南京', SHData],
                     ['东莞', DGData]
                 ].forEach(function (item, i) {
-                    //console.log(item,i);
+                    console.log(item,i);
                     series.push({
                         name: item[0],
                         type: 'lines',
@@ -486,8 +492,8 @@
                         },
                         data: item[1].map(function (dataItem) {
                             //debugger
-                            console.log(i);
-                            console.log(dataItem)
+                            // console.log(i);
+                            // console.log(dataItem)
                             var name = "";
                             if (dataItem[0].name == "北京") {
                                 name = BJobj[dataItem[1].name];
@@ -573,7 +579,7 @@
             }
 
             // 折线图函数
-            function lineChart(elementId, dataSet) {
+            function lineChart(elementId, dataBJ, dataNJ, dataDG, dataTT) {
                 console.log('lineChart prepared');
                 // 基于准备好的dom，初始化echarts实例
                 var myChart = echarts.init(document.getElementById(elementId));
@@ -601,8 +607,8 @@
                         }
                     },
                     grid: {
-                        left: '3%',
-                        right: '4%',
+                        left: '6%',
+                        right: '6%',
                         bottom: '3%',
                         containLabel: true
                     },
@@ -610,7 +616,7 @@
                         name: '时间戳（ts）',
                         type: 'category',
                         boundaryGap: false,
-                        data: ['50', '600', '1200', '1800', '2400', '3000', '3600']
+                        // data: ['1000', '2000', '3000', '4000', '5000', '6000', '7000', '8000', '9000', '10000']
                     }],
                     yAxis: [{
                         name: '上行总链路利用率(%)',
@@ -621,21 +627,21 @@
                             type: 'line',
                             stack: '总量',
                             areaStyle: {},
-                            data: data_beijing
+                            data: dataBJ
                         },
                         {
                             name: '南京DC',
                             type: 'line',
                             stack: '总量',
                             areaStyle: {},
-                            data: data_nanjing
+                            data: dataNJ
                         },
                         {
                             name: '东莞DC',
                             type: 'line',
                             stack: '总量',
                             areaStyle: {},
-                            data: data_dongguan
+                            data: dataDG
                         },
                         {
                             name: '总计',
@@ -648,7 +654,7 @@
                                 }
                             },
                             areaStyle: {},
-                            data: data_total
+                            data: dataTT
                         }
                     ]
                 };
@@ -660,7 +666,7 @@
         })
     </script>
 
-    <!-- 用于显示地图 -->
+    <!-- 用于显示地图
     <script>
         // 基于准备好的dom，初始化echarts实例
         var mapEchart = echarts.init(document.getElementById('mapBox'));
@@ -1031,91 +1037,9 @@
         window.addEventListener("resize", function () {
             mapEchart.resize();
         });
-    </script>
+    </script> -->
 
-    <!-- 用于显示折线图 -->
-    <script type="text/javascript">
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById("main"));
-        // 指定图表的配置项和数据
-        option = {
-            title: {
-                text: '流量堆叠图'
-            },
-            tooltip: {
-                trigger: 'axis',
-                axisPointer: {
-                    type: 'cross',
-                    label: {
-                        backgroundColor: '#6a7985'
-                    }
-                }
-            },
-            legend: {
-                data: ['北京DC', '南京DC', '东莞DC', '总计']
-            },
-            toolbox: {
-                feature: {
-                    saveAsImage: {}
-                }
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '3%',
-                containLabel: true
-            },
-            xAxis: [{
-                name: '时间戳（ts）',
-                type: 'category',
-                boundaryGap: false,
-                data: ['50', '600', '1200', '1800', '2400', '3000', '3600']
-            }],
-            yAxis: [{
-                name: '上行总链路利用率(%)',
-                type: 'value'
-            }],
-            series: [{
-                    name: '北京DC',
-                    type: 'line',
-                    stack: '总量',
-                    areaStyle: {},
-                    data: [104.53, 105.06, 104.83, 99.29, 95.3, 88.57,
-                        79.92
-                    ] //10.28,7.55,15.06,44.53,18.34,8.0,1.07
-                },
-                {
-                    name: '南京DC',
-                    type: 'line',
-                    stack: '总量',
-                    areaStyle: {},
-                    data: [55.01, 53.16, 62.12, 62.88, 62.52, 59.91, 56.62]
-                },
-                {
-                    name: '东莞DC',
-                    type: 'line',
-                    stack: '总量',
-                    areaStyle: {},
-                    data: [153.56, 147.66, 138.23, 127.16, 118.2, 109.22, 104.86]
-                },
-                {
-                    name: '总计',
-                    type: 'line',
-                    stack: '总量',
-                    label: {
-                        normal: {
-                            show: true,
-                            position: 'top'
-                        }
-                    },
-                    areaStyle: {},
-                    data: [313.1, 305.88, 305.18, 289.33, 276.2, 257.7, 241.4]
-                }
-            ]
-        };
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-    </script>
+
 
 </body>
 
