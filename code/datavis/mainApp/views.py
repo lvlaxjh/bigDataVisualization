@@ -6,10 +6,12 @@ import os
 import json
 import demjson
 # 用于显示主界面
-
+# shangxing: 9000
+# xiaxing: 9000
+# yujian: 9000
+# task: 5000
 # 用于在启动前将数据全部读入内存------------------------------------------------------------------------------------------------
 pwd = os.getcwd()
-print('---后端---')
 allData = {}  # 存储全部数据
 # 存储上下行内容------------------------------------------------------------------------------------------------
 xiaxingFile1 = open(pwd+'/mainApp'+'/data'+'/beijing_xiaxing.txt')
@@ -167,6 +169,12 @@ def returnData(request):
             reTime = "50"
         else:
             reTime = str(int(reTime)+5)
+        if reKey == "all" or reKey == "renwu":
+            if int(reTime) > 5000:
+                reTime = '50'
+        elif reKey == "shangxing" or reKey == "xiaxing" or reKey == "yujian":
+            if int(reTime) > 9000:
+                reTime = '50'
         siteList = ['beijing', 'dongguan', 'nanjing']
         # -------------------------------------------------------------------------------------------
         if reKey == "all":
