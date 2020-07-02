@@ -228,14 +228,12 @@
                         map_nanjing = [];
                         map_dongguan = [];
                         npmData = [];
-                        //routData= [];
                         var sym = 5
                         var arrsize = 8
                         console.log(result);
                         count_upload = result.shangxing.time;
                         for (cities in result.shangxing.cdc.beijing) {
                             map_beijing.push(parseInt(result.shangxing.cdc.beijing[cities]));
-                            console.log('beijing', cities, geoCoord[cities]);
                             npmData.push(
                                 {
                                     x: geoCoord[cities][0],
@@ -276,7 +274,6 @@
                         );
                         for (cities in result.shangxing.cdc.dongguan) {
                             map_dongguan.push(parseInt(result.shangxing.cdc.dongguan[cities]));
-                            console.log('gongguan', geoCoord[cities]);
                             npmData.push(
                                 {
                                     x: geoCoord[cities][0],
@@ -317,7 +314,6 @@
                         );
                         for (cities in result.shangxing.cdc.nanjing) {
                             map_nanjing.push(parseInt(result.shangxing.cdc.nanjing[cities]));
-                            console.log('nanjing', geoCoord[cities])
                             npmData.push(
                                 {
                                     x: geoCoord[cities][0],
@@ -356,7 +352,6 @@
                                 }
                             }
                         );
-                        // console.log(beijing);
                         data_beijing[count] = getSum(map_beijing);
                         data_nanjing[count] = getSum(map_nanjing);
                         data_dongguan[count] = getSum(map_dongguan);
@@ -521,6 +516,7 @@
                     arr.push(obj2);
                     BJData.push(arr);
                 }
+                console.log("北京Data",BJData);
 
                 //南京 hefei,ningbo,wuhan,wuxi
                 var NJsheng = ['安徽', '浙江', '湖北', '江苏'];
@@ -602,6 +598,7 @@
                     ['南京', SHData],
                     ['东莞', DGData]
                 ].forEach(function (item, i) {
+                    console.log(item,i)
                     series.push({
                         name: item[0],
                         type: 'lines',
