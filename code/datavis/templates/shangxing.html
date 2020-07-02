@@ -67,7 +67,8 @@
     <!-- 按钮 -->
     <div class="row">
         <div class="col-10 offset-1">
-            <button type=" submit " class="total-stream btn btn-info" onclick="javascript:location.href=''">总流量</button>
+            <button type=" submit " class="total-stream btn btn-info"
+                onclick="javascript:location.href='index'">总流量</button>
             <button type=" submit " class="region-stream btn btn-info"
                 onclick="javascript:location.href='region'">域间</button>
             <button type=" submit " class="upload-stream btn btn-info"
@@ -517,7 +518,7 @@
                     arr.push(obj2);
                     BJData.push(arr);
                 }
-                console.log("北京Data",BJData);
+                console.log("北京Data", BJData);
 
                 //南京 hefei,ningbo,wuhan,wuxi
                 var NJsheng = ['安徽', '浙江', '湖北', '江苏'];
@@ -599,7 +600,7 @@
                     ['南京', SHData],
                     ['东莞', DGData]
                 ].forEach(function (item, i) {
-                    console.log(item,i)
+                    console.log(item, i)
                     series.push({
                         name: item[0],
                         type: 'lines',
