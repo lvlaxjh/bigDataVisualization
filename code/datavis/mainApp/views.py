@@ -187,8 +187,8 @@ def returnData(request):
             result['yujian']['time'] = reTime
             for i in siteList:
                 result['yujian']['cdc'][i] = allData['yujian'][result['yujian']['time']][i]
-            result['renwu']['time'] = reTime
-            result['renwu']['id'] = allData['renwu'][result['renwu']['time']]
+            # result['renwu']['time'] = reTime
+            # result['renwu']['id'] = allData['renwu'][result['renwu']['time']]
         # -------------------------------------------------------------------------------------------
 
         if reKey == "shangxing":
