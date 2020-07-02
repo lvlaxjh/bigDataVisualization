@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>index</title>
+    <title>download</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <style>
@@ -195,7 +195,7 @@
             function downloadStreamInit() {
                 console.log('initial start!');
                 count_download = "0";
-                var timer = setInterval(downloadStream, 2000);
+                var timer = setInterval(downloadStream, 500);
                 // 计时器清理
                 if (count === 3) {
                     clearInterval(timer);
@@ -204,7 +204,7 @@
 
             // 下行流量点击响应函数
             function downloadStream() {
-                console.log('uploadStream start!');
+                // console.log('uploadStream start!');
                 console.log('flush: ' + count);
                 count++;
                 $.ajax({
@@ -221,13 +221,13 @@
                         map_dongguan = [];
                         map_nanjing = [];
                         npmData = [];
-                        console.log(result);
+                        // console.log(result);
                         var sym = 5
                         var arrsize = 8
                         count_download = result.xiaxing.time;
                         for (cities in result.xiaxing.cdc.beijing) {
                             map_beijing.push(parseInt(result.xiaxing.cdc.beijing[cities]));
-                            console.log('beijing', cities);
+                            // console.log('beijing', cities);
                             npmData.push(
                                 {
                                     x: geoCoord[cities][0],
@@ -268,7 +268,7 @@
                         )
                         for (cities in result.xiaxing.cdc.dongguan) {
                             map_dongguan.push(parseInt(result.xiaxing.cdc.dongguan[cities]));
-                            console.log('dongguan', cities);
+                            // console.log('dongguan', cities);
                             npmData.push(
                                 {
                                     x: geoCoord[cities][0],
@@ -309,7 +309,7 @@
                         );
                         for (cities in result.xiaxing.cdc.nanjing) {
                             map_nanjing.push(parseInt(result.xiaxing.cdc.nanjing[cities]));
-                            console.log('nanjing', cities);
+                            // console.log('nanjing', cities);
                             npmData.push(
                                 {
                                     x: geoCoord[cities][0],
@@ -592,7 +592,7 @@
                     ['南京', SHData],
                     ['东莞', DGData]
                 ].forEach(function (item, i) {
-                    console.log(item, i);
+                    // console.log(item, i);
                     series.push({
                         //name: item[0],
                         name: item[0],
