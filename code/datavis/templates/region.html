@@ -86,13 +86,6 @@
         </div>
     </div>
 
-    <!-- 任务栏div -->
-    <div class="row">
-        <div class="col-10 offset-1">
-            <h3 class="task-list">task-list-1</h3>
-        </div>
-    </div>
-
     <!-- 折线图div -->
     <div class="row">
         <div class="col-10 offset-1">
@@ -530,7 +523,9 @@
                             });
                         }
                     }
+                    console.log('res',res);
                     return res;
+                    
                 };
 
                 var color = ['#a6c84c', '#ffa022', '#46bee9'];
@@ -540,7 +535,7 @@
                     ['南京', SHData],
                     ['东莞', DGData]
                 ].forEach(function (item, i) {
-                    console.log(item, i);
+                    console.log('item1:', item[1]);
                     series.push({
                         name: item[0],
                         type: 'lines',

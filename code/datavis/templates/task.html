@@ -636,6 +636,16 @@
 
                 var cities = dataSet;
                 var city_pair = [];
+
+                // var tempt_arr = [];
+                // var tempt_obj1 = {};
+                // tempt_obj1.name = cities[0];
+                // var tempt_obj2 = {};
+                // tempt_obj2.name = cities[0];
+                // tempt_arr.push(tempt_obj1);
+                // tempt_arr.push(tempt_obj2);
+                // city_pair.push(tempt_arr);
+
                 for (var i = 0; i < cities.length - 1; i++) {
                     var arr = [];
                     var obj1 = {};
@@ -649,7 +659,7 @@
                 }
 
                 var convertData = function (data) {
-                    // console.log(data);
+                    console.log('data:', data);
                     var res = [];
                     for (var i = 0; i < data.length; i++) {
                         var dataItem = data[i];
@@ -661,8 +671,12 @@
                                 toName: dataItem[1].name,
                                 coords: [fromCoord, toCoord]
                             });
+                            // console.log('fromName:', fromName);
+                            // console.log('toName:', toName);
+                            // console.log('coords:', coords);
                         }
                     }
+                    console.log('res', res);
                     return res;
                 };
 
@@ -739,7 +753,7 @@
                     },
                     data: city_pair.map(function (dataItem) {
 
-                        console.log(dataItem)
+                        // console.log(dataItem)
                         // var name = "";
                         // if (dataItem[0].name == "北京") {
                         //     name = BJobj[dataItem[1].name];
@@ -764,8 +778,8 @@
                 var option = {
                     backgroundColor: '#404a59',
                     title: {
-                        text: '',
-                        subtext: '',
+                        text: '实时任务链路图',
+                        subtext: dataCities,
                         left: 'center',
                         textStyle: {
                             color: '#fff'
