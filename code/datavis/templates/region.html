@@ -748,21 +748,27 @@
                             type: 'line',
                             stack: '总量',
                             areaStyle: {},
-                            data: dataLineBJ
+                            data: dataLineBJ,
+                            smooth: true
+
                         },
                         {
                             name: '南京DC',
                             type: 'line',
                             stack: '总量',
                             areaStyle: {},
-                            data: dataLineNJ
+                            data: dataLineNJ,
+                            smooth: true
+
                         },
                         {
                             name: '东莞DC',
                             type: 'line',
                             stack: '总量',
                             areaStyle: {},
-                            data: dataLineDG
+                            data: dataLineDG,
+                            smooth: true
+
                         },
                         {
                             name: '总计',
@@ -775,7 +781,9 @@
                                 }
                             },
                             areaStyle: {},
-                            data: dataLineTotal
+                            data: dataLineTotal,
+                            smooth: true
+
                         }]
                 };
                 myChart.setOption(option);
@@ -793,7 +801,7 @@
                         {
                             type: 'graph',
                             layout: 'none',
-                            edgeSymbol: ['circle', 'arrow'],
+                            edgeSymbol: ['', 'arrow'],
                             edgeSymbolSize: [4, 10],
                             edgeLabel: {
                                 fontSize: 20
