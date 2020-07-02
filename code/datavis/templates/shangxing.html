@@ -229,6 +229,8 @@
                         map_dongguan = [];
                         npmData = [];
                         //routData= [];
+                        var sym = 5
+                        var arrsize = 8
                         console.log(result);
                         count_upload = result.shangxing.time;
                         for (cities in result.shangxing.cdc.beijing) {
@@ -240,9 +242,9 @@
                                     y: geoCoord[cities][1],
                                     id: cities,
                                     name: pyToCN[cities],
-                                    symbolSize: parseInt(result.shangxing.cdc.beijing[cities]) / 10,
+                                    symbolSize: parseInt(result.shangxing.cdc.beijing[cities]) / sym,
                                     itemStyle: {
-                                        color: "#ff00ff"
+                                        color: "#ff00ff",
                                     }
                                 }
                             );
@@ -250,7 +252,7 @@
                                 {
                                     source: 'beijing',
                                     target: cities,
-                                    symbolSize: [5, parseInt(result.shangxing.cdc.beijing[cities]) / 10],
+                                    symbolSize: [5, parseInt(result.shangxing.cdc.beijing[cities]) / arrsize],
                                     lineStyle: {
                                         width: 1,
                                         curveness: 0.2
@@ -261,12 +263,14 @@
                         npmData.push(
                             {
                                 x: 116.4551,
-                                y: 40.2539,
+                                y: 47.2539,
                                 id: 'beijing',
                                 name: '北京',
-                                symbolSize: 15,
+                                symbolSize: 50,
                                 itemStyle: {
-                                    color: "#ff00ff"
+                                    color: "#ff00ff",
+                                    borderColor: '#bcbcbc',
+                                    borderWidth: 5,
                                 }
                             }
                         );
@@ -279,7 +283,7 @@
                                     y: geoCoord[cities][1],
                                     id: cities,
                                     name: pyToCN[cities],
-                                    symbolSize: parseInt(result.shangxing.cdc.dongguan[cities]) / 10,
+                                    symbolSize: parseInt(result.shangxing.cdc.dongguan[cities]) / sym,
                                     itemStyle: {
                                         color: "#4f19c7"
                                     }
@@ -289,7 +293,7 @@
                                 {
                                     source: 'dongguan',
                                     target: cities,
-                                    symbolSize: [5, parseInt(result.shangxing.cdc.dongguan[cities]) / 10],
+                                    symbolSize: [5, parseInt(result.shangxing.cdc.dongguan[cities]) / arrsize],
                                     lineStyle: {
                                         width: 1,
                                         curveness: 0.2
@@ -300,12 +304,14 @@
                         npmData.push(
                             {
                                 x: 113.8953,
-                                y: 22.901,
+                                y: 15.901,
                                 id: 'dongguan',
                                 name: '东莞',
-                                symbolSize: 15,
+                                symbolSize: 50,
                                 itemStyle: {
-                                    color: "#4f19c7"
+                                    color: "#4f19c7",
+                                    borderColor: '#bcbcbc',
+                                    borderWidth: 5,
                                 }
                             }
                         );
@@ -318,7 +324,7 @@
                                     y: geoCoord[cities][1],
                                     id: cities,
                                     name: pyToCN[cities],
-                                    symbolSize: parseInt(result.shangxing.cdc.nanjing[cities]) / 10,
+                                    symbolSize: parseInt(result.shangxing.cdc.nanjing[cities]) / sym,
                                     itemStyle: {
                                         color: "#00ff33"
                                     }
@@ -328,7 +334,7 @@
                                 {
                                     source: 'nanjing',
                                     target: cities,
-                                    symbolSize: [5, parseInt(result.shangxing.cdc.nanjing[cities]) / 10],
+                                    symbolSize: [5, parseInt(result.shangxing.cdc.nanjing[cities]) / arrsize],
                                     lineStyle: {
                                         width: 1,
                                         curveness: 0.2
@@ -338,13 +344,15 @@
                         }
                         npmData.push(
                             {
-                                x: 118.8062,
-                                y: 31.9208,
+                                x: 125.8062,
+                                y: 35.9208,
                                 id: 'nanjing',
                                 name: '南京',
-                                symbolSize: 15,
+                                symbolSize: 50,
                                 itemStyle: {
-                                    color: "#00ff33"
+                                    color: "#00ff33",
+                                    borderColor: '#bcbcbc',
+                                    borderWidth: 5,
                                 }
                             }
                         );
@@ -857,7 +865,7 @@
                         {
                             type: 'graph',
                             layout: 'none',
-                            edgeSymbol: ['circle', 'arrow'],
+                            edgeSymbol: ['', 'arrow'],
                             edgeSymbolSize: [4, 10],
                             edgeLabel: {
                                 fontSize: 20
