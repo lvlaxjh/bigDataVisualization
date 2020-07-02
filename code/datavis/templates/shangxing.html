@@ -71,9 +71,9 @@
             <button type=" submit " class="region-stream btn btn-info"
                 onclick="javascript:location.href='region'">域间</button>
             <button type=" submit " class="upload-stream btn btn-info"
-                onclick="javascript:location.href='shangxing'">上行</button>
+                onclick="javascript:location.href='shangxing'">下行</button>
             <button type=" submit " class="download-stream btn btn-info"
-                onclick="javascript:location.href='xiaxing'">下行</button>
+                onclick="javascript:location.href='xiaxing'">上行</button>
             <button type=" submit " class="task-stream btn btn-info"
                 onclick="javascript:location.href='task'">任务</button>
         </div>
@@ -113,7 +113,7 @@
     <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/china.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
-    </script>
+        </script>
 
     <!-- ajax传参与响应 -->
     <script>
@@ -135,64 +135,64 @@
             //初始化npm数组
             const geoCoord = {
                 'changchun': [125.8154, 44.2584],
-                    'shanghai': [121.4648, 31.2891],
-                    'dongguan': [113.8953, 22.901],
-                    'beijing': [116.4551, 40.2539],
-                    'nanjing': [118.8062, 31.9208],
-                    'haerbin': [127.9688, 45.368],
-                    'tianjin': [117.4219, 39.4189],
-                    'taiyuan': [112.3352, 37.9413],
-                    'ningbo': [121.5967, 29.6466],
-                    'guangzhou': [113.5107, 23.2196],
-                    'xuzhou': [117.5208, 34.3268],
-                    'wuxi': [120.3442, 31.5527],
-                    'kunming': [102.9199, 25.4663],
-                    'wuhan': [114.3896, 30.6628],
-                    'jinan': [117.1582, 36.8701],
-                    'shenzhen': [114.5435, 22.5439],
-                    'wenzhou': [120.498, 27.8119],
-                    'guiyang': [106.6992, 26.7682],
-                    'wulanchabu': [113.11, 41.03],
-                    'shenyang': [123.1238, 42.1216],
-                    'shijiazhuang': [114.4995, 38.1006],
-                    'changsha': [113.0823, 28.2568],
-                    'foshan': [112.8955, 23.1097],
-                    'fuzhou': [119.4543, 25.9222],
-                    'nanchang': [116.0046, 28.6633],
-                    'nanning': [108.479, 23.1152],
-                    'xiamen': [118.1689, 24.6478],
-                    'hefei': [117.29, 32.0581],
+                'shanghai': [121.4648, 31.2891],
+                'dongguan': [113.8953, 22.901],
+                'beijing': [116.4551, 40.2539],
+                'nanjing': [118.8062, 31.9208],
+                'haerbin': [127.9688, 45.368],
+                'tianjin': [117.4219, 39.4189],
+                'taiyuan': [112.3352, 37.9413],
+                'ningbo': [121.5967, 29.6466],
+                'guangzhou': [113.5107, 23.2196],
+                'xuzhou': [117.5208, 34.3268],
+                'wuxi': [120.3442, 31.5527],
+                'kunming': [102.9199, 25.4663],
+                'wuhan': [114.3896, 30.6628],
+                'jinan': [117.1582, 36.8701],
+                'shenzhen': [114.5435, 22.5439],
+                'wenzhou': [120.498, 27.8119],
+                'guiyang': [106.6992, 26.7682],
+                'wulanchabu': [113.11, 41.03],
+                'shenyang': [123.1238, 42.1216],
+                'shijiazhuang': [114.4995, 38.1006],
+                'changsha': [113.0823, 28.2568],
+                'foshan': [112.8955, 23.1097],
+                'fuzhou': [119.4543, 25.9222],
+                'nanchang': [116.0046, 28.6633],
+                'nanning': [108.479, 23.1152],
+                'xiamen': [118.1689, 24.6478],
+                'hefei': [117.29, 32.0581],
 
-                };
+            };
             var pyToCN = {
-                    'shanghai': '上海',
-                    'dongguan': '东莞',
-                    'beijing': '北京',
-                    'nanjing': '南京',
-                    'haerbin': '哈尔滨',
-                    'tianjin': '天津',
-                    'taiyuan': '太原',
-                    'ningbo': '宁波',
-                    'guangzhou': '广州',
-                    'xuzhou': '徐州',
-                    'wuxi': '无锡',
-                    'kunming': '昆明',
-                    'wuhan': '武汉',
-                    'jinan': '济南',
-                    'shenzhen': '深圳',
-                    'wenzhou': '温州',
-                    'guiyang': '贵阳',
-                    'wulanchabu': '乌兰察布',
-                    'shenyang': '沈阳',
-                    'shijiazhuang': '石家庄',
-                    'changsha': '长沙',
-                    'foshan': '佛山',
-                    'fuzhou': '福州',
-                    'nanchang': '南昌',
-                    'nanning': '南宁',
-                    'xiamen': '厦门',
-                    'hefei': '合肥',
-                    'changchun':'长春'
+                'shanghai': '上海',
+                'dongguan': '东莞',
+                'beijing': '北京',
+                'nanjing': '南京',
+                'haerbin': '哈尔滨',
+                'tianjin': '天津',
+                'taiyuan': '太原',
+                'ningbo': '宁波',
+                'guangzhou': '广州',
+                'xuzhou': '徐州',
+                'wuxi': '无锡',
+                'kunming': '昆明',
+                'wuhan': '武汉',
+                'jinan': '济南',
+                'shenzhen': '深圳',
+                'wenzhou': '温州',
+                'guiyang': '贵阳',
+                'wulanchabu': '乌兰察布',
+                'shenyang': '沈阳',
+                'shijiazhuang': '石家庄',
+                'changsha': '长沙',
+                'foshan': '佛山',
+                'fuzhou': '福州',
+                'nanchang': '南昌',
+                'nanning': '南宁',
+                'xiamen': '厦门',
+                'hefei': '合肥',
+                'changchun': '长春'
             }
             var npmData = [];
             var routData = [];
@@ -233,118 +233,118 @@
                         count_upload = result.shangxing.time;
                         for (cities in result.shangxing.cdc.beijing) {
                             map_beijing.push(parseInt(result.shangxing.cdc.beijing[cities]));
-                            console.log('beijing',cities,geoCoord[cities]);
+                            console.log('beijing', cities, geoCoord[cities]);
                             npmData.push(
                                 {
-                                    x:geoCoord[cities][0],
-                                    y:geoCoord[cities][1],
-                                    id:cities,
-                                    name:pyToCN[cities],
-                                    symbolSize:parseInt(result.shangxing.cdc.beijing[cities])/10,
-                                    itemStyle:{
-                                        color:"#ff00ff"
+                                    x: geoCoord[cities][0],
+                                    y: geoCoord[cities][1],
+                                    id: cities,
+                                    name: pyToCN[cities],
+                                    symbolSize: parseInt(result.shangxing.cdc.beijing[cities]) / 10,
+                                    itemStyle: {
+                                        color: "#ff00ff"
                                     }
                                 }
                             );
                             routData.push(
                                 {
-                                    source:'beijing',
-                                    target:cities,
-                                    symbolSize:[5,parseInt(result.shangxing.cdc.beijing[cities])/10],
-                                    lineStyle:{
-                                        width:1,
-                                        curveness:0.2
+                                    source: 'beijing',
+                                    target: cities,
+                                    symbolSize: [5, parseInt(result.shangxing.cdc.beijing[cities]) / 10],
+                                    lineStyle: {
+                                        width: 1,
+                                        curveness: 0.2
                                     }
                                 }
                             )
                         }
                         npmData.push(
                             {
-                                x:116.4551,
-                                y:40.2539,
-                                id:'beijing',
-                                name:'北京',
-                                symbolSize:15,
-                                itemStyle:{
-                                    color:"#ff00ff"
+                                x: 116.4551,
+                                y: 40.2539,
+                                id: 'beijing',
+                                name: '北京',
+                                symbolSize: 15,
+                                itemStyle: {
+                                    color: "#ff00ff"
                                 }
                             }
                         );
                         for (cities in result.shangxing.cdc.dongguan) {
                             map_dongguan.push(parseInt(result.shangxing.cdc.dongguan[cities]));
-                            console.log('gongguan',geoCoord[cities]);
+                            console.log('gongguan', geoCoord[cities]);
                             npmData.push(
                                 {
-                                    x:geoCoord[cities][0],
-                                    y:geoCoord[cities][1],
-                                    id:cities,
-                                    name:pyToCN[cities],
-                                    symbolSize:parseInt(result.shangxing.cdc.dongguan[cities])/10,
-                                    itemStyle:{
-                                        color:"#4f19c7"
+                                    x: geoCoord[cities][0],
+                                    y: geoCoord[cities][1],
+                                    id: cities,
+                                    name: pyToCN[cities],
+                                    symbolSize: parseInt(result.shangxing.cdc.dongguan[cities]) / 10,
+                                    itemStyle: {
+                                        color: "#4f19c7"
                                     }
                                 }
                             )
                             routData.push(
                                 {
-                                    source:'dongguan',
-                                    target:cities,
-                                    symbolSize:[5,parseInt(result.shangxing.cdc.dongguan[cities])/10],
-                                    lineStyle:{
-                                        width:1,
-                                        curveness:0.2
+                                    source: 'dongguan',
+                                    target: cities,
+                                    symbolSize: [5, parseInt(result.shangxing.cdc.dongguan[cities]) / 10],
+                                    lineStyle: {
+                                        width: 1,
+                                        curveness: 0.2
                                     }
                                 }
                             )
                         }
                         npmData.push(
                             {
-                                x:113.8953,
-                                y:22.901,
-                                id:'dongguan',
-                                name:'东莞',
-                                symbolSize:15,
-                                itemStyle:{
-                                    color:"#4f19c7"
+                                x: 113.8953,
+                                y: 22.901,
+                                id: 'dongguan',
+                                name: '东莞',
+                                symbolSize: 15,
+                                itemStyle: {
+                                    color: "#4f19c7"
                                 }
                             }
                         );
                         for (cities in result.shangxing.cdc.nanjing) {
                             map_nanjing.push(parseInt(result.shangxing.cdc.nanjing[cities]));
-                            console.log('nanjing',geoCoord[cities])
+                            console.log('nanjing', geoCoord[cities])
                             npmData.push(
                                 {
-                                    x:geoCoord[cities][0],
-                                    y:geoCoord[cities][1],
-                                    id:cities,
-                                    name:pyToCN[cities],
-                                    symbolSize:parseInt(result.shangxing.cdc.nanjing[cities])/10,
-                                    itemStyle:{
-                                        color:"#00ff33"
+                                    x: geoCoord[cities][0],
+                                    y: geoCoord[cities][1],
+                                    id: cities,
+                                    name: pyToCN[cities],
+                                    symbolSize: parseInt(result.shangxing.cdc.nanjing[cities]) / 10,
+                                    itemStyle: {
+                                        color: "#00ff33"
                                     }
                                 }
                             )
                             routData.push(
                                 {
-                                    source:'nanjing',
-                                    target:cities,
-                                    symbolSize:[5,parseInt(result.shangxing.cdc.nanjing[cities])/10],
-                                    lineStyle:{
-                                        width:1,
-                                        curveness:0.2
+                                    source: 'nanjing',
+                                    target: cities,
+                                    symbolSize: [5, parseInt(result.shangxing.cdc.nanjing[cities]) / 10],
+                                    lineStyle: {
+                                        width: 1,
+                                        curveness: 0.2
                                     }
                                 }
                             )
                         }
                         npmData.push(
                             {
-                                x:118.8062,
-                                y:31.9208,
-                                id:'nanjing',
-                                name:'南京',
-                                symbolSize:15,
-                                itemStyle:{
-                                    color:"#00ff33"
+                                x: 118.8062,
+                                y: 31.9208,
+                                id: 'nanjing',
+                                name: '南京',
+                                symbolSize: 15,
+                                itemStyle: {
+                                    color: "#00ff33"
                                 }
                             }
                         );
@@ -751,7 +751,15 @@
                 console.log('lineChart prepared');
                 // 基于准备好的dom，初始化echarts实例
                 var myChart = echarts.init(document.getElementById(elementId));
-
+                var flagdata = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                dataBJ = flagdata.concat(dataBJ)
+                dataNJ = flagdata.concat(dataNJ)
+                dataDG = flagdata.concat(dataDG)
+                dataTT = flagdata.concat(dataTT)
+                dataBJ = dataBJ.slice(dataBJ.length - 10, dataBJ.length)
+                dataNJ = dataNJ.slice(dataNJ.length - 10, dataNJ.length)
+                dataDG = dataDG.slice(dataDG.length - 10, dataDG.length)
+                dataTT = dataTT.slice(dataTT.length - 10, dataTT.length)
                 // 指定图表的配置项和数据
                 option = {
                     title: {
@@ -784,6 +792,7 @@
                         name: '时间戳（ts）',
                         type: 'category',
                         boundaryGap: false,
+                        data: ['', '', '', '', '', '', '', '', '', '']
                         // data: ['1000', '2000', '3000', '4000', '5000', '6000', '7000', '8000', '9000', '10000']
                     }],
                     yAxis: [{
@@ -791,39 +800,39 @@
                         type: 'value'
                     }],
                     series: [{
-                            name: '北京DC',
-                            type: 'line',
-                            stack: '总量',
-                            areaStyle: {},
-                            data: dataBJ
+                        name: '北京DC',
+                        type: 'line',
+                        stack: '总量',
+                        areaStyle: {},
+                        data: dataBJ
+                    },
+                    {
+                        name: '南京DC',
+                        type: 'line',
+                        stack: '总量',
+                        areaStyle: {},
+                        data: dataNJ
+                    },
+                    {
+                        name: '东莞DC',
+                        type: 'line',
+                        stack: '总量',
+                        areaStyle: {},
+                        data: dataDG
+                    },
+                    {
+                        name: '总计',
+                        type: 'line',
+                        stack: '总量',
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'top'
+                            }
                         },
-                        {
-                            name: '南京DC',
-                            type: 'line',
-                            stack: '总量',
-                            areaStyle: {},
-                            data: dataNJ
-                        },
-                        {
-                            name: '东莞DC',
-                            type: 'line',
-                            stack: '总量',
-                            areaStyle: {},
-                            data: dataDG
-                        },
-                        {
-                            name: '总计',
-                            type: 'line',
-                            stack: '总量',
-                            label: {
-                                normal: {
-                                    show: true,
-                                    position: 'top'
-                                }
-                            },
-                            areaStyle: {},
-                            data: dataTT
-                        }
+                        areaStyle: {},
+                        data: dataTT
+                    }
                     ]
                 };
                 // 使用刚指定的配置项和数据显示图表。
@@ -836,7 +845,7 @@
             }
 
             // NPM图函数
-            function showNPM(elementId,cityData,routeData){
+            function showNPM(elementId, cityData, routeData) {
                 var MyScatter = echarts.init(document.getElementById(elementId));
                 option = {
                     title: {
@@ -854,7 +863,7 @@
                                 fontSize: 20
                             },
                             data: cityData,
-                            edges:routeData,
+                            edges: routeData,
                             emphasis: {
                                 label: {
                                     position: 'right',
