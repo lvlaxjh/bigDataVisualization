@@ -204,10 +204,9 @@
                         data_xiaxing_dongguan[count] = getSum(map_xiaxing_dongguan)
                         data_xiaxing_nanjing[count] = getSum(map_xiaxing_nanjing)
                         //
-                        data_shangxing_total[count] = data_shangxing_beijing[count] + data_shangxing_dongguan[count] + data_shangxing_nanjing[count]
-                        data_xiaxing_total[count] = data_xiaxing_beijing[count] + data_xiaxing_dongguan[count] + data_xiaxing_nanjing[count]
+                        data_shangxing_total = data_shangxing_beijing[count] + data_shangxing_dongguan[count] + data_shangxing_nanjing[count]
+                        data_xiaxing_total = data_xiaxing_beijing[count] + data_xiaxing_dongguan[count] + data_xiaxing_nanjing[count]
                         //
-                        // console.log('*****', data_shangxing_beijing)
                         // 折线图函数调用
                         generateMap("mapBox", map_shangxing_beijing, map_shangxing_nanjing, map_shangxing_dongguan, map_xiaxing_beijing, map_xiaxing_nanjing, map_xiaxing_dongguan);
                         lineChart("main", data_shangxing_beijing, data_shangxing_nanjing, data_shangxing_dongguan, data_shangxing_total);
@@ -610,16 +609,7 @@
                 console.log('lineChart prepared');
                 // 基于准备好的dom，初始化echarts实例
                 var myChart = echarts.init(document.getElementById(elementId));
-                var flagdata = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-                dataBJ = flagdata.concat(dataBJ)
-                dataNJ = flagdata.concat(dataNJ)
-                dataDG = flagdata.concat(dataDG)
-                dataTT = flagdata.concat(dataTT)
-                dataBJ = dataBJ.slice(dataBJ.length - 10, dataBJ.length)
-                dataNJ = dataNJ.slice(dataNJ.length - 10, dataNJ.length)
-                dataDG = dataDG.slice(dataDG.length - 10, dataDG.length)
-                dataTT = dataTT.slice(dataTT.length - 10, dataTT.length)
-                console.log('newdataBJ', dataBJ)
+
                 // 指定图表的配置项和数据
                 option = {
                     title: {
@@ -652,7 +642,7 @@
                         name: '时间戳（ts）',
                         type: 'category',
                         boundaryGap: false,
-                        data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+                        // data: ['1000', '2000', '3000', '4000', '5000', '6000', '7000', '8000', '9000', '10000']
                     }],
                     yAxis: [{
                         name: '上行总链路利用率(%)',
