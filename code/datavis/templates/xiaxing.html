@@ -133,7 +133,7 @@
             var data_nanjing = [];
             var data_dongguan = [];
             //初始化npm数组
-            var geoCoordMap = {
+            const geoCoord = {
                     'shanghai': [121.4648, 31.2891],
                     'dongguan': [113.8953, 22.901],
                     'beijing': [116.4551, 40.2539],
@@ -201,7 +201,7 @@
             function downloadStreamInit() {
                 console.log('initial start!');
                 count_download = "0";
-                var timer = setInterval(downloadStream, 5000);
+                var timer = setInterval(downloadStream, 2000);
                 // 计时器清理
                 if (count === 3) {
                     clearInterval(timer);
@@ -229,20 +229,13 @@
                         npmData = [];
                         console.log(result);
                         count_download = result.xiaxing.time;
-                        // let beijing = [];
-                        // let dongguan = [];
-                        // let nanjing = [];
-                        // result.shangxing.cdc.beijing.forEach(value => {
-                        //     beijing.push(parseInt(value));
-                        // })
                         for (cities in result.xiaxing.cdc.beijing) {
                             map_beijing.push(parseInt(result.xiaxing.cdc.beijing[cities]));
-                            console.log("test1",cities);
-                            console.log("test2",geoCoordMap[cities][0]);
+                            console.log('beijing',cities);
                             npmData.push(
                                 {
-                                    x:geoCoordMap[cities][0],
-                                    y:geoCoordMap[cities][1],
+                                    x:geoCoord[cities][0],
+                                    y:geoCoord[cities][1],
                                     id:cities,
                                     name:pyToCN[cities],
                                     symbolSize:parseInt(result.xiaxing.cdc.beijing[cities])/10,
@@ -253,8 +246,8 @@
                             );
                             routData.push(
                                 {
-                                    source:'beijing',
-                                    target:cities
+                                    source:cities,
+                                    target:'beijing'
                                 }
                             )
                         }
@@ -272,11 +265,11 @@
                         )
                         for (cities in result.xiaxing.cdc.dongguan) {
                             map_dongguan.push(parseInt(result.xiaxing.cdc.dongguan[cities]));
-                            //console.log("test npmData",npmData);
+                            console.log('dongguan',cities);
                             npmData.push(
                                 {
-                                    x:geoCoordMap[cities][0],
-                                    y:geoCoordMap[cities][1],
+                                    x:geoCoord[cities][0],
+                                    y:geoCoord[cities][1],
                                     id:cities,
                                     name:pyToCN[cities],
                                     symbolSize:parseInt(result.xiaxing.cdc.dongguan[cities])/10,
@@ -287,8 +280,8 @@
                             )
                             routData.push(
                                 {
-                                    source:'dongguan',
-                                    target:cities
+                                    source:cities,
+                                    target:'dongguan'
                                 }
                             )
                         }
@@ -306,10 +299,11 @@
                         );
                         for (cities in result.xiaxing.cdc.nanjing) {
                             map_nanjing.push(parseInt(result.xiaxing.cdc.nanjing[cities]));
+                            console.log('nanjing',cities);
                             npmData.push(
                                 {
-                                    x:geoCoordMap[cities][0],
-                                    y:geoCoordMap[cities][1],
+                                    x:geoCoord[cities][0],
+                                    y:geoCoord[cities][1],
                                     id:cities,
                                     name:pyToCN[cities],
                                     symbolSize:parseInt(result.xiaxing.cdc.nanjing[cities])/10,
@@ -320,8 +314,8 @@
                             )
                             routData.push(
                                 {
-                                    source:'nanjing',
-                                    target:cities
+                                    source:cities,
+                                    target:'nanjing'
                                 }
                             )
                         }
@@ -340,8 +334,6 @@
                         data_beijing[count] = getSum(map_beijing);
                         data_dongguan[count] = getSum(map_dongguan);
                         data_nanjing[count] = getSum(map_nanjing);
-                        console.log('ttt',map_dongguan);
-                        //console.log('tttt',data_dongguan);
                         data_total[count] = data_beijing[count] + data_dongguan[count] + data_nanjing[count];
                         showLine("main", data_beijing, data_nanjing, data_dongguan, data_total);
                         showMap("mapBox", map_beijing, map_nanjing, map_dongguan);
@@ -833,45 +825,8 @@
                         {
                             type: 'graph',
                             layout: 'none',
-                            // progressiveThreshold: 700,
                             data: cityData,
-                            //     [{
-                            //     x: 300,
-                            //     y: 300,
-                            //     id: 'beijing',
-                            //     name: 'beijing',
-                            //     symbolSize: 10,
-                            //     itemStyle: {
-                            //         color: "#4f19c7"
-                            //     }
-                            // }, {
-                            //     x: 600,
-                            //     y: 600,
-                            //     id: 'dongguan',
-                            //     name: 'dongguan',
-                            //     symbolSize: 20,
-                            //     itemStyle: {
-                            //         color: "#4f19c7"
-                            //     }
-                            // },
-                            // {
-                            //     x: 100,
-                            //     y: 400,
-                            //     id: 'nanjing',
-                            //     name: 'nanjing',
-                            //     symbolSize: 30,
-                            //     itemStyle: {
-                            //         color: "#4f19c7"
-                            //     }
-                            // }],
                             edges:routeData,
-                            //     [{
-                            //     source: 'beijing',
-                            //     target: 'nanjing',
-                            //     // value:12
-                            // },
-                            //
-                            //     ],
                             emphasis: {
                                 label: {
                                     position: 'right',
