@@ -203,6 +203,7 @@
             function uploadStreamInit() {
                 console.log('initial start!');
                 count_upload = "0";
+                uploadStream();
                 var timer = setInterval(uploadStream, 2000);
                 // 计时器清理
                 if (count === 3) {
