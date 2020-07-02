@@ -87,8 +87,8 @@
 
     <!-- 任务栏div -->
     <div class="row">
-        <div class="col-10 offset-1">
-            <h5 class="task-list">task-list-1</h3>
+        <div class="task-box col-10 offset-1">
+            <!-- <h5 class="task-list">task-list-1</h5> -->
         </div>
     </div>
 
@@ -123,6 +123,35 @@
             var count = 1;
             // 任务对象
             var task_list = {};
+            var pyToCN = {
+                'shanghai': '上海',
+                'dongguan': '东莞',
+                'beijing': '北京',
+                'nanjing': '南京',
+                'haerbin': '哈尔滨',
+                'tianjin': '天津',
+                'taiyuan': '太原',
+                'ningbo': '宁波',
+                'guangzhou': '广州',
+                'xuzhou': '徐州',
+                'wuxi': '无锡',
+                'kunming': '昆明',
+                'wuhan': '武汉',
+                'jinan': '济南',
+                'shenzhen': '深圳',
+                'wenzhou': '温州',
+                'guiyang': '贵阳',
+                'wulanchabu': '乌兰察布',
+                'shenyang': '沈阳',
+                'shijiazhuang': '石家庄',
+                'changsha': '长沙',
+                'foshan': '佛山',
+                'fuzhou': '福州',
+                'nanchang': '南昌',
+                'nanning': '南宁',
+                'xiamen': '厦门',
+                'hefei': '哈尔滨',
+            }
 
             window.onload = taskStreamInit();
 
@@ -147,16 +176,31 @@
                         csrfmiddlewaretoken: '{{ csrf_token }}',
                     },
                     success: function (result) {
-                        console.log(result);
+                        // console.log(result);
                         count_task = result.renwu.time;
                         // 任务列表初始化
                         task_list = {};
+                        // 前端布局初始化
+                        $('.task-box').empty();
+
                         for (task in result.renwu.id) {
+                            let ch_list = [];
                             task_list[task] = result.renwu.id[task];
+                            task_list[task].forEach(en_list => {
+                                ch_list.push(pyToCN[en_list]);
+                            });
+                            console.log(ch_list);
+                            // for (en_list in task_list[task]) {
+                            //     list.push(task_list[task][en_list]);
+                            // }
+                            $('.task-box').append("<h5 class=\"task-list\">任务" + task + ": " +
+                                ch_list + "</h5>")
                         }
-                        console.log(task_list);
+                        // console.log(task_list);
+                        
                         // 折线图函数调用
                         generateMap("mapBox");
+
                     }
                 })
             }

@@ -249,7 +249,12 @@
                             routData.push(
                                 {
                                     source:'beijing',
-                                    target:cities
+                                    target:cities,
+                                    symbolSize:[5,parseInt(result.shangxing.cdc.beijing[cities])/10],
+                                    lineStyle:{
+                                        width:1,
+                                        curveness:0.2
+                                    }
                                 }
                             )
                         }
@@ -283,7 +288,12 @@
                             routData.push(
                                 {
                                     source:'dongguan',
-                                    target:cities
+                                    target:cities,
+                                    symbolSize:[5,parseInt(result.shangxing.cdc.dongguan[cities])/10],
+                                    lineStyle:{
+                                        width:1,
+                                        curveness:0.2
+                                    }
                                 }
                             )
                         }
@@ -317,7 +327,12 @@
                             routData.push(
                                 {
                                     source:'nanjing',
-                                    target:cities
+                                    target:cities,
+                                    symbolSize:[5,parseInt(result.shangxing.cdc.nanjing[cities])/10],
+                                    lineStyle:{
+                                        width:1,
+                                        curveness:0.2
+                                    }
                                 }
                             )
                         }
@@ -360,7 +375,7 @@
             function generateMap(elementId, mapBJ, mapNJ, mapDG) {
                 // 基于准备好的dom，初始化echarts实例
                 var mapEchart = echarts.init(document.getElementById(elementId));
-                geoCoordMap = {
+                var geoCoordMap = {
                     '上海': [121.4648, 31.2891],
                     '东莞': [113.8953, 22.901],
                     '东营': [118.7073, 37.5513],
@@ -833,6 +848,11 @@
                         {
                             type: 'graph',
                             layout: 'none',
+                            edgeSymbol: ['circle', 'arrow'],
+                            edgeSymbolSize: [4, 10],
+                            edgeLabel: {
+                                fontSize: 20
+                            },
                             data: cityData,
                             edges:routeData,
                             emphasis: {
