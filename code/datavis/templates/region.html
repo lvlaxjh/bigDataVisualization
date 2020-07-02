@@ -100,10 +100,10 @@
         </div>
     </div>
 
-    <!-- 散点图div -->
+    <!-- NPM图div -->
     <div class="row">
         <div class="col-10 offset-1">
-            <div id="Scatter" class="div-bubble-chart" style="width: 80%;height: 500px;"></div>
+            <div id="Scatter" style="width: 80%;height: 500px;"></div>
         </div>
     </div>
 
@@ -130,6 +130,70 @@
             var data_beijing = [];
             var data_nanjing = [];
             var data_dongguan = [];
+            //初始化npm数组
+            const geoCoord = {
+                'changchun': [125.8154, 44.2584],
+                'shanghai': [121.4648, 31.2891],
+                'dongguan': [113.8953, 22.901],
+                'beijing': [116.4551, 40.2539],
+                'nanjing': [118.8062, 31.9208],
+                'haerbin': [127.9688, 45.368],
+                'tianjin': [117.4219, 39.4189],
+                'taiyuan': [112.3352, 37.9413],
+                'ningbo': [121.5967, 29.6466],
+                'guangzhou': [113.5107, 23.2196],
+                'xuzhou': [117.5208, 34.3268],
+                'wuxi': [120.3442, 31.5527],
+                'kunming': [102.9199, 25.4663],
+                'wuhan': [114.3896, 30.6628],
+                'jinan': [117.1582, 36.8701],
+                'shenzhen': [114.5435, 22.5439],
+                'wenzhou': [120.498, 27.8119],
+                'guiyang': [106.6992, 26.7682],
+                'wulanchabu': [113.11, 41.03],
+                'shenyang': [123.1238, 42.1216],
+                'shijiazhuang': [114.4995, 38.1006],
+                'changsha': [113.0823, 28.2568],
+                'foshan': [112.8955, 23.1097],
+                'fuzhou': [119.4543, 25.9222],
+                'nanchang': [116.0046, 28.6633],
+                'nanning': [108.479, 23.1152],
+                'xiamen': [118.1689, 24.6478],
+                'hefei': [117.29, 32.0581],
+
+            };
+            var pyToCN = {
+                'shanghai': '上海',
+                'dongguan': '东莞',
+                'beijing': '北京',
+                'nanjing': '南京',
+                'haerbin': '哈尔滨',
+                'tianjin': '天津',
+                'taiyuan': '太原',
+                'ningbo': '宁波',
+                'guangzhou': '广州',
+                'xuzhou': '徐州',
+                'wuxi': '无锡',
+                'kunming': '昆明',
+                'wuhan': '武汉',
+                'jinan': '济南',
+                'shenzhen': '深圳',
+                'wenzhou': '温州',
+                'guiyang': '贵阳',
+                'wulanchabu': '乌兰察布',
+                'shenyang': '沈阳',
+                'shijiazhuang': '石家庄',
+                'changsha': '长沙',
+                'foshan': '佛山',
+                'fuzhou': '福州',
+                'nanchang': '南昌',
+                'nanning': '南宁',
+                'xiamen': '厦门',
+                'hefei': '合肥',
+                'changchun': '长春'
+            }
+            var npmData = [];
+            var routData = [];
 
 
             window.onload = regionStreamInit();
@@ -138,7 +202,7 @@
             function regionStreamInit() {
                 console.log('initial start!');
                 count_region = "0";
-                var timer = setInterval(regionStream, 1000);
+                var timer = setInterval(regionStream, 2000);
                 // 计时器清理
                 if (count === 3) {
                     clearInterval(timer);
@@ -163,6 +227,7 @@
                         map_beijing = [];
                         map_dongguan = [];
                         map_nanjing = [];
+                        npmData = [];
                         console.log(result);
                         count_region = result.yujian.time;
                         // let beijing = [];
@@ -173,13 +238,82 @@
                         // })
                         for (cities in result.yujian.cdc.beijing) {
                             map_beijing.push(parseInt(result.yujian.cdc.beijing[cities]));
+                            routData.push(
+                                {
+                                    source: 'beijing',
+                                    target: cities,
+                                    symbolSize: [5, parseInt(result.yujian.cdc.beijing[cities]) / 10],
+                                    lineStyle: {
+                                        width: 1,
+                                        curveness: 0.2
+                                    }
+                                }
+                            )
                         }
+                        npmData.push(
+                            {
+                                x: 116.4551,
+                                y: 40.2539,
+                                id: 'beijing',
+                                name: '北京',
+                                symbolSize: 15,
+                                itemStyle: {
+                                    color: "#ff00ff"
+                                }
+                            }
+                        );
                         for (cities in result.yujian.cdc.dongguan) {
                             map_dongguan.push(parseInt(result.yujian.cdc.dongguan[cities]));
+                            routData.push(
+                                {
+                                    source: 'dongguan',
+                                    target: cities,
+                                    symbolSize: [5, parseInt(result.yujian.cdc.dongguan[cities]) / 10],
+                                    lineStyle: {
+                                        width: 1,
+                                        curveness: 0.2
+                                    }
+                                }
+                            )
                         }
+                        npmData.push(
+                            {
+                                x: 113.8953,
+                                y: 22.901,
+                                id: 'dongguan',
+                                name: '东莞',
+                                symbolSize: 15,
+                                itemStyle: {
+                                    color: "#4f19c7"
+                                }
+                            }
+                        );
                         for (cities in result.yujian.cdc.nanjing) {
                             map_nanjing.push(parseInt(result.yujian.cdc.nanjing[cities]));
+                            routData.push(
+                                {
+                                    source: 'nanjing',
+                                    target: cities,
+                                    symbolSize: [5, parseInt(result.yujian.cdc.nanjing[cities]) / 10],
+                                    lineStyle: {
+                                        width: 1,
+                                        curveness: 0.2
+                                    }
+                                }
+                            )
                         }
+                        npmData.push(
+                            {
+                                x: 118.8062,
+                                y: 31.9208,
+                                id: 'nanjing',
+                                name: '南京',
+                                symbolSize: 15,
+                                itemStyle: {
+                                    color: "#00ff33"
+                                }
+                            }
+                        );
                         data_beijing[count] = getSum(map_beijing);
                         data_dongguan[count] = getSum(map_dongguan);
                         data_nanjing[count] = getSum(map_nanjing);
@@ -188,6 +322,7 @@
                         data_total[count] = data_beijing[count] + data_dongguan[count] + data_nanjing[count];
                         showLine("main", data_beijing, data_nanjing, data_dongguan, data_total);
                         showMap("mapBox", map_beijing, map_nanjing, map_dongguan);
+                        showNPM("Scatter", npmData, routData);
                     }
                 })
             }
@@ -672,81 +807,50 @@
                 };
                 myChart.setOption(option);
             }
+
+            function showNPM(elementId, cityData, routeData) {
+                var MyScatter = echarts.init(document.getElementById(elementId));
+                option = {
+                    title: {
+                        text: 'NPM Dependencies'
+                    },
+                    animationDurationUpdate: 1500,
+                    animationEasingUpdate: 'quinticInOut',
+                    series: [
+                        {
+                            type: 'graph',
+                            layout: 'none',
+                            edgeSymbol: ['circle', 'arrow'],
+                            edgeSymbolSize: [4, 10],
+                            edgeLabel: {
+                                fontSize: 20
+                            },
+                            data: cityData,
+                            edges: routeData,
+                            emphasis: {
+                                label: {
+                                    position: 'right',
+                                    show: true
+                                }
+                            },
+                            roam: true,
+                            focusNodeAdjacency: true,
+                            lineStyle: {
+                                width: 0.5,
+                                curveness: 0.3,
+                                opacity: 0.7
+                            }
+                        }
+                    ]
+                };
+
+                MyScatter.setOption(option);
+            }
         })
     </script>
 
 
-    <!-- 用于显示散点图 -->
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var MyScatter = echarts.init(document.getElementById('Scatter'));
 
-            var data = [
-                ['2012-03-01',
-                    1,
-                    "翻身"
-                ],
-                [
-                    '2013-06-01',
-                    2,
-                    "没翻身"
-                ],
-                [
-                    '2014-03-02',
-                    3,
-                    "翻身"
-                ],
-                [
-                    '2015-03-03',
-                    5,
-                    "翻身"
-                ],
-                [
-                    '2016-03-04',
-                    7,
-                    "翻身"
-                ]
-            ];
-            var textStyle = {
-                color: '#333',
-                fontStyle: 'normal',
-                fontWeight: 'normal',
-                fontFamily: '微软雅黑',
-                fontSize: 14,
-            };
-            option = {
-                tooltip: {
-                    /*返回需要的信息*/
-                    formatter: function (param) {
-                        var value = param.value;
-                        return '<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 16px;padding-bottom: 7px;margin-bottom: 7px;"> ' +
-                            value[2] + '(' + value[1] + ')' +
-                            '</div>';
-                    }
-                },
-                xAxis: {
-                    type: 'time',
-                    name: '时间轴',
-
-                },
-                yAxis: {
-                    type: 'value',
-                    name: '次数值',
-
-                    max: 13,
-                    min: 0,
-                },
-                series: [{
-                    name: '',
-                    data: data,
-                    type: 'scatter',
-                    symbolSize: 30
-                }]
-            };
-
-            MyScatter.setOption(option);
-        });
-    </script>
 
 </body>
 
