@@ -247,7 +247,12 @@
                             routData.push(
                                 {
                                     source:cities,
-                                    target:'beijing'
+                                    target:'beijing',
+                                    symbolSize:[5,parseInt(result.xiaxing.cdc.beijing[cities])/10],
+                                    lineStyle:{
+                                        width:1,
+                                        curveness:0.2
+                                    }
                                 }
                             )
                         }
@@ -281,7 +286,12 @@
                             routData.push(
                                 {
                                     source:cities,
-                                    target:'dongguan'
+                                    target:'dongguan',
+                                    symbolSize:[5,parseInt(result.xiaxing.cdc.dongguan[cities])/10],
+                                    lineStyle:{
+                                        width:1,
+                                        curveness:0.2
+                                    }
                                 }
                             )
                         }
@@ -315,7 +325,12 @@
                             routData.push(
                                 {
                                     source:cities,
-                                    target:'nanjing'
+                                    target:'nanjing',
+                                    symbolSize:[5,parseInt(result.xiaxing.cdc.nanjing[cities])/10],
+                                    lineStyle:{
+                                        width:1,
+                                        curveness:0.2
+                                    }
                                 }
                             )
                         }
@@ -825,6 +840,11 @@
                         {
                             type: 'graph',
                             layout: 'none',
+                            edgeSymbol: ['circle', 'arrow'],
+                            edgeSymbolSize: [4, 10],
+                            edgeLabel: {
+                                fontSize: 20
+                            },
                             data: cityData,
                             edges:routeData,
                             emphasis: {
