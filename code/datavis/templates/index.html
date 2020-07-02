@@ -74,7 +74,43 @@
 <!-- style="display: flex;flex-direction: column;align-items: center;justify-content: space-between;" -->
 
 <body class="container-fluid" style="text-align: center;">
-
+    <!--
+        ██████╗  ██████╗ ██╗    ██╗███████╗██████╗ ███████╗██████╗     ██████╗ ██╗   ██╗
+        ██╔══██╗██╔═══██╗██║    ██║██╔════╝██╔══██╗██╔════╝██╔══██╗    ██╔══██╗╚██╗ ██╔╝
+        ██████╔╝██║   ██║██║ █╗ ██║█████╗  ██████╔╝█████╗  ██║  ██║    ██████╔╝ ╚████╔╝ 
+        ██╔═══╝ ██║   ██║██║███╗██║██╔══╝  ██╔══██╗██╔══╝  ██║  ██║    ██╔══██╗  ╚██╔╝  
+        ██║     ╚██████╔╝╚███╔███╔╝███████╗██║  ██║███████╗██████╔╝    ██████╔╝   ██║   
+        ╚═╝      ╚═════╝  ╚══╝╚══╝ ╚══════╝╚═╝  ╚═╝╚══════╝╚═════╝     ╚═════╝    ╚═╝   
+                                                                                        
+        ██╗  ██╗███████╗██╗  ██╗
+        ╚██╗██╔╝╚══███╔╝██║  ██║
+         ╚███╔╝   ███╔╝ ███████║
+         ██╔██╗  ███╔╝  ██╔══██║
+        ██╔╝ ██╗███████╗██║  ██║
+        ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+                                
+        ██╗    ██╗██╗   ██╗
+        ██║    ██║╚██╗ ██╔╝
+        ██║ █╗ ██║ ╚████╔╝ 
+        ██║███╗██║  ╚██╔╝  
+        ╚███╔███╔╝   ██║   
+         ╚══╝╚══╝    ╚═╝   
+                           
+             ██╗██╗  ██╗ ██████╗
+             ██║██║  ██║██╔════╝
+             ██║███████║██║     
+        ██   ██║██╔══██║██║     
+        ╚█████╔╝██║  ██║╚██████╗
+        ╚════╝ ╚═╝  ╚═╝ ╚═════╝
+                                 
+        ███╗   ███╗██╗   ██╗ ██████╗
+        ████╗ ████║╚██╗ ██╔╝██╔════╝
+        ██╔████╔██║ ╚████╔╝ ██║     
+        ██║╚██╔╝██║  ╚██╔╝  ██║     
+        ██║ ╚═╝ ██║   ██║   ╚██████╗
+        ╚═╝     ╚═╝   ╚═╝    ╚═════╝
+                                    
+    -->
     <!-- 按钮 -->
     <div class="row">
         <div class="col-10 offset-1">
@@ -615,9 +651,9 @@
                         showShangxingMap("mapBox1", map_shangxing_beijing, map_shangxing_nanjing, map_shangxing_dongguan);
                         showXiaxingMap("mapBox2", map_xiaxing_beijing, map_xiaxing_nanjing, map_xiaxing_dongguan);
                         showYujianMap("mapBox3", map_yujian_beijing, map_yujian_nanjing, map_yujian_dongguan);
-                        showLine("main1", data_shangxing_beijing, data_shangxing_nanjing, data_shangxing_dongguan,data_shangxing_total);
+                        showLine("main1", data_shangxing_beijing, data_shangxing_nanjing, data_shangxing_dongguan, data_shangxing_total);
                         showLine("main2", data_xiaxing_beijing, data_xiaxing_nanjing, data_xiaxing_dongguan, data_xiaxing_total);
-                        showLine("main3", data_yujian_beijing, data_yujian_nanjing, data_yujian_dongguan ,data_yujian_total);
+                        showLine("main3", data_yujian_beijing, data_yujian_nanjing, data_yujian_dongguan, data_yujian_total);
                         showNPM("NPM1", npm_shangxing, route_shangxing);
                         showNPM("NPM2", npm_xiaxing, route_xiaxing);
                         showNPM("NPM3", npm_yujian, route_yujian);
@@ -777,7 +813,7 @@
                     arr.push(obj2);
                     BJData.push(arr);
                 }
-                console.log("北京Data",BJData);
+                console.log("北京Data", BJData);
 
                 //南京 hefei,ningbo,wuhan,wuxi
                 var NJsheng = ['安徽', '浙江', '湖北', '江苏'];
@@ -859,7 +895,7 @@
                     ['南京', SHData],
                     ['东莞', DGData]
                 ].forEach(function (item, i) {
-                    console.log(item,i)
+                    console.log(item, i)
                     series.push({
                         name: item[0],
                         type: 'lines',
