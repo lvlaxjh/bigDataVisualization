@@ -112,7 +112,7 @@ class DataPutTest(TestCase):
         self.assertEqual(response['shangxing']['time'], '50')
         self.assertEqual(response['xiaxing']['time'], '50')
         self.assertEqual(response['yujian']['time'], '50')
-        self.assertEqual(response['renwu']['time'], '50')
+        # self.assertEqual(response['renwu']['time'], '50')
         #
         self.assertEqual(response['shangxing']['cdc']['beijing'],
                          self.allData['shangxing']['beijing']['50'])
@@ -120,8 +120,8 @@ class DataPutTest(TestCase):
                          self.allData['xiaxing']['beijing']['50'])
         self.assertEqual(response['yujian']['cdc']['beijing'],
                          self.allData['yujian']['50']['beijing'])
-        self.assertEqual(response['renwu']['id'],
-                         self.allData['renwu']['50'])
+        # self.assertEqual(response['renwu']['id'],
+        #                  self.allData['renwu']['50'])
 
     def test_returnData_all_otherSend(self):
         print("all - 其他请求测试")
@@ -134,15 +134,15 @@ class DataPutTest(TestCase):
         self.assertEqual(response['shangxing']['time'], str(oneTime+5))
         self.assertEqual(response['xiaxing']['time'], str(oneTime+5))
         self.assertEqual(response['yujian']['time'], str(oneTime+5))
-        self.assertEqual(response['renwu']['time'], str(oneTime+5))
+        # self.assertEqual(response['renwu']['time'], str(oneTime+5))
         self.assertEqual(response['shangxing']['cdc']['beijing'],
                          self.allData['shangxing']['beijing'][str(oneTime+5)])
         self.assertEqual(response['xiaxing']['cdc']['beijing'],
                          self.allData['xiaxing']['beijing'][str(oneTime+5)])
         self.assertEqual(response['yujian']['cdc']['beijing'],
                          self.allData['yujian'][str(oneTime+5)]['beijing'])
-        self.assertEqual(response['renwu']['id'],
-                         self.allData['renwu'][str(oneTime+5)])
+        # self.assertEqual(response['renwu']['id'],
+        #                  self.allData['renwu'][str(oneTime+5)])
 
     def test_returnData_all_timeOut(self):
         print('all - 超时测试')

@@ -93,6 +93,11 @@ renwuFile.close()
 # -------------------------------------------------------------------------------------------------
 
 
+def mains(request):
+    response = render(request, 'main.html')
+    return response
+
+
 def index(request):
     response = render(request, 'index.html')
     return response
