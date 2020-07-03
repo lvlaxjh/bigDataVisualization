@@ -348,9 +348,9 @@
                                 }
                             }
                         );
-                        data_beijing[count] = getSum(map_beijing);
-                        data_dongguan[count] = getSum(map_dongguan);
-                        data_nanjing[count] = getSum(map_nanjing);
+                        data_beijing[count] = getAvg(map_beijing);
+                        data_dongguan[count] = getAvg(map_dongguan);
+                        data_nanjing[count] = getAvg(map_nanjing);
                         data_total[count] = data_beijing[count] + data_dongguan[count] + data_nanjing[count];
                         showLine("main", data_beijing, data_nanjing, data_dongguan, data_total);
                         showMap("mapBox", map_beijing, map_nanjing, map_dongguan);
@@ -360,11 +360,12 @@
             }
 
             // 求和函数
-            function getSum(arr) {
+            function getAvg(arr) {
                 let sum = 0;
                 arr.forEach(element => {
                     sum = sum + element;
                 });
+                sum =  Math.floor(sum / arr.length) ;
                 // console.log('sum = ' + sum);
                 return sum;
             }

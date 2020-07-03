@@ -617,15 +617,15 @@
                                 color: "#00ff33"
                             }
                         });
-                        data_shangxing_beijing[count] = getSum(map_shangxing_beijing)
-                        data_shangxing_dongguan[count] = getSum(map_shangxing_dongguan)
-                        data_shangxing_nanjing[count] = getSum(map_shangxing_nanjing)
-                        data_xiaxing_beijing[count] = getSum(map_xiaxing_beijing)
-                        data_xiaxing_dongguan[count] = getSum(map_xiaxing_dongguan)
-                        data_xiaxing_nanjing[count] = getSum(map_xiaxing_nanjing)
-                        data_yujian_beijing[count] = getSum(map_yujian_beijing)
-                        data_yujian_dongguan[count] = getSum(map_yujian_dongguan)
-                        data_yujian_nanjing[count] = getSum(map_yujian_nanjing)
+                        data_shangxing_beijing[count] = getAvg(map_shangxing_beijing)
+                        data_shangxing_dongguan[count] = getAvg(map_shangxing_dongguan)
+                        data_shangxing_nanjing[count] = getAvg(map_shangxing_nanjing)
+                        data_xiaxing_beijing[count] = getAvg(map_xiaxing_beijing)
+                        data_xiaxing_dongguan[count] = getAvg(map_xiaxing_dongguan)
+                        data_xiaxing_nanjing[count] = getAvg(map_xiaxing_nanjing)
+                        data_yujian_beijing[count] = getAvg(map_yujian_beijing)
+                        data_yujian_dongguan[count] = getAvg(map_yujian_dongguan)
+                        data_yujian_nanjing[count] = getAvg(map_yujian_nanjing)
 
                         //
                         data_shangxing_total[count] = data_shangxing_beijing[count] +
@@ -656,11 +656,12 @@
 
 
             // 求和函数
-            function getSum(arr) {
+            function getAvg(arr) {
                 let sum = 0;
                 arr.forEach(element => {
                     sum = sum + element;
                 });
+                sum = Math.floor(sum / arr.length);
                 return sum;
             }
 
