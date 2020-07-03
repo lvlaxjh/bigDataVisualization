@@ -182,7 +182,7 @@
     <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/china.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
-    </script>
+        </script>
 
     <!-- ajax传参与响应 -->
     <script>
@@ -290,7 +290,7 @@
             function indexStreamInit() {
                 console.log('initial start!');
                 count_all = "0";
-                var timer = setInterval(indexStream, 500);
+                var timer = setInterval(indexStream, 1000);
                 // // 计时器清理
                 // if (count === 3) {
                 //     clearInterval(timer);
@@ -338,7 +338,7 @@
                                 symbolSize: parseInt(result.shangxing.cdc.beijing[cities]) /
                                     sym,
                                 itemStyle: {
-                                    color: "#ff00ff",
+                                    color: "#a6c84c",
                                 }
                             });
                             route_shangxing.push({
@@ -359,7 +359,7 @@
                             name: '北京',
                             symbolSize: 50,
                             itemStyle: {
-                                color: "#ff00ff",
+                                color: "#a6c84c",
                                 borderColor: '#bcbcbc',
                                 borderWidth: 5,
                             }
@@ -375,7 +375,7 @@
                                 symbolSize: parseInt(result.shangxing.cdc.dongguan[
                                     cities]) / sym,
                                 itemStyle: {
-                                    color: "#4f19c7",
+                                    color: "#46bee9",
                                 }
                             });
                             route_shangxing.push({
@@ -396,7 +396,7 @@
                             name: '东莞',
                             symbolSize: 50,
                             itemStyle: {
-                                color: "#4f19c7",
+                                color: "#46bee9",
                                 borderColor: '#bcbcbc',
                                 borderWidth: 5,
                             }
@@ -412,7 +412,7 @@
                                 symbolSize: parseInt(result.shangxing.cdc.nanjing[cities]) /
                                     sym,
                                 itemStyle: {
-                                    color: "#00ff33",
+                                    color: "#ffa022",
                                 }
                             });
                             route_shangxing.push({
@@ -433,7 +433,7 @@
                             name: '南京',
                             symbolSize: 50,
                             itemStyle: {
-                                color: "#00ff33",
+                                color: "#ffa022",
                                 borderColor: '#bcbcbc',
                                 borderWidth: 5,
                             }
@@ -449,7 +449,7 @@
                                 symbolSize: parseInt(result.xiaxing.cdc.beijing[cities]) /
                                     sym,
                                 itemStyle: {
-                                    color: "#ff00ff"
+                                    color: "#a6c84c"
                                 }
                             })
                             route_xiaxing.push({
@@ -470,7 +470,7 @@
                             name: '北京',
                             symbolSize: 50,
                             itemStyle: {
-                                color: "#ff00ff",
+                                color: "#a6c84c",
                                 borderColor: '#bcbcbc',
                                 borderWidth: 5,
                             }
@@ -486,7 +486,7 @@
                                 symbolSize: parseInt(result.xiaxing.cdc.dongguan[cities]) /
                                     sym,
                                 itemStyle: {
-                                    color: "#4f19c7"
+                                    color: "#46bee9"
                                 }
                             })
                             route_xiaxing.push({
@@ -507,7 +507,7 @@
                             name: '东莞',
                             symbolSize: 50,
                             itemStyle: {
-                                color: "#4f19c7",
+                                color: "#46bee9",
                                 borderColor: '#bcbcbc',
                                 borderWidth: 5,
                             }
@@ -522,7 +522,7 @@
                                 symbolSize: parseInt(result.xiaxing.cdc.nanjing[cities]) /
                                     sym,
                                 itemStyle: {
-                                    color: "#00ff33"
+                                    color: "#ffa022"
                                 }
                             })
                             route_xiaxing.push({
@@ -543,7 +543,7 @@
                             name: '南京',
                             symbolSize: 50,
                             itemStyle: {
-                                color: "#00ff33",
+                                color: "#ffa022",
                                 borderColor: '#bcbcbc',
                                 borderWidth: 5,
                             }
@@ -566,9 +566,12 @@
                             y: 40.2539,
                             id: 'beijing',
                             name: '北京',
-                            symbolSize: 15,
+                            symbolSize: 50,
                             itemStyle: {
-                                color: "#ff00ff"
+                                color: "#ff00ff",
+                                borderColor: '#bcbcbc',
+                                borderWidth: 5,
+
                             }
                         });
                         for (cities in result.yujian.cdc.dongguan) {
@@ -589,9 +592,11 @@
                             y: 22.901,
                             id: 'dongguan',
                             name: '东莞',
-                            symbolSize: 15,
+                            symbolSize: 50,
                             itemStyle: {
-                                color: "#4f19c7"
+                                color: "#4f19c7",
+                                borderColor: '#bcbcbc',
+                                borderWidth: 5,
                             }
                         });
                         for (cities in result.yujian.cdc.nanjing) {
@@ -612,9 +617,11 @@
                             y: 31.9208,
                             id: 'nanjing',
                             name: '南京',
-                            symbolSize: 15,
+                            symbolSize: 50,
                             itemStyle: {
-                                color: "#00ff33"
+                                color: "#00ff33",
+                                borderColor: '#bcbcbc',
+                                borderWidth: 5,
                             }
                         });
                         data_shangxing_beijing[count] = getAvg(map_shangxing_beijing)
@@ -1801,7 +1808,7 @@
                         }
                     },
                     legend: {
-                        data: ['北京DC', '南京DC', '东莞DC', '总计']
+                        data: ['北京DC', '南京DC', '东莞DC']
                     },
                     toolbox: {
                         feature: {
@@ -1809,7 +1816,7 @@
                         }
                     },
                     grid: {
-                        left: '7%',
+                        left: '8%',
                         right: '20%',
                         bottom: '3%',
                         containLabel: true
@@ -1822,51 +1829,51 @@
                         //data: ['50','600','1200', '1800', '2400', '3000', '3600']
                     }],
                     yAxis: [{
-                        name: '下行总链路利用率(%)',
+                        name: '平均链路利用率(%)',
                         type: 'value'
                     }],
                     series: [{
-                            name: '北京DC',
-                            type: 'line',
-                            stack: '总量',
-                            areaStyle: {},
-                            data: dataLineBJ,
-                            smooth: true
+                        name: '北京DC',
+                        type: 'line',
+                        stack: '总量',
+                        areaStyle: {},
+                        data: dataLineBJ,
+                        smooth: true
 
-                        },
-                        {
-                            name: '南京DC',
-                            type: 'line',
-                            stack: '总量',
-                            areaStyle: {},
-                            data: dataLineNJ,
-                            smooth: true
+                    },
+                    {
+                        name: '南京DC',
+                        type: 'line',
+                        stack: '总量',
+                        areaStyle: {},
+                        data: dataLineNJ,
+                        smooth: true
 
-                        },
-                        {
-                            name: '东莞DC',
-                            type: 'line',
-                            stack: '总量',
-                            areaStyle: {},
-                            data: dataLineDG,
-                            smooth: true
+                    },
+                    {
+                        name: '东莞DC',
+                        type: 'line',
+                        stack: '总量',
+                        areaStyle: {},
+                        data: dataLineDG,
+                        smooth: true
 
-                        },
-                        {
-                            name: '总计',
-                            type: 'line',
-                            stack: '总量',
-                            label: {
-                                normal: {
-                                    show: true,
-                                    position: 'top'
-                                }
-                            },
-                            areaStyle: {},
-                            data: dataLineTotal,
-                            smooth: true
+                    },
+                        // {
+                        //     name: '总计',
+                        //     type: 'line',
+                        //     stack: '总量',
+                        //     label: {
+                        //         normal: {
+                        //             show: true,
+                        //             position: 'top'
+                        //         }
+                        //     },
+                        //     areaStyle: {},
+                        //     data: dataLineTotal,
+                        //     smooth: true
 
-                        }
+                        // }
                     ]
                 };
                 myChart.setOption(option);
@@ -1878,6 +1885,18 @@
                 option = {
                     title: {
                         text: 'NPM Dependencies'
+                    },
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: function (params, ticket, callback) {
+                            console.log(params);
+                            if (params.data.source != null) {
+                                return "链路：" + pyToCN[params.data.source] + "-" + pyToCN[params.data.target];
+                             }
+                            else{
+                                return "数据中心:" + params.data.name ;
+                            }
+                        }
                     },
                     animationDurationUpdate: 1500,
                     animationEasingUpdate: 'quinticInOut',
