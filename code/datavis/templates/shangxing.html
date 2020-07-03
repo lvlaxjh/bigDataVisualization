@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>index</title>
+    <title>upload</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <style>
@@ -84,13 +84,6 @@
     <div class="row">
         <div class="col-10 offset-1">
             <div id="mapBox" class="div-map"></div>
-        </div>
-    </div>
-
-    <!-- 任务栏div -->
-    <div class="row">
-        <div class="col-10 offset-1">
-            <h3 class="task-list">task-list-1</h3>
         </div>
     </div>
 
@@ -205,7 +198,7 @@
                 console.log('initial start!');
                 count_upload = "0";
                 uploadStream();
-                var timer = setInterval(uploadStream, 2000);
+                var timer = setInterval(uploadStream, 500);
                 // 计时器清理
                 if (count === 3) {
                     clearInterval(timer);
@@ -232,7 +225,7 @@
                         npmData = [];
                         var sym = 5
                         var arrsize = 8
-                        console.log(result);
+                        // console.log(result);
                         count_upload = result.shangxing.time;
                         for (cities in result.shangxing.cdc.beijing) {
                             map_beijing.push(parseInt(result.shangxing.cdc.beijing[cities]));
@@ -518,7 +511,7 @@
                     arr.push(obj2);
                     BJData.push(arr);
                 }
-                console.log("北京Data", BJData);
+                // console.log("北京Data", BJData);
 
                 //南京 hefei,ningbo,wuhan,wuxi
                 var NJsheng = ['安徽', '浙江', '湖北', '江苏'];
@@ -600,7 +593,7 @@
                     ['南京', SHData],
                     ['东莞', DGData]
                 ].forEach(function (item, i) {
-                    console.log(item, i)
+                    // console.log(item, i)
                     series.push({
                         name: item[0],
                         type: 'lines',
@@ -755,7 +748,7 @@
 
             // 折线图函数
             function lineChart(elementId, dataBJ, dataNJ, dataDG, dataTT) {
-                console.log('lineChart prepared');
+                // console.log('lineChart prepared');
                 // 基于准备好的dom，初始化echarts实例
                 var myChart = echarts.init(document.getElementById(elementId));
                 var flagdata = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]

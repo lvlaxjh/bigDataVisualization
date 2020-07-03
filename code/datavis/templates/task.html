@@ -97,32 +97,13 @@
         </div>
     </div>
 
-    <!-- 任务栏div -->
-    <div class="row">
-
-    </div>
-
-    <!-- 折线图div -->
-    <!-- <div class="row">
-        <div class="col-10 offset-1">
-            <div id="main" class="div-line-chart" style="width: 80%;height: 500px;"></div>
-        </div>
-    </div> -->
-
-    <!-- NPM图div -->
-    <!-- <div class="row">
-        <div class="col-10 offset-1">
-            <div id="NPM" style="width: 80%;height: 500px;"></div>
-        </div>
-    </div> -->
-
     <!-- 引入相关文件 -->
     <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
     <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/china.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
-        </script>
+    </script>
 
     <script>
         $(document).ready(function () {
@@ -503,16 +484,16 @@
                             }
                         }
                     },
-                    legend: {
-                        orient: 'vertical',
-                        top: 'bottom',
-                        left: 'right',
-                        data: ['北京', '南京', '东莞'],
-                        textStyle: {
-                            color: '#fff'
-                        },
-                        selectedMode: 'multiple',
-                    },
+                    // legend: {
+                    //     orient: 'vertical',
+                    //     top: 'bottom',
+                    //     left: 'right',
+                    //     data: ['北京', '南京', '东莞'],
+                    //     textStyle: {
+                    //         color: '#fff'
+                    //     },
+                    //     selectedMode: 'multiple',
+                    // },
                     geo: {
                         map: 'china',
                         label: {
@@ -547,7 +528,7 @@
                 console.log('task initial start!');
                 count_upload = "0";
                 taskStream();
-                var timer = setInterval(taskStream, 2000);
+                var timer = setInterval(taskStream, 1000);
             }
 
             // 上行流量点击响应函数
@@ -637,12 +618,23 @@
 
                 var cities = dataSet;
                 var city_pair = [];
+
+                // var tempt_arr = [];
+                // var tempt_obj1 = {};
+                // tempt_obj1.name = cities[0];
+                // var tempt_obj2 = {};
+                // tempt_obj2.name = cities[0];
+                // tempt_arr.push(tempt_obj1);
+                // tempt_arr.push(tempt_obj2);
+                // city_pair.push(tempt_arr);
+
                 for (var i = 0; i < cities.length - 1; i++) {
                     var arr = [];
                     var obj1 = {};
                     obj1.name = cities[i];
                     var obj2 = {};
                     obj2.name = cities[i + 1];
+                    // obj2.value = 'current task list';
 
                     arr.push(obj1);
                     arr.push(obj2);
@@ -650,7 +642,7 @@
                 }
 
                 var convertData = function (data) {
-                    // console.log(data);
+                    // console.log('data:', data);
                     var res = [];
                     for (var i = 0; i < data.length; i++) {
                         var dataItem = data[i];
@@ -660,10 +652,12 @@
                             res.push({
                                 fromName: dataItem[0].name,
                                 toName: dataItem[1].name,
-                                coords: [fromCoord, toCoord]
+                                coords: [fromCoord, toCoord],
+                                // value: dataItem[1].value
                             });
                         }
                     }
+                    // console.log('res', res);
                     return res;
                 };
 
@@ -672,7 +666,7 @@
                 // [['任务', city_pair]].forEach(function (item, i) {
 
                 // console.log(convertData(city_pair));
-                console.log(dataCities);
+                // console.log(dataCities);
                 series.push({
                     name: dataCities,
                     type: 'lines',
@@ -739,19 +733,6 @@
                         }
                     },
                     data: city_pair.map(function (dataItem) {
-
-                        console.log(dataItem)
-                        // var name = "";
-                        // if (dataItem[0].name == "北京") {
-                        //     name = BJobj[dataItem[1].name];
-                        // }
-                        // if (dataItem[0].name == "南京") {
-                        //     name = NJobj[dataItem[1].name];
-                        // }
-                        // if (dataItem[0].name == "东莞") {
-                        //     name = DGobj[dataItem[1].name];
-                        // }
-
                         return {
                             name: dataItem[1].name,
                             value: geoCoordMap[dataItem[1].name].concat([dataItem[1]
@@ -765,8 +746,8 @@
                 var option = {
                     backgroundColor: '#404a59',
                     title: {
-                        text: '',
-                        subtext: '',
+                        text: '实时任务链路图',
+                        subtext: dataCities,
                         left: 'center',
                         textStyle: {
                             color: '#fff'
@@ -779,23 +760,12 @@
                             if (params.seriesType == "effectScatter") {
                                 return "线路：" + params.data.name + "" + params.data.value[2];
                             } else if (params.seriesType == "lines") {
-                                return params.data.fromName + ">" + params.data.toName + "<br />" +
-                                    params.data.value;
+                                return params.data.fromName + ">" + params.data.toName + "<br />";
                             } else {
                                 return params.name;
                             }
                         }
                     },
-                    // legend: {
-                    //     orient: 'vertical',
-                    //     top: 'bottom',
-                    //     left: 'right',
-                    //     data: ['北京', '南京', '东莞'],
-                    //     textStyle: {
-                    //         color: '#fff'
-                    //     },
-                    //     selectedMode: 'multiple',
-                    // },
                     geo: {
                         map: 'china',
                         label: {
