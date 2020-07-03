@@ -106,7 +106,7 @@
     <script type="text/javascript" src="https://assets.pyecharts.org/assets/maps/china.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
-    </script>
+        </script>
 
     <!-- ajax传参与响应 -->
     <script>
@@ -702,7 +702,7 @@
                         }
                     },
                     legend: {
-                        data: ['北京DC', '南京DC', '东莞DC', '总计']
+                        data: ['北京DC', '南京DC', '东莞DC',]
                     },
                     toolbox: {
                         feature: {
@@ -727,47 +727,47 @@
                         type: 'value'
                     }],
                     series: [{
-                            name: '北京DC',
-                            type: 'line',
-                            stack: '总量',
-                            areaStyle: {},
-                            data: dataLineBJ,
-                            smooth: true
+                        name: '北京DC',
+                        type: 'line',
+                        stack: '总量',
+                        areaStyle: {},
+                        data: dataLineBJ,
+                        smooth: true
 
-                        },
-                        {
-                            name: '南京DC',
-                            type: 'line',
-                            stack: '总量',
-                            areaStyle: {},
-                            data: dataLineNJ,
-                            smooth: true
+                    },
+                    {
+                        name: '南京DC',
+                        type: 'line',
+                        stack: '总量',
+                        areaStyle: {},
+                        data: dataLineNJ,
+                        smooth: true
 
-                        },
-                        {
-                            name: '东莞DC',
-                            type: 'line',
-                            stack: '总量',
-                            areaStyle: {},
-                            data: dataLineDG,
-                            smooth: true
+                    },
+                    {
+                        name: '东莞DC',
+                        type: 'line',
+                        stack: '总量',
+                        areaStyle: {},
+                        data: dataLineDG,
+                        smooth: true
 
-                        },
-                        {
-                            name: '总计',
-                            type: 'line',
-                            stack: '总量',
-                            label: {
-                                normal: {
-                                    show: true,
-                                    position: 'top'
-                                }
-                            },
-                            areaStyle: {},
-                            data: dataLineTotal,
-                            smooth: true
+                    },
+                        // {
+                        //     name: '总计',
+                        //     type: 'line',
+                        //     stack: '总量',
+                        //     label: {
+                        //         normal: {
+                        //             show: true,
+                        //             position: 'top'
+                        //         }
+                        //     },
+                        //     areaStyle: {},
+                        //     data: dataLineTotal,
+                        //     smooth: true
 
-                        }
+                        // }
                     ]
                 };
                 myChart.setOption(option);
