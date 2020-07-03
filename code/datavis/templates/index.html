@@ -290,7 +290,7 @@
             function indexStreamInit() {
                 console.log('initial start!');
                 count_all = "0";
-                var timer = setInterval(indexStream, 500);
+                var timer = setInterval(indexStream, 1000);
                 // // 计时器清理
                 // if (count === 3) {
                 //     clearInterval(timer);
@@ -338,7 +338,7 @@
                                 symbolSize: parseInt(result.shangxing.cdc.beijing[cities]) /
                                     sym,
                                 itemStyle: {
-                                    color: "#ff00ff",
+                                    color: "#a6c84c",
                                 }
                             });
                             route_shangxing.push({
@@ -359,7 +359,7 @@
                             name: '北京',
                             symbolSize: 50,
                             itemStyle: {
-                                color: "#ff00ff",
+                                color: "#a6c84c",
                                 borderColor: '#bcbcbc',
                                 borderWidth: 5,
                             }
@@ -375,7 +375,7 @@
                                 symbolSize: parseInt(result.shangxing.cdc.dongguan[
                                     cities]) / sym,
                                 itemStyle: {
-                                    color: "#4f19c7",
+                                    color: "#46bee9",
                                 }
                             });
                             route_shangxing.push({
@@ -396,7 +396,7 @@
                             name: '东莞',
                             symbolSize: 50,
                             itemStyle: {
-                                color: "#4f19c7",
+                                color: "#46bee9",
                                 borderColor: '#bcbcbc',
                                 borderWidth: 5,
                             }
@@ -412,7 +412,7 @@
                                 symbolSize: parseInt(result.shangxing.cdc.nanjing[cities]) /
                                     sym,
                                 itemStyle: {
-                                    color: "#00ff33",
+                                    color: "#ffa022",
                                 }
                             });
                             route_shangxing.push({
@@ -433,7 +433,7 @@
                             name: '南京',
                             symbolSize: 50,
                             itemStyle: {
-                                color: "#00ff33",
+                                color: "#ffa022",
                                 borderColor: '#bcbcbc',
                                 borderWidth: 5,
                             }
@@ -449,7 +449,7 @@
                                 symbolSize: parseInt(result.xiaxing.cdc.beijing[cities]) /
                                     sym,
                                 itemStyle: {
-                                    color: "#ff00ff"
+                                    color: "#a6c84c"
                                 }
                             })
                             route_xiaxing.push({
@@ -470,7 +470,7 @@
                             name: '北京',
                             symbolSize: 50,
                             itemStyle: {
-                                color: "#ff00ff",
+                                color: "#a6c84c",
                                 borderColor: '#bcbcbc',
                                 borderWidth: 5,
                             }
@@ -486,7 +486,7 @@
                                 symbolSize: parseInt(result.xiaxing.cdc.dongguan[cities]) /
                                     sym,
                                 itemStyle: {
-                                    color: "#4f19c7"
+                                    color: "#46bee9"
                                 }
                             })
                             route_xiaxing.push({
@@ -507,7 +507,7 @@
                             name: '东莞',
                             symbolSize: 50,
                             itemStyle: {
-                                color: "#4f19c7",
+                                color: "#46bee9",
                                 borderColor: '#bcbcbc',
                                 borderWidth: 5,
                             }
@@ -522,7 +522,7 @@
                                 symbolSize: parseInt(result.xiaxing.cdc.nanjing[cities]) /
                                     sym,
                                 itemStyle: {
-                                    color: "#00ff33"
+                                    color: "#ffa022"
                                 }
                             })
                             route_xiaxing.push({
@@ -543,7 +543,7 @@
                             name: '南京',
                             symbolSize: 50,
                             itemStyle: {
-                                color: "#00ff33",
+                                color: "#ffa022",
                                 borderColor: '#bcbcbc',
                                 borderWidth: 5,
                             }
@@ -568,7 +568,7 @@
                             name: '北京',
                             symbolSize: 15,
                             itemStyle: {
-                                color: "#ff00ff"
+                                color: "#a6c84c"
                             }
                         });
                         for (cities in result.yujian.cdc.dongguan) {
@@ -591,7 +591,7 @@
                             name: '东莞',
                             symbolSize: 15,
                             itemStyle: {
-                                color: "#4f19c7"
+                                color: "#46bee9"
                             }
                         });
                         for (cities in result.yujian.cdc.nanjing) {
@@ -614,7 +614,7 @@
                             name: '南京',
                             symbolSize: 15,
                             itemStyle: {
-                                color: "#00ff33"
+                                color: "#ffa022"
                             }
                         });
                         data_shangxing_beijing[count] = getAvg(map_shangxing_beijing)
@@ -1809,7 +1809,7 @@
                         }
                     },
                     grid: {
-                        left: '7%',
+                        left: '8%',
                         right: '20%',
                         bottom: '3%',
                         containLabel: true
@@ -1822,7 +1822,7 @@
                         //data: ['50','600','1200', '1800', '2400', '3000', '3600']
                     }],
                     yAxis: [{
-                        name: '下行总链路利用率(%)',
+                        name: '平均链路利用率(%)',
                         type: 'value'
                     }],
                     series: [{

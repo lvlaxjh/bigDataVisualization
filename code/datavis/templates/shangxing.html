@@ -198,7 +198,7 @@
                 console.log('initial start!');
                 count_upload = "0";
                 uploadStream();
-                var timer = setInterval(uploadStream, 500);
+                var timer = setInterval(uploadStream, 1000);
                 // 计时器清理
                 if (count === 3) {
                     clearInterval(timer);
@@ -237,7 +237,7 @@
                                     name: pyToCN[cities],
                                     symbolSize: parseInt(result.shangxing.cdc.beijing[cities]) / sym,
                                     itemStyle: {
-                                        color: "#ff00ff",
+                                        color: "#a6c84c",
                                     }
                                 }
                             );
@@ -261,7 +261,7 @@
                                 name: '北京',
                                 symbolSize: 50,
                                 itemStyle: {
-                                    color: "#ff00ff",
+                                    color: "#a6c84c",
                                     borderColor: '#bcbcbc',
                                     borderWidth: 5,
                                 }
@@ -277,7 +277,7 @@
                                     name: pyToCN[cities],
                                     symbolSize: parseInt(result.shangxing.cdc.dongguan[cities]) / sym,
                                     itemStyle: {
-                                        color: "#4f19c7"
+                                        color: "#46bee9"
                                     }
                                 }
                             )
@@ -301,7 +301,7 @@
                                 name: '东莞',
                                 symbolSize: 50,
                                 itemStyle: {
-                                    color: "#4f19c7",
+                                    color: "#46bee9",
                                     borderColor: '#bcbcbc',
                                     borderWidth: 5,
                                 }
@@ -317,7 +317,7 @@
                                     name: pyToCN[cities],
                                     symbolSize: parseInt(result.shangxing.cdc.nanjing[cities]) / sym,
                                     itemStyle: {
-                                        color: "#00ff33"
+                                        color: "#ffa022"
                                     }
                                 }
                             )
@@ -341,7 +341,7 @@
                                 name: '南京',
                                 symbolSize: 50,
                                 itemStyle: {
-                                    color: "#00ff33",
+                                    color: "#ffa022",
                                     borderColor: '#bcbcbc',
                                     borderWidth: 5,
                                 }
@@ -784,8 +784,8 @@
                         }
                     },
                     grid: {
-                        left: '6%',
-                        right: '6%',
+                        left: '8%',
+                        right: '15%',
                         bottom: '3%',
                         containLabel: true
                     },
@@ -797,7 +797,7 @@
                         // data: ['1000', '2000', '3000', '4000', '5000', '6000', '7000', '8000', '9000', '10000']
                     }],
                     yAxis: [{
-                        name: '上行总链路利用率(%)',
+                        name: '上行平均链路利用率(%)',
                         type: 'value'
                     }],
                     series: [{
@@ -846,11 +846,6 @@
                 };
                 // 使用刚指定的配置项和数据显示图表。
                 myChart.setOption(option);
-            }
-
-            // 地点集合处理
-            function dataProcessing() {
-
             }
 
             // NPM图函数
