@@ -764,7 +764,7 @@
                 // 指定图表的配置项和数据
                 option = {
                     title: {
-                        text: '流量堆叠图'
+                        text: '上行流量利用率图'
                     },
                     tooltip: {
                         trigger: 'axis',
@@ -803,8 +803,8 @@
                     series: [{
                         name: '北京DC',
                         type: 'line',
-                        stack: '总量',
-                        areaStyle: {},
+                        // stack: '总量',
+                        // areaStyle: {},
                         data: dataBJ,
                         smooth: true
 
@@ -812,8 +812,8 @@
                     {
                         name: '南京DC',
                         type: 'line',
-                        stack: '总量',
-                        areaStyle: {},
+                        // stack: '总量',
+                        // areaStyle: {},
                         data: dataNJ,
                         smooth: true
 
@@ -821,8 +821,8 @@
                     {
                         name: '东莞DC',
                         type: 'line',
-                        stack: '总量',
-                        areaStyle: {},
+                        // stack: '总量',
+                        // areaStyle: {},
                         data: dataDG,
                         smooth: true
 

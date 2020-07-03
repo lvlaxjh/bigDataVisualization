@@ -696,7 +696,7 @@
                 dataLineTotal = dataLineTotal.slice(dataLineTotal.length - 10, dataLineTotal.length)
                 option = {
                     title: {
-                        text: '流量堆叠图'
+                        text: '域间流量利用率图'
                     },
                     tooltip: {
                         trigger: 'axis',
@@ -729,14 +729,14 @@
                         //data: ['50','600','1200', '1800', '2400', '3000', '3600']
                     }],
                     yAxis: [{
-                        name: '下行平均链路利用率(%)',
+                        name: '域间平均链路利用率(%)',
                         type: 'value'
                     }],
                     series: [{
                         name: '北京DC',
                         type: 'line',
-                        stack: '总量',
-                        areaStyle: {},
+                        // stack: '总量',
+                        // areaStyle: {},
                         data: dataLineBJ,
                         smooth: true
 
@@ -744,8 +744,8 @@
                     {
                         name: '南京DC',
                         type: 'line',
-                        stack: '总量',
-                        areaStyle: {},
+                        // stack: '总量',
+                        // areaStyle: {},
                         data: dataLineNJ,
                         smooth: true
 
@@ -753,8 +753,8 @@
                     {
                         name: '东莞DC',
                         type: 'line',
-                        stack: '总量',
-                        areaStyle: {},
+                        // stack: '总量',
+                        // areaStyle: {},
                         data: dataLineDG,
                         smooth: true
 
